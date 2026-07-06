@@ -75,6 +75,96 @@ for (const path of DEMO_PAGES) {
   await page.close();
 }
 
+// --- meal planner v2: toggle grid, v1 migration, dashboard, shopping list ---
+{
+  const page = await browser.newPage();
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      "templefit.v1.mealPlan",
+      JSON.stringify({
+        week: { mon: { lunch: "tuna-white-bean-wraps" } },
+        savedAt: "2026-01-01T00:00:00Z",
+      }),
+    );
+  });
+  await page.goto(BASE + "/recipes/chicken-burrito-bowls", {
+    waitUntil: "networkidle",
+  });
+  await page.getByRole("button", { name: /add to my week/i }).click();
+  await page.getByRole("button", { name: "Tuesday dinner" }).click();
+  await page.getByRole("button", { name: "Thursday breakfast" }).click();
+  ok(
+    /in my week \(2\)/i.test(
+      await page.getByRole("button", { name: /in my week/i }).textContent(),
+    ),
+    "planner: recipe added to two slots",
+  );
+  const migrated = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("templefit.v2.mealPlan")),
+  );
+  const v1Gone =
+    (await page.evaluate(() => localStorage.getItem("templefit.v1.mealPlan"))) ===
+    null;
+  ok(
+    Array.isArray(migrated?.week?.mon?.lunch) &&
+      migrated.week.mon.lunch[0] === "tuna-white-bean-wraps" &&
+      v1Gone,
+    "planner: v1 plan migrated to v2 arrays, v1 key removed",
+  );
+
+  await page.goto(BASE + "/my-temple", { waitUntil: "networkidle" });
+  const headers = await page.locator("table th").allTextContents();
+  ok(
+    ["Breakfast", "Lunch", "Dinner", "Snack"].every((h) => headers.includes(h)),
+    "/my-temple: four meal columns render",
+  );
+  const shopping = page.locator("#shopping-list");
+  const itemCount = await shopping.locator("input[type=checkbox]").count();
+  ok(itemCount > 0, "/my-temple: shopping list generated from plan");
+  await shopping.locator("input[type=checkbox]").first().check();
+  await page.reload({ waitUntil: "networkidle" });
+  ok(
+    await page
+      .locator("#shopping-list input[type=checkbox]")
+      .first()
+      .isChecked(),
+    "/my-temple: shopping check-off survives reload",
+  );
+  await page.getByRole("button", { name: /clear week/i }).click();
+  ok(
+    (await page.locator("#shopping-list input[type=checkbox]").count()) === 0,
+    "/my-temple: clear week empties the shopping list",
+  );
+  await page.close();
+}
+
+// --- recipe card banner (photo when generated, plate SVG fallback) ---
+{
+  const page = await browser.newPage();
+  await page.goto(BASE + "/recipes", { waitUntil: "networkidle" });
+  const cards = page.locator('a[href^="/recipes/"]');
+  ok((await cards.count()) >= 26, "/recipes: cards render");
+  const firstBanner = cards.first().locator("img, svg").first();
+  ok(await firstBanner.isVisible(), "/recipes: card banner (photo or plate art)");
+  await page.close();
+}
+
+// --- newsletter form: responds even when the backend isn't configured ---
+{
+  const page = await browser.newPage();
+  await page.goto(BASE + "/about", { waitUntil: "networkidle" });
+  const form = page.locator("footer form");
+  await form.locator('input[type="email"]').fill("smoke-test@example.com");
+  await form.getByRole("button", { name: /subscribe/i }).click();
+  await page.waitForTimeout(800);
+  const feedback = await page.locator("footer").textContent();
+  ok(
+    /you're in|configured|went wrong|try again/i.test(feedback),
+    "footer newsletter form responds (ok or graceful error)",
+  );
+  await page.close();
+}
+
 await browser.close();
 if (failures) {
   console.error(`✗ ${failures} smoke check(s) failed`);

@@ -14,7 +14,7 @@ export const exercises: Exercise[] = [
       "Brace your core and squeeze your glutes so your hips don't sag.",
       "Lower your chest toward the floor by bending your elbows at roughly 45 degrees from your torso.",
       "Stop when your chest is an inch or two off the floor, then press back up to full arm extension.",
-      "Keep your neck neutral — look at the floor just ahead of your hands, not up.",
+      "Keep your neck neutral - look at the floor just ahead of your hands, not up.",
     ],
     primaryMuscles: ["chest"],
     secondaryMuscles: ["triceps", "shoulders", "abs"],
@@ -43,7 +43,7 @@ export const exercises: Exercise[] = [
     slug: "incline-dumbbell-press",
     name: "Incline Dumbbell Press",
     description:
-      "Pressing on an incline shifts the work to your upper chest and shoulders — the area that makes a shirt fit better. Dumbbells also let each arm work independently, so your stronger side can't quietly carry the weaker one.",
+      "Pressing on an incline shifts the work to your upper chest and shoulders - the area that makes a shirt fit better. Dumbbells also let each arm work independently, so your stronger side can't quietly carry the weaker one.",
     steps: [
       "Set a bench to a 30-45 degree incline and sit back with a dumbbell resting on each thigh.",
       "Kick the dumbbells up one at a time as you lie back, holding them at chest level, palms facing forward.",
@@ -69,7 +69,7 @@ export const exercises: Exercise[] = [
       sets: "3",
       reps: "8-12",
       rest: "90s",
-      tempoNote: "Control the lowering phase — don't let the weights drop.",
+      tempoNote: "Control the lowering phase - don't let the weights drop.",
     },
   },
   {
@@ -111,7 +111,7 @@ export const exercises: Exercise[] = [
     slug: "pike-push-up",
     name: "Pike Push-Up",
     description:
-      "A bodyweight press that shifts the load onto your shoulders — the closest thing to an overhead press without weights. Great for building the strength to hoist kids onto your shoulders without a twinge.",
+      "A bodyweight press that shifts the load onto your shoulders - the closest thing to an overhead press without weights. Great for building the strength to hoist kids onto your shoulders without a twinge.",
     steps: [
       "Start in a push-up position, then walk your feet toward your hands until your hips are high and your body forms an inverted V.",
       "Keep your arms straight and your head between them, looking back at your feet.",
@@ -127,7 +127,7 @@ export const exercises: Exercise[] = [
     commonMistakes: [
       "Letting the hips drop so it becomes a regular push-up",
       "Flaring the elbows straight out to the sides",
-      "Bailing on depth — the bottom inch is where the shoulders work hardest",
+      "Bailing on depth - the bottom inch is where the shoulders work hardest",
     ],
     tips: [
       "Elevate your feet on a step or couch to make it harder as you get stronger.",
@@ -144,11 +144,11 @@ export const exercises: Exercise[] = [
     slug: "seated-dumbbell-press",
     name: "Seated Dumbbell Shoulder Press",
     description:
-      "The bread-and-butter shoulder builder. Sitting down takes your lower back mostly out of the equation, so you can focus on pressing strength you'll actually use — lifting bags into overhead bins, kids onto shoulders, boxes onto shelves.",
+      "The bread-and-butter shoulder builder. Sitting down takes your lower back mostly out of the equation, so you can focus on pressing strength you'll actually use - lifting bags into overhead bins, kids onto shoulders, boxes onto shelves.",
     steps: [
       "Sit on a bench or sturdy chair with back support, feet planted flat.",
       "Bring a dumbbell to each shoulder, palms facing forward, elbows below wrists.",
-      "Brace your core and keep your ribs down — no arching.",
+      "Brace your core and keep your ribs down - no arching.",
       "Press both dumbbells overhead until your arms are straight and biceps are near your ears.",
       "Lower under control back to shoulder height.",
     ],
@@ -174,12 +174,12 @@ export const exercises: Exercise[] = [
     slug: "lateral-raise",
     name: "Dumbbell Lateral Raise",
     description:
-      "The move that builds the side of the shoulder — the part that makes you look broader in a T-shirt. Light weights, strict form, big payoff over time. Perfect as a finisher when you've only got a few minutes left.",
+      "The move that builds the side of the shoulder - the part that makes you look broader in a T-shirt. Light weights, strict form, big payoff over time. Perfect as a finisher when you've only got a few minutes left.",
     steps: [
       "Stand tall with a light dumbbell in each hand at your sides, slight bend in the elbows.",
       "Brace your core and lean forward a hair from the hips.",
       "Raise both arms out to the sides, leading with your elbows, until your arms are roughly parallel to the floor.",
-      "Pause briefly at the top — no swinging.",
+      "Pause briefly at the top - no swinging.",
       "Lower slowly back to your sides over 2-3 seconds.",
     ],
     primaryMuscles: ["shoulders"],
@@ -194,7 +194,7 @@ export const exercises: Exercise[] = [
     ],
     tips: [
       "Pour-the-pitcher cue: tilt your pinkies slightly up at the top, only if it feels comfortable.",
-      "Lighter than you think — 5-10 lb dumbbells humble most people here.",
+      "Lighter than you think - 5-10 lb dumbbells humble most people here.",
     ],
     setsRepsGuidance: {
       sets: "3",
@@ -210,7 +210,7 @@ export const exercises: Exercise[] = [
     slug: "chin-up",
     name: "Chin-Up",
     description:
-      "The underhand grip makes this the best biceps builder that also trains your whole back. One bar in a doorway and you've got a gym — a couple of honest sets while the coffee brews adds up fast.",
+      "The underhand grip makes this the best biceps builder that also trains your whole back. One bar in a doorway and you've got a gym - a couple of honest sets while the coffee brews adds up fast.",
     steps: [
       "Grab the bar with an underhand grip (palms facing you), hands about shoulder-width apart.",
       "Hang with arms fully extended, shoulders pulled down away from your ears.",
@@ -243,13 +243,13 @@ export const exercises: Exercise[] = [
     slug: "dumbbell-curl",
     name: "Standing Dumbbell Curl",
     description:
-      "Simple, direct arm work that carries over to every carry, lift, and lug in dad life. Two dumbbells, three sets, done — no machines, no waiting, no excuses.",
+      "Simple, direct arm work that carries over to every carry, lift, and lug in dad life. Two dumbbells, three sets, done - no machines, no waiting, no excuses.",
     steps: [
       "Stand tall with a dumbbell in each hand at your sides, palms facing forward.",
       "Pin your elbows to your ribs and keep them there for the whole set.",
       "Curl both dumbbells up toward your shoulders without swinging your torso.",
       "Squeeze the biceps hard at the top.",
-      "Lower slowly back to full arm extension — the way down builds as much muscle as the way up.",
+      "Lower slowly back to full arm extension - the way down builds as much muscle as the way up.",
     ],
     primaryMuscles: ["biceps"],
     secondaryMuscles: ["forearms"],
@@ -274,7 +274,7 @@ export const exercises: Exercise[] = [
     slug: "band-hammer-curl",
     name: "Band Hammer Curl",
     description:
-      "A neutral-grip curl with a resistance band that hits the biceps and the forearms in one shot — the grip strength you use hauling groceries and car seats. Quiet, portable, and easy on the elbows.",
+      "A neutral-grip curl with a resistance band that hits the biceps and the forearms in one shot - the grip strength you use hauling groceries and car seats. Quiet, portable, and easy on the elbows.",
     steps: [
       "Stand on the middle of a band with both feet, holding a handle in each hand, palms facing each other.",
       "Stand tall with elbows pinned to your sides.",
@@ -306,7 +306,7 @@ export const exercises: Exercise[] = [
     slug: "diamond-push-up",
     name: "Diamond Push-Up",
     description:
-      "Bring your hands together and the humble push-up becomes a triceps crusher. It builds the lockout strength behind every push, press, and get-up-off-the-floor-with-a-toddler moment — no equipment needed.",
+      "Bring your hands together and the humble push-up becomes a triceps crusher. It builds the lockout strength behind every push, press, and get-up-off-the-floor-with-a-toddler moment - no equipment needed.",
     steps: [
       "Get into a push-up position, then bring your hands together under your chest so your thumbs and index fingers form a diamond.",
       "Squeeze your glutes and brace your core into a straight line.",
@@ -353,7 +353,7 @@ export const exercises: Exercise[] = [
     timeEstimateMin: 3,
     commonMistakes: [
       "Drifting the hips far away from the bench, which strains the shoulders",
-      "Dropping too deep — past 90 degrees is risky for most shoulders",
+      "Dropping too deep - past 90 degrees is risky for most shoulders",
       "Shrugging the shoulders toward the ears at the top",
     ],
     tips: ["Straighten your legs or elevate your feet on a second chair to progress."],
@@ -368,7 +368,7 @@ export const exercises: Exercise[] = [
     slug: "overhead-triceps-extension",
     name: "Overhead Dumbbell Triceps Extension",
     description:
-      "Working the triceps with your arms overhead stretches the long head of the muscle — the biggest chunk of your arm. One dumbbell, both hands, three quick sets, and your arms have been paid.",
+      "Working the triceps with your arms overhead stretches the long head of the muscle - the biggest chunk of your arm. One dumbbell, both hands, three quick sets, and your arms have been paid.",
     steps: [
       "Stand or sit tall holding one dumbbell with both hands cupped under the top plate.",
       "Press the dumbbell overhead until your arms are straight, biceps near your ears.",
@@ -401,7 +401,7 @@ export const exercises: Exercise[] = [
     slug: "farmers-carry",
     name: "Farmer's Carry",
     description:
-      "Pick up heavy things and walk — it's literally the groceries, the car seat, the suitcase. Farmer's carries build crushing grip, a braced core, and posture that holds up under load, all in one simple move.",
+      "Pick up heavy things and walk - it's literally the groceries, the car seat, the suitcase. Farmer's carries build crushing grip, a braced core, and posture that holds up under load, all in one simple move.",
     steps: [
       "Stand between two dumbbells and deadlift them up with a flat back.",
       "Stand tall: chest up, shoulders back and down, arms hanging straight at your sides.",
@@ -418,7 +418,7 @@ export const exercises: Exercise[] = [
     commonMistakes: [
       "Leaning forward or shrugging as fatigue sets in",
       "Taking long, fast strides instead of controlled steps",
-      "Going so light there's nothing to grip against — this should feel heavy",
+      "Going so light there's nothing to grip against - this should feel heavy",
     ],
     tips: ["No room to walk? March in place holding the weights for time."],
     setsRepsGuidance: {
@@ -436,7 +436,7 @@ export const exercises: Exercise[] = [
     steps: [
       "Grab the bar with an overhand grip, hands shoulder-width apart.",
       "Step off and hang with arms fully straight.",
-      "Pull your shoulders slightly down away from your ears — don't hang like a wet noodle through the shoulders.",
+      "Pull your shoulders slightly down away from your ears - don't hang like a wet noodle through the shoulders.",
       "Keep your core lightly braced and legs still.",
       "Hang for time, breathing steadily, then step down with control.",
     ],
@@ -465,11 +465,11 @@ export const exercises: Exercise[] = [
     slug: "towel-wring",
     name: "Towel Wring",
     description:
-      "Grab a bath towel and wring it like you're getting the last drop out — that's the whole exercise. It hammers the gripping and twisting muscles of the forearms that keyboard hands sorely lack, using something already in your bathroom.",
+      "Grab a bath towel and wring it like you're getting the last drop out - that's the whole exercise. It hammers the gripping and twisting muscles of the forearms that keyboard hands sorely lack, using something already in your bathroom.",
     steps: [
       "Roll a medium towel into a tight cylinder and grip it with both hands about shoulder-width apart.",
       "Hold it out in front of your chest with elbows softly bent.",
-      "Wring the towel hard — one hand twisting forward, the other back — as if squeezing out water.",
+      "Wring the towel hard - one hand twisting forward, the other back - as if squeezing out water.",
       "Hold the maximum twist for 3-5 seconds, gripping as tight as you can.",
       "Reverse the twist direction and repeat.",
       "Alternate directions for the full set.",
@@ -498,13 +498,13 @@ export const exercises: Exercise[] = [
     slug: "plank",
     name: "Plank",
     description:
-      "The foundation of a back-friendly core. A solid plank teaches your midsection to brace — the same brace that protects your spine when you scoop a sleeping kid off the couch. Two minutes of floor space is all it takes.",
+      "The foundation of a back-friendly core. A solid plank teaches your midsection to brace - the same brace that protects your spine when you scoop a sleeping kid off the couch. Two minutes of floor space is all it takes.",
     steps: [
       "Lie face down, then prop yourself on your forearms with elbows directly under your shoulders.",
       "Tuck your toes and lift your hips so your body forms a straight line from head to heels.",
       "Squeeze your glutes and pull your belly button lightly toward your spine.",
       "Push the floor away through your forearms so your upper back doesn't sag between the shoulder blades.",
-      "Breathe steadily and hold — quality over duration.",
+      "Breathe steadily and hold - quality over duration.",
     ],
     primaryMuscles: ["abs"],
     secondaryMuscles: ["shoulders", "lower-back", "glutes"],
@@ -529,7 +529,7 @@ export const exercises: Exercise[] = [
     slug: "dead-bug",
     name: "Dead Bug",
     description:
-      "It looks silly and works brilliantly. The dead bug trains your core to stay braced while your arms and legs move — exactly what happens when you're carrying, reaching, and bending all day. It's also one of the safest ab moves for a stiff lower back.",
+      "It looks silly and works brilliantly. The dead bug trains your core to stay braced while your arms and legs move - exactly what happens when you're carrying, reaching, and bending all day. It's also one of the safest ab moves for a stiff lower back.",
     steps: [
       "Lie on your back with arms pointing at the ceiling and knees bent 90 degrees over your hips.",
       "Press your lower back gently into the floor and keep it there for the entire set.",
@@ -545,7 +545,7 @@ export const exercises: Exercise[] = [
     timeEstimateMin: 3,
     commonMistakes: [
       "Letting the lower back arch off the floor as the leg lowers",
-      "Rushing the reps — speed hides weakness here",
+      "Rushing the reps - speed hides weakness here",
       "Holding the breath instead of exhaling on each extension",
     ],
     tips: ["If it's too hard, keep the knee bent as you lower the leg."],
@@ -576,7 +576,7 @@ export const exercises: Exercise[] = [
     timeEstimateMin: 4,
     commonMistakes: [
       "Swinging and using momentum instead of muscle",
-      "Only lifting the knees to hip height — curl the pelvis to hit the abs",
+      "Only lifting the knees to hip height - curl the pelvis to hit the abs",
       "Dropping the legs fast and letting the body swing",
     ],
     tips: ["Exhale hard as you raise the knees to feel the abs do the work."],
@@ -593,11 +593,11 @@ export const exercises: Exercise[] = [
     slug: "side-plank",
     name: "Side Plank",
     description:
-      "The side plank builds the lateral core muscles that keep your spine stable when life loads you unevenly — a kid on one hip, a duffel in one hand. It's one of the most back-friendly core moves there is.",
+      "The side plank builds the lateral core muscles that keep your spine stable when life loads you unevenly - a kid on one hip, a duffel in one hand. It's one of the most back-friendly core moves there is.",
     steps: [
       "Lie on your side with your forearm on the floor, elbow directly under your shoulder.",
       "Stack your feet (or stagger them for balance) and lift your hips off the floor.",
-      "Form a straight line from head to heels — no sagging, no piking.",
+      "Form a straight line from head to heels - no sagging, no piking.",
       "Reach your top arm toward the ceiling or rest it on your hip.",
       "Breathe steadily and hold, then switch sides.",
     ],
@@ -623,12 +623,12 @@ export const exercises: Exercise[] = [
     slug: "suitcase-carry",
     name: "Suitcase Carry",
     description:
-      "One heavy dumbbell in one hand, and your obliques have to fight the whole walk to keep you upright. It's the exact skill of carrying a car seat or a loaded grocery bag without folding sideways — trained deliberately.",
+      "One heavy dumbbell in one hand, and your obliques have to fight the whole walk to keep you upright. It's the exact skill of carrying a car seat or a loaded grocery bag without folding sideways - trained deliberately.",
     steps: [
       "Deadlift one dumbbell from the floor with a flat back and stand tall.",
-      "Hold it at your side like a suitcase, arm straight and shoulder level — don't lean away or toward it.",
+      "Hold it at your side like a suitcase, arm straight and shoulder level - don't lean away or toward it.",
       "Brace your core and walk with short, controlled steps for 30-40 meters or 30 seconds.",
-      "Keep your shoulders and hips level the entire way — someone watching shouldn't be able to tell which hand is loaded.",
+      "Keep your shoulders and hips level the entire way - someone watching shouldn't be able to tell which hand is loaded.",
       "Set it down, switch hands, and repeat on the other side.",
     ],
     primaryMuscles: ["obliques"],
@@ -641,7 +641,7 @@ export const exercises: Exercise[] = [
       "Shrugging the loaded shoulder up",
       "Choosing a weight so light your core never has to fight",
     ],
-    tips: ["Film yourself from behind once — a visible lean means tighten the brace or drop the weight slightly."],
+    tips: ["Film yourself from behind once - a visible lean means tighten the brace or drop the weight slightly."],
     setsRepsGuidance: {
       sets: "3",
       reps: "30s walk per side",
@@ -653,7 +653,7 @@ export const exercises: Exercise[] = [
     slug: "bicycle-crunch",
     name: "Bicycle Crunch",
     description:
-      "A floor classic that works the obliques through rotation — the movement pattern behind twisting to grab something in the back seat. Done slowly and with intent, it's far more effective than the frantic version most people rush through.",
+      "A floor classic that works the obliques through rotation - the movement pattern behind twisting to grab something in the back seat. Done slowly and with intent, it's far more effective than the frantic version most people rush through.",
     steps: [
       "Lie on your back with hands lightly behind your head and knees bent, feet off the floor.",
       "Press your lower back gently toward the floor.",
@@ -671,12 +671,12 @@ export const exercises: Exercise[] = [
       "Racing through reps with tiny, twitchy movements",
       "Letting the lower back arch as the leg extends",
     ],
-    tips: ["Count 'one-two' per twist — slow rotation is the whole point."],
+    tips: ["Count 'one-two' per twist - slow rotation is the whole point."],
     setsRepsGuidance: {
       sets: "3",
       reps: "10-15 per side",
       rest: "45-60s",
-      tempoNote: "Slow, deliberate pedaling — 2 seconds per twist.",
+      tempoNote: "Slow, deliberate pedaling - 2 seconds per twist.",
     },
   },
 
@@ -686,14 +686,14 @@ export const exercises: Exercise[] = [
     slug: "four-way-neck-isometrics",
     name: "Four-Way Neck Isometrics",
     description:
-      "Press your head against your own hand in four directions and hold — that's it. A stronger neck resists the forward-head slump from laptops and phones, and it takes two minutes at your desk with nobody the wiser.",
+      "Press your head against your own hand in four directions and hold - that's it. A stronger neck resists the forward-head slump from laptops and phones, and it takes two minutes at your desk with nobody the wiser.",
     steps: [
       "Sit or stand tall with your chin level.",
-      "Place your palm on your forehead and push your head forward into it while your hand resists — the head shouldn't move.",
+      "Place your palm on your forehead and push your head forward into it while your hand resists - the head shouldn't move.",
       "Hold for 10 seconds at about 50-70% effort, then relax.",
       "Move your hand to the back of your head and push backward into it for 10 seconds.",
       "Repeat with your hand on the right side of your head, then the left.",
-      "That's one round — all four directions.",
+      "That's one round - all four directions.",
     ],
     primaryMuscles: ["neck"],
     secondaryMuscles: [],
@@ -701,11 +701,11 @@ export const exercises: Exercise[] = [
     difficulty: "beginner",
     timeEstimateMin: 3,
     commonMistakes: [
-      "Pushing so hard it causes strain — moderate steady effort wins",
+      "Pushing so hard it causes strain - moderate steady effort wins",
       "Letting the head actually move instead of holding an isometric",
       "Holding the breath during the pushes",
     ],
-    tips: ["Do a round during your first coffee — it pairs well with a boring email."],
+    tips: ["Do a round during your first coffee - it pairs well with a boring email."],
     setsRepsGuidance: {
       sets: "2-3",
       reps: "10s hold each direction",
@@ -717,7 +717,7 @@ export const exercises: Exercise[] = [
     slug: "supine-neck-curl",
     name: "Supine Neck Curl",
     description:
-      "Lying on your back, you curl just your head — a tiny movement that directly strengthens the deep neck flexors weakened by years of screens. Stronger deep neck muscles mean fewer tension headaches and better posture for free.",
+      "Lying on your back, you curl just your head - a tiny movement that directly strengthens the deep neck flexors weakened by years of screens. Stronger deep neck muscles mean fewer tension headaches and better posture for free.",
     steps: [
       "Lie on your back on the floor or a bed with knees bent, arms relaxed at your sides.",
       "Tuck your chin gently, as if making a double chin.",
@@ -733,9 +733,9 @@ export const exercises: Exercise[] = [
     commonMistakes: [
       "Jutting the chin forward instead of keeping it tucked",
       "Lifting the shoulders off the floor and turning it into a crunch",
-      "Doing fast reps — this muscle responds to slow, controlled work",
+      "Doing fast reps - this muscle responds to slow, controlled work",
     ],
-    tips: ["If your neck shakes, shorten the holds — it gets stronger fast."],
+    tips: ["If your neck shakes, shorten the holds - it gets stronger fast."],
     setsRepsGuidance: {
       sets: "2-3",
       reps: "8-12",
@@ -748,11 +748,11 @@ export const exercises: Exercise[] = [
     slug: "towel-resisted-extension",
     name: "Towel-Resisted Neck Extension",
     description:
-      "A towel behind your head becomes a resistance machine for the muscles that pull your head back over your shoulders — the exact opposite of desk posture. Cheap insurance against the stiff, achy neck that creeps in by Friday.",
+      "A towel behind your head becomes a resistance machine for the muscles that pull your head back over your shoulders - the exact opposite of desk posture. Cheap insurance against the stiff, achy neck that creeps in by Friday.",
     steps: [
       "Sit tall and loop a towel around the back of your head, holding an end in each hand in front of you.",
       "Pull the towel gently forward to create resistance.",
-      "Push your head back into the towel, keeping your chin level — don't look up at the ceiling.",
+      "Push your head back into the towel, keeping your chin level - don't look up at the ceiling.",
       "Hold the pressure for 5-10 seconds.",
       "Relax slowly and repeat.",
     ],
@@ -763,7 +763,7 @@ export const exercises: Exercise[] = [
     timeEstimateMin: 2,
     commonMistakes: [
       "Tilting the head up instead of gliding it straight back",
-      "Yanking hard on the towel — resistance should be firm but gentle",
+      "Yanking hard on the towel - resistance should be firm but gentle",
       "Shrugging the shoulders while pushing",
     ],
     tips: ["Pair it with chin tucks for a complete two-minute neck reset."],
@@ -780,13 +780,13 @@ export const exercises: Exercise[] = [
     slug: "mountain-climber",
     name: "Mountain Climber",
     description:
-      "Part cardio, part core, part hip-flexor work — mountain climbers earn their spot in any time-crunched session. Thirty seconds gets your heart rate up faster than most things you can do in a living room.",
+      "Part cardio, part core, part hip-flexor work - mountain climbers earn their spot in any time-crunched session. Thirty seconds gets your heart rate up faster than most things you can do in a living room.",
     steps: [
       "Start in a high push-up position, hands under shoulders, body in a straight line.",
       "Brace your core and keep your hips level with your shoulders.",
       "Drive your right knee toward your chest, then quickly switch legs.",
       "Keep alternating in a running motion, landing softly on the balls of your feet.",
-      "Maintain the plank position throughout — the shoulders stay over the hands.",
+      "Maintain the plank position throughout - the shoulders stay over the hands.",
     ],
     primaryMuscles: ["hip-flexors"],
     secondaryMuscles: ["abs", "shoulders", "quads"],
@@ -796,7 +796,7 @@ export const exercises: Exercise[] = [
     commonMistakes: [
       "Bouncing the hips up into the air as the pace increases",
       "Letting the shoulders drift behind the hands",
-      "Sacrificing knee drive for speed — the knee should actually come toward the chest",
+      "Sacrificing knee drive for speed - the knee should actually come toward the chest",
     ],
     tips: ["Slow them down and pause each knee drive if you want more core, less cardio."],
     setsRepsGuidance: {
@@ -841,11 +841,11 @@ export const exercises: Exercise[] = [
     slug: "standing-knee-raise-hold",
     name: "Standing Knee Raise Hold",
     description:
-      "Stand tall, lift one knee above hip height, and hold it there without leaning back — harder than it sounds after years of chairs. It builds the hip strength and single-leg balance that make stairs, hikes, and playground chases feel easy.",
+      "Stand tall, lift one knee above hip height, and hold it there without leaning back - harder than it sounds after years of chairs. It builds the hip strength and single-leg balance that make stairs, hikes, and playground chases feel easy.",
     steps: [
       "Stand tall next to a wall or counter for light fingertip support if needed.",
       "Shift your weight onto one leg and stand fully upright.",
-      "Raise the other knee up past hip height, pulling it up with your hip muscles — not by leaning back.",
+      "Raise the other knee up past hip height, pulling it up with your hip muscles - not by leaning back.",
       "Hold the knee high for the prescribed time, torso vertical, standing glute squeezed.",
       "Lower with control and switch legs.",
     ],
@@ -873,7 +873,7 @@ export const exercises: Exercise[] = [
     slug: "bodyweight-squat",
     name: "Bodyweight Squat",
     description:
-      "The most useful movement in the catalog — you already do it every time you sit down, pick a toy off the floor, or get out of the car. Training it deliberately keeps your knees and hips strong enough to do all of that without thinking about it.",
+      "The most useful movement in the catalog - you already do it every time you sit down, pick a toy off the floor, or get out of the car. Training it deliberately keeps your knees and hips strong enough to do all of that without thinking about it.",
     steps: [
       "Stand with feet shoulder-width apart, toes turned out slightly.",
       "Brace your core and keep your chest up.",
@@ -890,11 +890,11 @@ export const exercises: Exercise[] = [
       "Letting the knees cave inward on the way up",
       "Lifting the heels off the floor",
       "Rounding the upper back and dropping the chest",
-      "Cutting depth — aim for thighs at least parallel",
+      "Cutting depth - aim for thighs at least parallel",
     ],
     tips: [
       "Squat to a chair and lightly tap it if depth feels sketchy at first.",
-      "Knees can travel past the toes — that's normal and safe.",
+      "Knees can travel past the toes - that's normal and safe.",
     ],
     setsRepsGuidance: {
       sets: "3",
@@ -907,12 +907,12 @@ export const exercises: Exercise[] = [
     slug: "goblet-squat",
     name: "Goblet Squat",
     description:
-      "Hold one dumbbell at your chest and squat — the front load acts like a counterbalance that practically teaches good form for you. It's the fastest way to add real leg strength at home with a single dumbbell.",
+      "Hold one dumbbell at your chest and squat - the front load acts like a counterbalance that practically teaches good form for you. It's the fastest way to add real leg strength at home with a single dumbbell.",
     steps: [
       "Hold a dumbbell vertically against your chest, cupping the top end with both hands, elbows tucked down.",
       "Stand with feet shoulder-width apart, toes slightly out.",
       "Brace your core and squat down between your knees, keeping the dumbbell tight to your chest.",
-      "Go as deep as you can with flat heels and a tall chest — elbows tracking inside the knees.",
+      "Go as deep as you can with flat heels and a tall chest - elbows tracking inside the knees.",
       "Drive up through your whole foot and stand tall.",
     ],
     primaryMuscles: ["quads"],
@@ -925,7 +925,7 @@ export const exercises: Exercise[] = [
       "Knees collapsing inward under load",
       "Leaning forward and turning it into a good morning",
     ],
-    tips: ["At the bottom, gently nudge your knees out with your elbows — free mobility work."],
+    tips: ["At the bottom, gently nudge your knees out with your elbows - free mobility work."],
     setsRepsGuidance: {
       sets: "3",
       reps: "8-12",
@@ -938,7 +938,7 @@ export const exercises: Exercise[] = [
     slug: "reverse-lunge",
     name: "Reverse Lunge",
     description:
-      "Stepping backward instead of forward is friendlier on the knees and easier to balance, making this the best lunge to start with. Single-leg strength is what actually shows up in real life — stairs, hills, and hoisting kids from floor level.",
+      "Stepping backward instead of forward is friendlier on the knees and easier to balance, making this the best lunge to start with. Single-leg strength is what actually shows up in real life - stairs, hills, and hoisting kids from floor level.",
     steps: [
       "Stand tall with feet hip-width apart, hands on hips or at your sides.",
       "Step one foot straight back about two feet, landing on the ball of that foot.",
@@ -956,7 +956,7 @@ export const exercises: Exercise[] = [
       "Taking too short a step back, which jams the front knee",
       "Slamming the back knee into the floor",
       "Leaning the torso far forward over the front leg",
-      "Wobbling from a too-narrow stance — think railroad tracks, not a tightrope",
+      "Wobbling from a too-narrow stance - think railroad tracks, not a tightrope",
     ],
     tips: ["Hold dumbbells at your sides once bodyweight sets feel easy."],
     setsRepsGuidance: {
@@ -972,7 +972,7 @@ export const exercises: Exercise[] = [
     slug: "standing-calf-raise",
     name: "Standing Calf Raise",
     description:
-      "Strong calves absorb impact for your knees and keep your ankles springy for pick-up games and playground sprints. You can do these while brushing your teeth or waiting for the microwave — the definition of no-excuse training.",
+      "Strong calves absorb impact for your knees and keep your ankles springy for pick-up games and playground sprints. You can do these while brushing your teeth or waiting for the microwave - the definition of no-excuse training.",
     steps: [
       "Stand tall with the balls of your feet on the edge of a step, heels hanging off (or flat floor if no step).",
       "Hold a wall or rail lightly for balance.",
@@ -987,10 +987,10 @@ export const exercises: Exercise[] = [
     timeEstimateMin: 3,
     commonMistakes: [
       "Bouncing quickly instead of pausing at the top and bottom",
-      "Cutting the range — no stretch at the bottom, no full rise at the top",
+      "Cutting the range - no stretch at the bottom, no full rise at the top",
       "Bending the knees to cheat the movement",
     ],
-    tips: ["Calves respond to volume — do these most days, not just workout days."],
+    tips: ["Calves respond to volume - do these most days, not just workout days."],
     setsRepsGuidance: {
       sets: "3",
       reps: "15-20",
@@ -1003,10 +1003,10 @@ export const exercises: Exercise[] = [
     slug: "single-leg-calf-raise",
     name: "Single-Leg Calf Raise",
     description:
-      "One leg at a time doubles the load and exposes the side that's been coasting. Single-leg calf strength is a proven guard against Achilles trouble — the classic injury of dads who jump back into weekend sports.",
+      "One leg at a time doubles the load and exposes the side that's been coasting. Single-leg calf strength is a proven guard against Achilles trouble - the classic injury of dads who jump back into weekend sports.",
     steps: [
       "Stand on one foot on the edge of a step, heel hanging off, other foot hooked behind your ankle.",
-      "Hold a wall or rail with fingertips for balance only — not support.",
+      "Hold a wall or rail with fingertips for balance only - not support.",
       "Rise as high as you can onto the ball of your foot.",
       "Pause at the top, then lower slowly until your heel drops below the step.",
       "Complete all reps, then switch legs.",
@@ -1034,11 +1034,11 @@ export const exercises: Exercise[] = [
     slug: "jump-rope-bounce",
     name: "Jump-Rope Bounce",
     description:
-      "Light, springy two-foot bounces — with or without an actual rope — train the calves and ankles to be elastic, not just strong. It doubles as the most time-efficient cardio you can do in a garage, and it's genuinely fun.",
+      "Light, springy two-foot bounces - with or without an actual rope - train the calves and ankles to be elastic, not just strong. It doubles as the most time-efficient cardio you can do in a garage, and it's genuinely fun.",
     steps: [
       "Stand tall with elbows at your sides, forearms out as if holding a rope (use one if you have it).",
       "Bounce off the balls of both feet, just an inch or two off the ground.",
-      "Keep your knees soft and land quietly on the balls of your feet — heels kissing the floor, not slamming.",
+      "Keep your knees soft and land quietly on the balls of your feet - heels kissing the floor, not slamming.",
       "Rotate your wrists as if turning the rope, keeping a steady rhythm.",
       "Bounce for the prescribed time, breathing steadily.",
     ],
@@ -1048,7 +1048,7 @@ export const exercises: Exercise[] = [
     difficulty: "beginner",
     timeEstimateMin: 4,
     commonMistakes: [
-      "Jumping way too high — an inch or two is plenty",
+      "Jumping way too high - an inch or two is plenty",
       "Landing flat-footed with a thud",
       "Tensing the shoulders up around the ears",
     ],
@@ -1087,7 +1087,7 @@ export const exercises: Exercise[] = [
       "Bending the elbows and turning it into a row",
       "Letting the band snap back instead of controlling the return",
     ],
-    tips: ["Keep a band on your desk — one set per coffee refill adds up to real posture change."],
+    tips: ["Keep a band on your desk - one set per coffee refill adds up to real posture change."],
     setsRepsGuidance: {
       sets: "3",
       reps: "15-20",
@@ -1100,12 +1100,12 @@ export const exercises: Exercise[] = [
     slug: "bent-over-reverse-fly",
     name: "Bent-Over Reverse Fly",
     description:
-      "Hinge over and raise light dumbbells out wide to hit the rear delts and mid-back — the muscles that pull your shoulders back where they belong. Balanced shoulders aren't just about looks; they're what keeps pressing pain-free for the long haul.",
+      "Hinge over and raise light dumbbells out wide to hit the rear delts and mid-back - the muscles that pull your shoulders back where they belong. Balanced shoulders aren't just about looks; they're what keeps pressing pain-free for the long haul.",
     steps: [
       "Hold a light dumbbell in each hand and hinge at the hips until your torso is close to parallel with the floor, back flat.",
       "Let the dumbbells hang below your chest, palms facing each other, slight elbow bend.",
       "Raise both arms out to the sides in a wide arc, squeezing your shoulder blades together.",
-      "Stop when your arms are level with your torso — no higher.",
+      "Stop when your arms are level with your torso - no higher.",
       "Lower slowly back under your chest and repeat.",
     ],
     primaryMuscles: ["upper-back"],
@@ -1116,7 +1116,7 @@ export const exercises: Exercise[] = [
     commonMistakes: [
       "Standing too upright, which turns it into a lateral raise",
       "Using momentum and bouncing the torso",
-      "Going too heavy — this is a light-weight, high-control move",
+      "Going too heavy - this is a light-weight, high-control move",
     ],
     tips: ["Rest your forehead on a bench back if your lower back fatigues before your upper back does."],
     setsRepsGuidance: {
@@ -1131,7 +1131,7 @@ export const exercises: Exercise[] = [
     slug: "dumbbell-shrug",
     name: "Dumbbell Shrug",
     description:
-      "Straightforward trap work: hold heavy dumbbells and shrug your shoulders straight up. Strong traps carry the literal load of fatherhood — backpacks, car seats, sleeping kids — and protect the neck from taking that strain instead.",
+      "Straightforward trap work: hold heavy dumbbells and shrug your shoulders straight up. Strong traps carry the literal load of fatherhood - backpacks, car seats, sleeping kids - and protect the neck from taking that strain instead.",
     steps: [
       "Stand tall holding a heavy dumbbell in each hand at your sides.",
       "Brace your core and keep your arms straight and relaxed.",
@@ -1145,11 +1145,11 @@ export const exercises: Exercise[] = [
     difficulty: "beginner",
     timeEstimateMin: 3,
     commonMistakes: [
-      "Rolling the shoulders in a circle — straight up and down is safer and more effective",
+      "Rolling the shoulders in a circle - straight up and down is safer and more effective",
       "Bending the elbows to heave the weight",
       "Skipping the pause at the top, which is where the work happens",
     ],
-    tips: ["This move handles heavy weight well — don't be shy once your form is locked in."],
+    tips: ["This move handles heavy weight well - don't be shy once your form is locked in."],
     setsRepsGuidance: {
       sets: "3",
       reps: "10-15",
@@ -1191,7 +1191,7 @@ export const exercises: Exercise[] = [
       sets: "3-4",
       reps: "4-8",
       rest: "2min",
-      tempoNote: "Control the lowering — 2 seconds down minimum.",
+      tempoNote: "Control the lowering - 2 seconds down minimum.",
     },
   },
   {
@@ -1199,7 +1199,7 @@ export const exercises: Exercise[] = [
     slug: "one-arm-dumbbell-row",
     name: "One-Arm Dumbbell Row",
     description:
-      "One knee and hand on a bench, one dumbbell doing honest work. The single-arm row builds the lats and mid-back with your spine fully supported, making it one of the safest ways to row heavy — and it fixes the left-right imbalances desk life creates.",
+      "One knee and hand on a bench, one dumbbell doing honest work. The single-arm row builds the lats and mid-back with your spine fully supported, making it one of the safest ways to row heavy - and it fixes the left-right imbalances desk life creates.",
     steps: [
       "Place your left knee and left hand on a bench (or couch edge), right foot planted on the floor.",
       "Hold a dumbbell in your right hand, arm hanging straight down, back flat like a table.",
@@ -1219,7 +1219,7 @@ export const exercises: Exercise[] = [
       "Rounding the back instead of keeping it flat",
       "Cutting the stretch short at the bottom",
     ],
-    tips: ["Imagine starting a stubborn lawnmower — that's the pull path."],
+    tips: ["Imagine starting a stubborn lawnmower - that's the pull path."],
     setsRepsGuidance: {
       sets: "3",
       reps: "8-12 per side",
@@ -1231,14 +1231,14 @@ export const exercises: Exercise[] = [
     slug: "barbell-bent-over-row",
     name: "Barbell Bent-Over Row",
     description:
-      "The heaviest pulling exercise you can do outside a gym rack. Bent-over rows build a thick, strong back and teach your whole posterior chain to hold a hinge under load — the position behind every safe heavy lift you'll ever do.",
+      "The heaviest pulling exercise you can do outside a gym rack. Bent-over rows build a thick, strong back and teach your whole posterior chain to hold a hinge under load - the position behind every safe heavy lift you'll ever do.",
     steps: [
       "Stand with feet hip-width apart, barbell over mid-foot.",
       "Hinge at the hips with a flat back until your torso is at roughly 45 degrees or lower, and grip the bar just outside your knees.",
       "Brace hard: chest proud, lats tight, neck neutral.",
-      "Pull the bar to your lower ribs, elbows driving back — not flaring out.",
+      "Pull the bar to your lower ribs, elbows driving back - not flaring out.",
       "Pause briefly at the top, then lower the bar under control to arm's length.",
-      "Hold the hinge position throughout — no bouncing upright between reps.",
+      "Hold the hinge position throughout - no bouncing upright between reps.",
     ],
     primaryMuscles: ["lats"],
     secondaryMuscles: ["upper-back", "lower-back", "biceps", "hamstrings"],
@@ -1266,7 +1266,7 @@ export const exercises: Exercise[] = [
     slug: "bird-dog",
     name: "Bird Dog",
     description:
-      "On all fours, extend the opposite arm and leg while your spine holds dead still — the definitive exercise for a resilient lower back. Physios prescribe it for a reason: it builds back endurance without loading a spine that's already tired from sitting.",
+      "On all fours, extend the opposite arm and leg while your spine holds dead still - the definitive exercise for a resilient lower back. Physios prescribe it for a reason: it builds back endurance without loading a spine that's already tired from sitting.",
     steps: [
       "Start on all fours: hands under shoulders, knees under hips, back flat.",
       "Brace your core as if bracing for a light poke in the stomach.",
@@ -1284,7 +1284,7 @@ export const exercises: Exercise[] = [
       "Letting the hips tip sideways as the leg extends",
       "Rushing reps instead of holding each one",
     ],
-    tips: ["Balance a water bottle on your lower back — if it stays put, your form is right."],
+    tips: ["Balance a water bottle on your lower back - if it stays put, your form is right."],
     setsRepsGuidance: {
       sets: "3",
       reps: "6-8 per side",
@@ -1297,12 +1297,12 @@ export const exercises: Exercise[] = [
     slug: "superman-hold",
     name: "Superman Hold",
     description:
-      "Lie face down and lift your arms and legs like you're flying — a simple isometric that builds endurance through the entire back side of your body. It directly counters the slumped-forward shape of a desk day, and the floor is the only equipment.",
+      "Lie face down and lift your arms and legs like you're flying - a simple isometric that builds endurance through the entire back side of your body. It directly counters the slumped-forward shape of a desk day, and the floor is the only equipment.",
     steps: [
       "Lie face down with arms extended overhead and legs straight.",
       "Squeeze your glutes and lift your arms, chest, and legs a few inches off the floor at the same time.",
       "Keep your neck neutral by looking at the floor, not ahead.",
-      "Hold the position, breathing steadily — the lift is modest, not maximal.",
+      "Hold the position, breathing steadily - the lift is modest, not maximal.",
       "Lower everything down slowly and rest before the next hold.",
     ],
     primaryMuscles: ["lower-back"],
@@ -1327,12 +1327,12 @@ export const exercises: Exercise[] = [
     slug: "barbell-good-morning",
     name: "Barbell Good Morning",
     description:
-      "With a light barbell across your upper back, you hinge forward and stand back up — loading the spinal erectors, hamstrings, and glutes in the exact pattern of picking things up off the floor. Mastered light and progressed slowly, it's a back-builder; rushed heavy, it's a mistake. Be the first guy.",
+      "With a light barbell across your upper back, you hinge forward and stand back up - loading the spinal erectors, hamstrings, and glutes in the exact pattern of picking things up off the floor. Mastered light and progressed slowly, it's a back-builder; rushed heavy, it's a mistake. Be the first guy.",
     steps: [
       "Set a light barbell across your upper traps (not your neck) and grip it wider than your shoulders.",
       "Stand with feet hip-width apart, soft knees, core braced.",
       "Push your hips straight back and hinge your torso forward, keeping your back flat.",
-      "Lower until your torso approaches parallel or you feel a strong hamstring stretch — whichever comes first.",
+      "Lower until your torso approaches parallel or you feel a strong hamstring stretch - whichever comes first.",
       "Drive your hips forward to return to standing, squeezing your glutes at the top.",
     ],
     primaryMuscles: ["lower-back"],
@@ -1343,7 +1343,7 @@ export const exercises: Exercise[] = [
     commonMistakes: [
       "Rounding the back at the bottom of the hinge",
       "Bending the knees too much and turning it into a squat",
-      "Loading up too fast — the empty bar is plenty for weeks",
+      "Loading up too fast - the empty bar is plenty for weeks",
       "Resting the bar on the neck instead of the meat of the traps",
     ],
     tips: ["Master the hinge with a broomstick before the barbell touches your back."],
@@ -1361,12 +1361,12 @@ export const exercises: Exercise[] = [
     slug: "glute-bridge",
     name: "Glute Bridge",
     description:
-      "Sitting all day puts your glutes to sleep, and sleepy glutes hand their job to your lower back. The bridge wakes them up in two minutes flat, lying on your living-room floor — the highest return-on-effort move for desk-bound dads.",
+      "Sitting all day puts your glutes to sleep, and sleepy glutes hand their job to your lower back. The bridge wakes them up in two minutes flat, lying on your living-room floor - the highest return-on-effort move for desk-bound dads.",
     steps: [
       "Lie on your back with knees bent, feet flat about hip-width apart and close to your hips.",
       "Rest your arms at your sides and tuck your chin slightly.",
       "Push through your heels and squeeze your glutes to lift your hips.",
-      "Rise until your body forms a straight line from knees to shoulders — no higher.",
+      "Rise until your body forms a straight line from knees to shoulders - no higher.",
       "Hold the top squeeze for two seconds, then lower slowly.",
     ],
     primaryMuscles: ["glutes"],
@@ -1377,7 +1377,7 @@ export const exercises: Exercise[] = [
     commonMistakes: [
       "Arching the lower back to push higher instead of stopping at a straight line",
       "Pushing through the toes instead of the heels",
-      "Rushing reps without the top squeeze — the squeeze is the exercise",
+      "Rushing reps without the top squeeze - the squeeze is the exercise",
     ],
     tips: ["Feel it in your hamstrings instead? Walk your feet an inch closer to your hips."],
     setsRepsGuidance: {
@@ -1392,7 +1392,7 @@ export const exercises: Exercise[] = [
     slug: "bulgarian-split-squat",
     name: "Bulgarian Split Squat",
     description:
-      "Rear foot elevated on a couch or bench, all your weight on one leg — this is the hardest-hitting single-leg exercise you can do at home. It builds serious glute and leg strength, and yes, everyone finds it humbling at first.",
+      "Rear foot elevated on a couch or bench, all your weight on one leg - this is the hardest-hitting single-leg exercise you can do at home. It builds serious glute and leg strength, and yes, everyone finds it humbling at first.",
     steps: [
       "Stand about two feet in front of a bench or couch, holding a dumbbell in each hand.",
       "Place the top of your rear foot on the bench behind you.",
@@ -1413,7 +1413,7 @@ export const exercises: Exercise[] = [
       "Bouncing out of the bottom instead of controlling it",
     ],
     tips: [
-      "Learn it with bodyweight only — hold a wall for balance the first few sessions.",
+      "Learn it with bodyweight only - hold a wall for balance the first few sessions.",
       "A slight forward torso lean shifts more work to the glutes.",
     ],
     setsRepsGuidance: {
@@ -1428,12 +1428,12 @@ export const exercises: Exercise[] = [
     slug: "banded-lateral-walk",
     name: "Banded Lateral Walk",
     description:
-      "A mini band around your legs and a few steps sideways light up the glute medius — the side-hip muscle that stabilizes every step you take. Strong side glutes mean happier knees and a steadier stride on trails, stairs, and soccer sidelines.",
+      "A mini band around your legs and a few steps sideways light up the glute medius - the side-hip muscle that stabilizes every step you take. Strong side glutes mean happier knees and a steadier stride on trails, stairs, and soccer sidelines.",
     steps: [
       "Loop a mini band around your legs just above the knees (harder: around the ankles).",
       "Sit into a quarter-squat: knees bent, hips back, chest up.",
       "Step sideways with one foot, keeping tension on the band.",
-      "Follow with the other foot, but never let your feet touch — keep the band taut.",
+      "Follow with the other foot, but never let your feet touch - keep the band taut.",
       "Take 8-12 steps one way, then lead with the other leg coming back.",
     ],
     primaryMuscles: ["glutes"],
@@ -1446,7 +1446,7 @@ export const exercises: Exercise[] = [
       "Letting the knees cave inward against the band",
       "Dragging the trailing foot so the band goes slack",
     ],
-    tips: ["Do a set before runs or leg workouts — it wakes the hips up fast."],
+    tips: ["Do a set before runs or leg workouts - it wakes the hips up fast."],
     setsRepsGuidance: {
       sets: "3",
       reps: "8-12 steps each direction",
@@ -1460,12 +1460,12 @@ export const exercises: Exercise[] = [
     slug: "romanian-deadlift",
     name: "Dumbbell Romanian Deadlift",
     description:
-      "The hip hinge is the single most protective pattern you can own — it's how you should be picking up everything from laundry baskets to toddlers. The Romanian deadlift trains it directly, loading the hamstrings and glutes while your back learns to stay flat.",
+      "The hip hinge is the single most protective pattern you can own - it's how you should be picking up everything from laundry baskets to toddlers. The Romanian deadlift trains it directly, loading the hamstrings and glutes while your back learns to stay flat.",
     steps: [
       "Stand tall holding a dumbbell in each hand in front of your thighs, feet hip-width apart.",
       "Set a soft bend in your knees and brace your core.",
       "Push your hips straight back, sliding the dumbbells down the front of your legs.",
-      "Keep your back flat and lower until you feel a strong stretch in your hamstrings — usually mid-shin.",
+      "Keep your back flat and lower until you feel a strong stretch in your hamstrings - usually mid-shin.",
       "Drive your hips forward to stand tall, squeezing your glutes at the top.",
     ],
     primaryMuscles: ["hamstrings"],
@@ -1492,7 +1492,7 @@ export const exercises: Exercise[] = [
     slug: "nordic-curl-negative",
     name: "Nordic Curl Negative",
     description:
-      "Kneel with your ankles anchored under a couch and lower your body forward as slowly as you can — one of the most effective hamstring strengtheners known, and a proven hamstring-pull preventer for weekend athletes. Brutal, brief, and worth it.",
+      "Kneel with your ankles anchored under a couch and lower your body forward as slowly as you can - one of the most effective hamstring strengtheners known, and a proven hamstring-pull preventer for weekend athletes. Brutal, brief, and worth it.",
     steps: [
       "Kneel on a cushion with your ankles anchored firmly under a couch, bed frame, or held by a partner.",
       "Keep your body in a straight line from knees to head, hands ready at your chest.",
@@ -1508,7 +1508,7 @@ export const exercises: Exercise[] = [
     commonMistakes: [
       "Breaking at the hips instead of keeping a straight line to the knees",
       "Dropping fast through the hard middle range instead of fighting it",
-      "Doing too many reps too soon — hamstring soreness from these is legendary",
+      "Doing too many reps too soon - hamstring soreness from these is legendary",
     ],
     tips: [
       "Start with just 2-3 reps per set; the day-after soreness sneaks up hard.",
@@ -1518,7 +1518,7 @@ export const exercises: Exercise[] = [
       sets: "2-3",
       reps: "3-6",
       rest: "2min",
-      tempoNote: "Lower as slowly as physically possible — aim for 4+ seconds.",
+      tempoNote: "Lower as slowly as physically possible - aim for 4+ seconds.",
     },
   },
   {
@@ -1526,7 +1526,7 @@ export const exercises: Exercise[] = [
     slug: "single-leg-hip-hinge",
     name: "Single-Leg Hip Hinge",
     description:
-      "Balancing on one leg while hinging forward trains the hamstrings, balance, and hip control in one move — the exact recipe for picking a toy off the floor without a tweak. No weight needed; your own bodyweight and wobble provide the challenge.",
+      "Balancing on one leg while hinging forward trains the hamstrings, balance, and hip control in one move - the exact recipe for picking a toy off the floor without a tweak. No weight needed; your own bodyweight and wobble provide the challenge.",
     steps: [
       "Stand on your right leg with a soft knee, left fingertips on a wall for light balance if needed.",
       "Brace your core and keep your hips square to the floor.",
@@ -1553,7 +1553,7 @@ export const exercises: Exercise[] = [
       sets: "3",
       reps: "8-10 per side",
       rest: "60s",
-      tempoNote: "Slow and controlled — 2-3 seconds each direction.",
+      tempoNote: "Slow and controlled - 2-3 seconds each direction.",
     },
   },
 ];

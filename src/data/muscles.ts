@@ -7,7 +7,7 @@ export const muscles: MuscleGroup[] = [
     shortName: "Chest",
     view: "front",
     blurb:
-      "The pushing engine — every door held open, every kid pressed overhead. A strong chest makes daily pushing effortless.",
+      "The pushing engine - every door held open, every kid pressed overhead. A strong chest makes daily pushing effortless.",
   },
   {
     id: "shoulders",
@@ -47,7 +47,7 @@ export const muscles: MuscleGroup[] = [
     shortName: "Abs",
     view: "front",
     blurb:
-      "Your built-in weight belt. A trained core protects your spine every time you lift something — or someone.",
+      "Your built-in weight belt. A trained core protects your spine every time you lift something - or someone.",
   },
   {
     id: "obliques",
@@ -55,7 +55,7 @@ export const muscles: MuscleGroup[] = [
     shortName: "Obliques",
     view: "both",
     blurb:
-      "The twist-and-carry muscles. Obliques stabilize you when life loads one side — a kid on the hip, a bag on one shoulder.",
+      "The twist-and-carry muscles. Obliques stabilize you when life loads one side - a kid on the hip, a bag on one shoulder.",
   },
   {
     id: "neck",
@@ -103,7 +103,7 @@ export const muscles: MuscleGroup[] = [
     shortName: "Lats",
     view: "back",
     blurb:
-      "Your pulling powerhouse — lifting from the floor, rowing, hoisting kids out of the bath. Wide lats, easy life.",
+      "Your pulling powerhouse - lifting from the floor, rowing, hoisting kids out of the bath. Wide lats, easy life.",
   },
   {
     id: "lower-back",
@@ -119,7 +119,7 @@ export const muscles: MuscleGroup[] = [
     shortName: "Glutes",
     view: "back",
     blurb:
-      "The biggest engine you own — and the one sitting switches off. Wake the glutes and the lower back relaxes.",
+      "The biggest engine you own - and the one sitting switches off. Wake the glutes and the lower back relaxes.",
   },
   {
     id: "hamstrings",

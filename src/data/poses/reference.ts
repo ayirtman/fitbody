@@ -3,19 +3,19 @@ import type { JointMap, Vec2 } from "@/lib/pose-types";
 /**
  * Canonical base poses + authoring helper for movement demonstrations.
  *
- * READ src/lib/pose-types.ts BEFORE AUTHORING — it defines the canvas,
+ * READ src/lib/pose-types.ts BEFORE AUTHORING - it defines the canvas,
  * floor, joint names, and bone lengths. Quick recap:
  *
  * - 200×200 canvas, y grows DOWNWARD, floor line at y=170.
  *   Joints must stay above y=174 and inside x∈[6,194].
  * - Figure faces RIGHT in side view. "F" = near-side limb, "B" = far side
  *   (drawn dimmer). Symmetric side-view poses: B trails F by (-3, 0).
- * - Bone lengths (keep within ~±15% in EVERY frame — validated):
+ * - Bone lengths (keep within ~±15% in EVERY frame - validated):
  *   neck→head 15 · neck→chest 20 · chest→hip 26 · neck→elbow 24 ·
  *   elbow→wrist 20 · hip→knee 26 · knee→ankle 23 · ankle→toe 12
  *
  * Author frames with `j(BASE, { overrides })`. Move as few joints as
- * possible between frames — the motion should read as one clear action.
+ * possible between frames - the motion should read as one clear action.
  */
 
 export function j(base: JointMap, overrides: Partial<Record<keyof JointMap, Vec2>>): JointMap {
@@ -114,7 +114,7 @@ export const SEATED: JointMap = {
 
 /**
  * Dead hang from a bar at y=26 (add `{ kind: "bar", y: 26 }` to props).
- * FRONT view — hanging moves read as a blob in side view. F = right arm/leg.
+ * FRONT view - hanging moves read as a blob in side view. F = right arm/leg.
  */
 export const HANGING: JointMap = {
   head: [100, 51],

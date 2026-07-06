@@ -6,7 +6,7 @@
  * - Floor: FLOOR_Y = 170. The renderer always draws the floor line; no joint
  *   may sit below y = 174 (validator-enforced).
  * - The figure faces RIGHT (+x) in side view. Frontal-plane moves may be
- *   authored as front view — joints are just 2D points either way.
+ *   authored as front view - joints are just 2D points either way.
  * - "F" joints are the near-side limb (viewer's side), "B" the far side.
  *   In symmetric side-view poses, offset far joints (-3, 0) from their twins.
  * - Bone proportions (must hold in every frame; validator checks drift):
@@ -61,7 +61,7 @@ export type Easing = "linear" | "easeInOut" | "easeOut";
 export interface PoseFrame {
   /** Self-documenting label: "top", "bottom", "reach"… */
   name: string;
-  /** ALL 14 joints, every frame — keeps lerp and validation trivial */
+  /** ALL 14 joints, every frame - keeps lerp and validation trivial */
   joints: JointMap;
   /** Time to interpolate from THIS frame to the NEXT */
   durationMs: number;
@@ -84,7 +84,7 @@ export interface PoseSet {
    */
   loop: "cycle" | "pingPong";
   props?: PoseProp[];
-  /** Segments drawn in gold — the primary movers */
+  /** Segments drawn in gold - the primary movers */
   highlight?: SegmentName[];
   /** Frame shown for SSR and reduced motion (default 0) */
   restFrame?: number;

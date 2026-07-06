@@ -19,7 +19,7 @@ export default function MealPrepPage() {
         Cook once. Eat all week.
       </h1>
       <p className="mt-4 max-w-xl text-muted">
-        One focused session — shopping list, cook order, container map — and
+        One focused session - shopping list, cook order, container map - and
         your weekday food decisions are already made.
       </p>
 

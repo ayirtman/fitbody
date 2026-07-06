@@ -15,7 +15,7 @@ export default function StreakCalendar({ dates }: { dates: string[] }) {
           {week.map((day) => (
             <div
               key={day.iso}
-              title={`${day.iso}${day.done ? " — trained" : ""}`}
+              title={`${day.iso}${day.done ? " - trained" : ""}`}
               className={`h-4 w-4 rounded-[4px] ${
                 day.done ? "bg-gold" : "bg-surface-2"
               }`}

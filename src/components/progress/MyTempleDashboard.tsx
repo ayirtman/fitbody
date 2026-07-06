@@ -6,13 +6,20 @@ import {
   DEFAULT_COMPLETIONS,
   DEFAULT_FAVORITES,
   DEFAULT_MEAL_PLAN,
+  DEFAULT_SHOPPING,
   STORAGE_KEYS,
   type CompletionsState,
   type FavoritesState,
   type FavoriteKind,
-  type MealPlanState,
-  type PlanDay,
+  type ShoppingState,
 } from "@/lib/storage";
+import {
+  MEAL_SLOTS,
+  PLAN_DAYS,
+  planHasMeals,
+  removeFromPlan,
+  useMealPlan,
+} from "@/lib/useMealPlan";
 import {
   completionsThisWeek,
   currentStreak,
@@ -37,16 +44,6 @@ const kindTitles: Record<FavoriteKind, string> = {
   recipes: "Recipes",
 };
 
-const dayLabels: { id: PlanDay; label: string }[] = [
-  { id: "mon", label: "Monday" },
-  { id: "tue", label: "Tuesday" },
-  { id: "wed", label: "Wednesday" },
-  { id: "thu", label: "Thursday" },
-  { id: "fri", label: "Friday" },
-  { id: "sat", label: "Saturday" },
-  { id: "sun", label: "Sunday" },
-];
-
 export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
   const [completions] = useLocalStorage<CompletionsState>(
     STORAGE_KEYS.completions,
@@ -56,9 +53,10 @@ export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
     STORAGE_KEYS.favorites,
     DEFAULT_FAVORITES,
   );
-  const [mealPlan, setMealPlan] = useLocalStorage<MealPlanState>(
-    STORAGE_KEYS.mealPlan,
-    DEFAULT_MEAL_PLAN,
+  const [mealPlan, setMealPlan] = useMealPlan();
+  const [, setShopping] = useLocalStorage<ShoppingState>(
+    STORAGE_KEYS.shopping,
+    DEFAULT_SHOPPING,
   );
 
   const streak = currentStreak(completions.dates);
@@ -71,9 +69,7 @@ export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
   const hasFavorites = (Object.keys(favorites) as FavoriteKind[]).some(
     (k) => favorites[k].length > 0,
   );
-  const hasMealPlan = Object.values(mealPlan.week).some(
-    (d) => d?.lunch || d?.dinner,
-  );
+  const hasMealPlan = planHasMeals(mealPlan);
   const hasTrained = completions.dates.length > 0;
 
   return (
@@ -118,7 +114,7 @@ export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
           <div className="mt-6">
             <EmptyState
               title="No sessions yet"
-              body="Finish any routine and hit “Mark today done” — your streak starts there. One honest session is all it takes."
+              body="Finish any routine and hit “Mark today done” - your streak starts there. One honest session is all it takes."
               cta={{ href: "/routines", label: "Pick a routine" }}
             />
           </div>
@@ -174,7 +170,10 @@ export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
           <h2 className="display lintel text-3xl">This week&apos;s food</h2>
           {hasMealPlan && (
             <button
-              onClick={() => setMealPlan(DEFAULT_MEAL_PLAN)}
+              onClick={() => {
+                setMealPlan(DEFAULT_MEAL_PLAN);
+                setShopping(DEFAULT_SHOPPING);
+              }}
               className="text-sm font-medium text-muted transition-colors hover:text-ember"
             >
               Clear week
@@ -183,48 +182,66 @@ export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
         </div>
         {hasMealPlan ? (
           <div className="mt-6 overflow-x-auto">
-            <table className="w-full min-w-[480px] text-left text-sm">
+            <table className="w-full min-w-[720px] text-left text-sm">
               <thead>
                 <tr className="border-b border-edge text-xs font-semibold uppercase tracking-wider text-muted">
                   <th className="py-2 pr-4">Day</th>
-                  <th className="py-2 pr-4">Lunch</th>
-                  <th className="py-2">Dinner</th>
+                  {MEAL_SLOTS.map((s) => (
+                    <th key={s.id} className="py-2 pr-4">
+                      {s.label}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
-                {dayLabels.map((d) => {
+                {PLAN_DAYS.map((d) => {
                   const day = mealPlan.week[d.id];
-                  const lunch = day?.lunch && entryFor("recipes", day.lunch);
-                  const dinner = day?.dinner && entryFor("recipes", day.dinner);
                   return (
-                    <tr key={d.id} className="border-b border-edge/60">
+                    <tr key={d.id} className="border-b border-edge/60 align-top">
                       <td className="py-2.5 pr-4 font-semibold text-cream">
                         {d.label}
                       </td>
-                      <td className="py-2.5 pr-4">
-                        {lunch ? (
-                          <Link
-                            href={lunch.href}
-                            className="text-cream/85 hover:text-gold"
-                          >
-                            {lunch.name}
-                          </Link>
-                        ) : (
-                          <span className="text-muted">—</span>
-                        )}
-                      </td>
-                      <td className="py-2.5">
-                        {dinner ? (
-                          <Link
-                            href={dinner.href}
-                            className="text-cream/85 hover:text-gold"
-                          >
-                            {dinner.name}
-                          </Link>
-                        ) : (
-                          <span className="text-muted">—</span>
-                        )}
-                      </td>
+                      {MEAL_SLOTS.map((s) => {
+                        const slugs = day?.[s.id] ?? [];
+                        return (
+                          <td key={s.id} className="py-2.5 pr-4">
+                            {slugs.length === 0 ? (
+                              <span className="text-muted">-</span>
+                            ) : (
+                              <ul className="space-y-1">
+                                {slugs.map((slug) => {
+                                  const entry = entryFor("recipes", slug);
+                                  if (!entry) return null;
+                                  return (
+                                    <li
+                                      key={slug}
+                                      className="group flex items-center gap-1.5"
+                                    >
+                                      <Link
+                                        href={entry.href}
+                                        className="text-cream/85 hover:text-gold"
+                                      >
+                                        {entry.name}
+                                      </Link>
+                                      <button
+                                        onClick={() =>
+                                          setMealPlan((prev) =>
+                                            removeFromPlan(prev, d.id, s.id, slug),
+                                          )
+                                        }
+                                        aria-label={`Remove ${entry.name} from ${d.label} ${s.label.toLowerCase()}`}
+                                        className="text-muted transition-colors hover:text-ember"
+                                      >
+                                        ×
+                                      </button>
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            )}
+                          </td>
+                        );
+                      })}
                     </tr>
                   );
                 })}

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "TempleFit — Your body is a temple. Maintain it.";
+export const alt = "TempleFit - Your body is a temple. Maintain it.";
 
 export default function OgImage() {
   return new ImageResponse(

@@ -4,6 +4,7 @@ export const recipes: Recipe[] = [
   // ---------------------------------------------------------------- BREAKFAST
   {
     slug: "peanut-butter-overnight-oats",
+    image: "/recipes/peanut-butter-overnight-oats.webp",
     name: "Peanut Butter Overnight Oats",
     description:
       "Five minutes tonight buys you four mornings of grab-and-go breakfast. Tastes like dessert, eats like a proper meal.",
@@ -24,7 +25,7 @@ export const recipes: Recipe[] = [
       "Grab 4 jars or containers with lids. Split the oats, chia and protein powder between them.",
       "Add milk to each and stir until there are no dry pockets of powder at the bottom.",
       "Swirl 1 tbsp peanut butter into each jar, top with banana slices, lid on, fridge.",
-      "In the morning: grab one and eat it cold. That's it — no pan, no cleanup.",
+      "In the morning: grab one and eat it cold. That's it - no pan, no cleanup.",
     ],
     mealPrepFriendly: true,
     keepsDays: 4,
@@ -33,6 +34,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "veggie-egg-muffins",
+    image: "/recipes/veggie-egg-muffins.webp",
     name: "Veggie Egg Muffins",
     description:
       "A muffin tin full of eggs, cheese and whatever veg is in the drawer. Reheat two in 45 seconds while you find the kids' shoes.",
@@ -50,7 +52,7 @@ export const recipes: Recipe[] = [
       { item: "Salt and pepper", qty: "to taste" },
     ],
     steps: [
-      "Oven to 180°C. Grease a 12-hole muffin tin properly — this is the step that saves you scrubbing later.",
+      "Oven to 180°C. Grease a 12-hole muffin tin properly - this is the step that saves you scrubbing later.",
       "Whisk the eggs in a jug with salt and pepper. A jug means you can pour, not spoon.",
       "Split the veg, ham and cheese between the holes, then pour egg over each until three-quarters full.",
       "Bake 20-22 minutes until puffed and set. Cool, then fridge in one container. Two muffins = one serving.",
@@ -62,6 +64,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "greek-yogurt-power-bowl",
+    image: "/recipes/greek-yogurt-power-bowl.webp",
     name: "Greek Yogurt Power Bowl",
     description:
       "The fastest 38 grams of protein you'll eat all week. Assemble it in the time it takes the kettle to boil.",
@@ -78,7 +81,7 @@ export const recipes: Recipe[] = [
       { item: "Chia or flax seeds", qty: "1 tbsp" },
     ],
     steps: [
-      "Dump the yogurt in a bowl. If using frozen berries, microwave them 40 seconds first — the warm juice is the best part.",
+      "Dump the yogurt in a bowl. If using frozen berries, microwave them 40 seconds first - the warm juice is the best part.",
       "Top with berries, granola and seeds.",
       "Drizzle the honey, eat standing at the counter if you have to. One bowl to wash.",
     ],
@@ -88,6 +91,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "protein-pancakes",
+    image: "/recipes/protein-pancakes.webp",
     name: "Protein Pancakes",
     description:
       "Weekend pancakes the kids will fight over, with enough protein that you're not raiding the biscuit tin by 10am.",
@@ -117,6 +121,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "freezer-breakfast-burritos",
+    image: "/recipes/freezer-breakfast-burritos.webp",
     name: "Freezer Breakfast Burritos",
     description:
       "Make eight on Sunday, microwave one whenever the morning falls apart. Eggs, beans and cheese wrapped in foil, waiting for you.",
@@ -134,7 +139,7 @@ export const recipes: Recipe[] = [
       { item: "Salsa", qty: "1/2 cup" },
     ],
     steps: [
-      "Scramble the eggs soft — slightly underdone, they finish cooking on reheat.",
+      "Scramble the eggs soft - slightly underdone, they finish cooking on reheat.",
       "Lay out the tortillas and split eggs, beans, meat, cheese and salsa down the middle of each.",
       "Fold in the sides, roll tight, and wrap each one in foil or parchment.",
       "Freeze in a zip bag. Reheat: unwrap, damp paper towel, microwave 2-3 minutes. Fridge ones take 90 seconds.",
@@ -146,6 +151,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "cottage-cheese-scramble-on-toast",
+    image: "/recipes/cottage-cheese-scramble-on-toast.webp",
     name: "Cottage Cheese Scramble on Toast",
     description:
       "Cottage cheese melts into scrambled eggs and makes them creamy while quietly doubling the protein. Thirteen minutes, one pan.",
@@ -164,7 +170,7 @@ export const recipes: Recipe[] = [
     steps: [
       "Bread in the toaster. Whisk the eggs with a pinch of salt.",
       "Melt butter in a nonstick pan over medium-low, add eggs, and stir slowly.",
-      "When they're halfway set, stir in the cottage cheese and cook 1 more minute — still glossy, not rubbery.",
+      "When they're halfway set, stir in the cottage cheese and cook 1 more minute - still glossy, not rubbery.",
       "Pile onto the toast, hit it with pepper and chives, done.",
     ],
     mealPrepFriendly: false,
@@ -175,6 +181,7 @@ export const recipes: Recipe[] = [
   // -------------------------------------------------------------------- LUNCH
   {
     slug: "chicken-burrito-bowls",
+    image: "/recipes/chicken-burrito-bowls.webp",
     name: "Chicken Burrito Bowls",
     description:
       "The meal-prep classic for a reason: rice, beans, seasoned chicken and whatever toppings survive the week. Four lunches, one pan of chicken.",
@@ -196,7 +203,7 @@ export const recipes: Recipe[] = [
       "Slice the chicken into strips, toss with taco seasoning and a splash of oil.",
       "Sear in a hot pan 6-8 minutes until cooked through and a bit charred at the edges.",
       "While it cooks, split rice, beans and corn between 4 containers.",
-      "Top with chicken, salsa and cheese. Lid on, fridge. Eat hot or cold — it works both ways.",
+      "Top with chicken, salsa and cheese. Lid on, fridge. Eat hot or cold - it works both ways.",
     ],
     mealPrepFriendly: true,
     keepsDays: 4,
@@ -205,6 +212,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "tuna-white-bean-wraps",
+    image: "/recipes/tuna-white-bean-wraps.webp",
     name: "Tuna & White Bean Wraps",
     description:
       "Pantry lunch, zero cooking, ten minutes. The beans stretch two cans of tuna into four wraps and sneak in the fiber.",
@@ -223,10 +231,10 @@ export const recipes: Recipe[] = [
       { item: "Baby spinach or lettuce", qty: "2 handfuls" },
     ],
     steps: [
-      "Mash the beans roughly in a bowl with a fork — half smooth, half chunky.",
+      "Mash the beans roughly in a bowl with a fork - half smooth, half chunky.",
       "Mix in the tuna, yogurt, mustard, lemon juice, salt and pepper.",
       "Spread over the wraps, add greens, roll tight and slice in half.",
-      "The filling keeps 3 days in the fridge — wrap fresh each day so nothing goes soggy.",
+      "The filling keeps 3 days in the fridge - wrap fresh each day so nothing goes soggy.",
     ],
     mealPrepFriendly: true,
     keepsDays: 3,
@@ -235,6 +243,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "hearty-lentil-soup",
+    image: "/recipes/hearty-lentil-soup.webp",
     name: "Hearty Lentil Soup",
     description:
       "A big pot of the cheapest, most filling lunch there is. Fourteen grams of fiber per bowl and it tastes better on day three.",
@@ -256,7 +265,7 @@ export const recipes: Recipe[] = [
     steps: [
       "Soften the onion and carrot in olive oil in your biggest pot, 5 minutes. Add garlic and spices for 1 more.",
       "Add lentils, tomatoes and stock. Bring to a boil, then simmer 30 minutes until the lentils are soft.",
-      "Season hard — lentils drink up salt. Blitz half with a stick blender if you like it thicker.",
+      "Season hard - lentils drink up salt. Blitz half with a stick blender if you like it thicker.",
       "Portion into containers. Fridge for the week or freeze half for the week you don't cook.",
     ],
     mealPrepFriendly: true,
@@ -266,9 +275,10 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "slow-cooker-pulled-chicken",
+    image: "/recipes/slow-cooker-pulled-chicken.webp",
     name: "Slow-Cooker Pulled Chicken",
     description:
-      "Ten minutes of effort in the morning, a mountain of pulled chicken by pickup time. Sandwiches, bowls, wraps — it does all of it.",
+      "Ten minutes of effort in the morning, a mountain of pulled chicken by pickup time. Sandwiches, bowls, wraps - it does all of it.",
     mealType: ["lunch", "dinner"],
     prepMin: 10,
     cookMin: 240,
@@ -284,9 +294,9 @@ export const recipes: Recipe[] = [
     ],
     steps: [
       "Put chicken, stock, paprika and garlic powder in the slow cooker. Low for 4 hours (or high for 2.5).",
-      "Shred with two forks right in the pot — it should fall apart.",
+      "Shred with two forks right in the pot - it should fall apart.",
       "Stir in the BBQ sauce and let it soak up the juices for 10 minutes.",
-      "Serve in rolls, over rice, or in wraps. Portion the rest — it also freezes brilliantly.",
+      "Serve in rolls, over rice, or in wraps. Portion the rest - it also freezes brilliantly.",
     ],
     mealPrepFriendly: true,
     keepsDays: 4,
@@ -295,6 +305,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "greek-chicken-pasta-salad",
+    image: "/recipes/greek-chicken-pasta-salad.webp",
     name: "Greek Chicken Pasta Salad",
     description:
       "Cold pasta salad that actually keeps you full: chicken, feta, olives and crunchy veg. Built for the office fridge.",
@@ -315,7 +326,7 @@ export const recipes: Recipe[] = [
     ],
     steps: [
       "Boil the pasta. While it cooks, season the chicken and pan-fry 5-6 minutes a side, then slice.",
-      "Rinse the pasta under cold water — this is a cold salad, warm pasta makes it gluey.",
+      "Rinse the pasta under cold water - this is a cold salad, warm pasta makes it gluey.",
       "Toss everything in a big bowl with the oil, vinegar and oregano. Season properly.",
       "Split into 4 containers. It's better on day two once the dressing sinks in.",
     ],
@@ -326,6 +337,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "turkey-avocado-pita",
+    image: "/recipes/turkey-avocado-pita.webp",
     name: "Turkey Avocado Pita",
     description:
       "The lunch you make when there are ten minutes between meetings. Deli turkey, avocado and crunch, stuffed in a pita.",
@@ -343,9 +355,9 @@ export const recipes: Recipe[] = [
       { item: "Lettuce or spinach", qty: "1 handful" },
     ],
     steps: [
-      "Halve the pita and open the pockets. Toast it if you have 2 spare minutes — worth it.",
+      "Halve the pita and open the pockets. Toast it if you have 2 spare minutes - worth it.",
       "Mash the avocado with the yogurt, salt and pepper, and spread inside both halves.",
-      "Stuff with turkey, tomato and greens. Eat over a plate — the tomato will drip.",
+      "Stuff with turkey, tomato and greens. Eat over a plate - the tomato will drip.",
     ],
     mealPrepFriendly: false,
     tags: ["high-protein", "no-cook", "15-min"],
@@ -353,6 +365,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "high-protein-egg-fried-rice",
+    image: "/recipes/high-protein-egg-fried-rice.webp",
     name: "High-Protein Egg Fried Rice",
     description:
       "Yesterday's rice, four eggs and frozen peas become lunch in fifteen minutes flat. The best fate any leftover rice can hope for.",
@@ -383,6 +396,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "black-bean-quesadillas",
+    image: "/recipes/black-bean-quesadillas.webp",
     name: "Black Bean Quesadillas",
     description:
       "Crispy, cheesy, and secretly full of beans. The kids ask for these; you get 10 grams of fiber without an argument.",
@@ -400,7 +414,7 @@ export const recipes: Recipe[] = [
       { item: "Greek yogurt (for dipping)", qty: "1/2 cup" },
     ],
     steps: [
-      "Mash the beans with the salsa and cumin — chunky is fine, it just needs to hold together.",
+      "Mash the beans with the salsa and cumin - chunky is fine, it just needs to hold together.",
       "Spread over half of each tortilla, top with cheese, fold over.",
       "Dry-fry in a hot pan 2-3 minutes a side until golden and the cheese melts.",
       "Cut into wedges, serve with yogurt for dipping. Leftovers re-crisp in a pan or air fryer.",
@@ -414,6 +428,7 @@ export const recipes: Recipe[] = [
   // ------------------------------------------------------------------- DINNER
   {
     slug: "sheet-pan-chicken-and-veg",
+    image: "/recipes/sheet-pan-chicken-and-veg.webp",
     name: "Sheet-Pan Chicken & Veg",
     description:
       "Everything on one tray, into the oven, and you're free for 25 minutes. The weeknight dinner that runs itself.",
@@ -431,7 +446,7 @@ export const recipes: Recipe[] = [
       { item: "Smoked paprika, garlic powder, oregano", qty: "1 tsp each" },
     ],
     steps: [
-      "Oven to 220°C. Line your biggest tray with parchment — that's the cleanup handled.",
+      "Oven to 220°C. Line your biggest tray with parchment - that's the cleanup handled.",
       "Toss potatoes with half the oil and seasoning, spread out, and give them a 10-minute head start.",
       "Toss chicken, broccoli and peppers with the rest of the oil and spices, add to the tray.",
       "Roast 25 minutes until the chicken hits 75°C and the edges char. Serve straight off the tray.",
@@ -443,6 +458,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "salmon-traybake",
+    image: "/recipes/salmon-traybake.webp",
     name: "Salmon Traybake",
     description:
       "Salmon, green beans and tomatoes roasted on one tray. Looks like effort, is actually the laziest good dinner you know.",
@@ -473,9 +489,10 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "turkey-meatballs-marinara",
+    image: "/recipes/turkey-meatballs-marinara.webp",
     name: "Turkey Meatballs in Marinara",
     description:
-      "A double batch of tender turkey meatballs — half for tonight's spaghetti, half for the freezer. Future-you says thanks.",
+      "A double batch of tender turkey meatballs - half for tonight's spaghetti, half for the freezer. Future-you says thanks.",
     mealType: ["dinner"],
     prepMin: 15,
     cookMin: 20,
@@ -491,7 +508,7 @@ export const recipes: Recipe[] = [
       { item: "Garlic powder + dried oregano", qty: "1 tsp each" },
     ],
     steps: [
-      "Mix turkey, egg, breadcrumbs, parmesan and seasoning. Roll into golf-ball meatballs — wet hands stop the sticking.",
+      "Mix turkey, egg, breadcrumbs, parmesan and seasoning. Roll into golf-ball meatballs - wet hands stop the sticking.",
       "Brown them in a wide pan with a little oil, 5-6 minutes. Don't crowd; do two rounds if needed.",
       "Pour in the marinara, cover, and simmer 12 minutes while the spaghetti boils.",
       "Serve half over pasta tonight. Cool the rest in sauce and freeze flat in bags.",
@@ -503,6 +520,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "beef-and-bean-chili",
+    image: "/recipes/beef-and-bean-chili.webp",
     name: "Beef & Bean Chili",
     description:
       "The big-pot classic: beef for protein, two kinds of beans for fiber, and it only improves as the week goes on.",
@@ -522,7 +540,7 @@ export const recipes: Recipe[] = [
       { item: "Beef stock", qty: "1 cup (250ml)" },
     ],
     steps: [
-      "Brown the beef hard in your biggest pot — get real color on it, then push aside and soften the onion.",
+      "Brown the beef hard in your biggest pot - get real color on it, then push aside and soften the onion.",
       "Add garlic and all the spices, stir 1 minute until it smells like a taco truck.",
       "Add tomatoes, beans and stock. Simmer uncovered 40 minutes, stirring now and then.",
       "Taste, add salt, taste again. Serve over rice or with a spoon. Portion and freeze whatever's left.",
@@ -534,6 +552,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "chicken-fajita-skillet",
+    image: "/recipes/chicken-fajita-skillet.webp",
     name: "Chicken Fajita Skillet",
     description:
       "Sizzling chicken and peppers in one pan, tortillas on the table, everyone builds their own. Dinner and entertainment in 25 minutes.",
@@ -555,7 +574,7 @@ export const recipes: Recipe[] = [
       "Toss the chicken with the seasoning and oil while the pan gets screaming hot.",
       "Sear the chicken 5-6 minutes until charred at the edges, then tip onto a plate.",
       "Same pan: peppers and onion, 5 minutes, until soft with dark spots. Chicken back in, lime over everything.",
-      "Warm the tortillas and put the pan in the middle of the table. Let the kids build their own — they eat more that way.",
+      "Warm the tortillas and put the pan in the middle of the table. Let the kids build their own - they eat more that way.",
     ],
     mealPrepFriendly: true,
     keepsDays: 3,
@@ -564,9 +583,10 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "shrimp-stir-fry",
+    image: "/recipes/shrimp-stir-fry.webp",
     name: "Shrimp Stir-Fry",
     description:
-      "Frozen shrimp and a bag of stir-fry veg — twenty minutes from freezer to plate on the nights the schedule collapses.",
+      "Frozen shrimp and a bag of stir-fry veg - twenty minutes from freezer to plate on the nights the schedule collapses.",
     mealType: ["dinner"],
     prepMin: 10,
     cookMin: 10,
@@ -582,7 +602,7 @@ export const recipes: Recipe[] = [
       { item: "Sesame or vegetable oil", qty: "1 tbsp" },
     ],
     steps: [
-      "Mix soy, honey, garlic and ginger in a cup — that's your sauce, done.",
+      "Mix soy, honey, garlic and ginger in a cup - that's your sauce, done.",
       "Hot pan, half the oil: shrimp 2 minutes a side until pink. Out onto a plate.",
       "Rest of the oil, veg in, 4-5 minutes on high heat. Keep them moving.",
       "Shrimp back in with the sauce, 1 minute to glaze. Serve over rice.",
@@ -594,6 +614,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "creamy-tuscan-chicken-skillet",
+    image: "/recipes/creamy-tuscan-chicken-skillet.webp",
     name: "Creamy Tuscan Chicken Skillet",
     description:
       "Chicken in a creamy sun-dried tomato and spinach sauce that tastes like a restaurant made it. Nobody needs to know it was one pan and 30 minutes.",
@@ -624,6 +645,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "lentil-bolognese",
+    image: "/recipes/lentil-bolognese.webp",
     name: "Lentil Bolognese",
     description:
       "A rich, meatless bolognese the family won't interrogate. Lentils carry the fiber; the long simmer carries the flavor.",
@@ -643,7 +665,7 @@ export const recipes: Recipe[] = [
       { item: "Veg stock", qty: "2 cups (500ml)" },
     ],
     steps: [
-      "Soften the onion, carrot and celery in oil, 6-7 minutes — don't rush this, it's the flavor base.",
+      "Soften the onion, carrot and celery in oil, 6-7 minutes - don't rush this, it's the flavor base.",
       "Add garlic and oregano for 1 minute, then lentils, tomatoes and stock.",
       "Simmer 25-30 minutes until the lentils are tender and the sauce is thick. Boil the pasta near the end.",
       "Season well and serve over spaghetti. The sauce freezes perfectly for the next chaotic week.",
@@ -655,9 +677,10 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "weeknight-chicken-curry",
+    image: "/recipes/weeknight-chicken-curry.webp",
     name: "Weeknight Chicken Curry",
     description:
-      "A mild, creamy curry built on curry paste and coconut milk — fast enough for a Tuesday, gentle enough for the kids.",
+      "A mild, creamy curry built on curry paste and coconut milk - fast enough for a Tuesday, gentle enough for the kids.",
     mealType: ["dinner"],
     prepMin: 10,
     cookMin: 25,
@@ -673,7 +696,7 @@ export const recipes: Recipe[] = [
       { item: "Vegetable oil", qty: "1 tbsp" },
     ],
     steps: [
-      "Get the rice cooking first — everything else lines up with it.",
+      "Get the rice cooking first - everything else lines up with it.",
       "Soften the onion in oil, add the curry paste for 1 minute, then brown the chicken in the paste.",
       "Pour in the coconut milk and simmer 15 minutes until the chicken is cooked and the sauce thickens.",
       "Stir in the peas for the last 3 minutes. Serve over rice. Freezes well without the rice.",
@@ -687,6 +710,7 @@ export const recipes: Recipe[] = [
   // -------------------------------------------------------------------- SNACK
   {
     slug: "no-bake-protein-balls",
+    image: "/recipes/no-bake-protein-balls.webp",
     name: "No-Bake Protein Balls",
     description:
       "Oats, peanut butter and seeds rolled into balls that live in the fridge. The 3pm snack that isn't the kids' biscuits.",
@@ -706,7 +730,7 @@ export const recipes: Recipe[] = [
     ],
     steps: [
       "Mix everything in one bowl until it holds together when squeezed. Too dry? A splash of milk fixes it.",
-      "Roll into 16 balls — wet hands make it painless. Two balls is a serving.",
+      "Roll into 16 balls - wet hands make it painless. Two balls is a serving.",
       "Fridge in a container. They firm up in an hour and disappear within the week.",
     ],
     mealPrepFriendly: true,
@@ -716,6 +740,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "cottage-cheese-ranch-dip",
+    image: "/recipes/cottage-cheese-ranch-dip.webp",
     name: "Cottage Cheese Ranch Dip",
     description:
       "Blitz cottage cheese with ranch seasoning and it turns into a creamy dip with a ridiculous amount of protein. Veg sticks suddenly worth it.",
@@ -731,7 +756,7 @@ export const recipes: Recipe[] = [
       { item: "Carrot sticks, cucumber, peppers", qty: "2 cups mixed" },
     ],
     steps: [
-      "Blend the cottage cheese, seasoning and lemon juice until completely smooth — 30 seconds.",
+      "Blend the cottage cheese, seasoning and lemon juice until completely smooth - 30 seconds.",
       "Taste and adjust: more dill if you like it herby, black pepper always.",
       "Keep in a container in the fridge and dip veg (or crackers, we don't judge) all week.",
     ],
@@ -742,6 +767,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "crunchy-roasted-chickpeas",
+    image: "/recipes/crunchy-roasted-chickpeas.webp",
     name: "Crunchy Roasted Chickpeas",
     description:
       "A can of chickpeas becomes a crunchy, salty snack that beats crisps on fiber by a mile. Make a double batch; they vanish.",
@@ -758,7 +784,7 @@ export const recipes: Recipe[] = [
       { item: "Salt", qty: "1/2 tsp" },
     ],
     steps: [
-      "Oven to 200°C. Pat the chickpeas properly dry with a tea towel — dry chickpeas crisp, wet ones steam.",
+      "Oven to 200°C. Pat the chickpeas properly dry with a tea towel - dry chickpeas crisp, wet ones steam.",
       "Toss with oil and spread on a lined tray in a single layer.",
       "Roast 25-30 minutes, shaking the tray halfway, until golden and crunchy.",
       "Toss with the spices and salt while hot. Store loosely covered so they stay crisp.",

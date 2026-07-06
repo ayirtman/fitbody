@@ -32,7 +32,7 @@ body {
   color: var(--color-ink);
 }
 
-/* Headline utility — athletic condensed caps */
+/* Headline utility - athletic condensed caps */
 .display {
   font-family: var(--font-display);
   text-transform: uppercase;

@@ -34,7 +34,7 @@ export default function StreakNudge() {
         </span>
         {doneToday
           ? "Today's done. See your progress →"
-          : "Don't break the chain — grab 10 minutes →"}
+          : "Don't break the chain - grab 10 minutes →"}
       </p>
     </Link>
   );

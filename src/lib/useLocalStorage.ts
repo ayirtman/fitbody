@@ -40,7 +40,7 @@ function snapshot<T>(key: string, fallback: T): T {
   try {
     raw = window.localStorage.getItem(key);
   } catch {
-    // blocked storage — treat as empty
+    // blocked storage - treat as empty
   }
   const cached = cache.get(key);
   if (cached && cached.raw === raw) return cached.value as T;

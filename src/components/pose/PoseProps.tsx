@@ -1,7 +1,7 @@
 import { FLOOR_Y, POSE_CANVAS } from "@/lib/pose-types";
 import type { StaticProp } from "@/lib/pose-types";
 
-/** Scene furniture that never moves — rendered once, outside the rAF loop. */
+/** Scene furniture that never moves - rendered once, outside the rAF loop. */
 export default function StaticProps({ props }: { props: StaticProp[] }) {
   return (
     <>

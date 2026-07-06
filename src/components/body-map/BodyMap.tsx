@@ -123,7 +123,7 @@ export default function BodyMap({
         {regions.map((region) => {
           const label = `${nameById.get(region.muscleId) ?? region.muscleId}${
             counts?.[region.muscleId] != null
-              ? ` — ${counts[region.muscleId]} exercises`
+              ? ` - ${counts[region.muscleId]} exercises`
               : ""
           }`;
           const shared = {

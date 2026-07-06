@@ -43,7 +43,7 @@ const valueProps = [
   },
   {
     title: "Free. Actually free.",
-    body: "No account, no paywall, no ads. Every workout, stretch and recipe — yours.",
+    body: "No account, no paywall, no ads. Every workout, stretch and recipe - yours.",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function Home() {
               <span className="text-gold">Maintain it.</span>
             </h1>
             <p className="mt-6 max-w-lg text-lg text-muted">
-              Workouts, stretches, physio moves and high-protein food — built
+              Workouts, stretches, physio moves and high-protein food - built
               for the man with 15 minutes, two kids and a desk job. Tap a
               muscle to start.
             </p>
@@ -183,7 +183,7 @@ export default function Home() {
           </h2>
           <p className="mt-4 max-w-lg text-sm text-muted">
             Two photos, a few questions, and a personalized plan that targets
-            what the desk did to you. Join the waitlist for early access — the
+            what the desk did to you. Join the waitlist for early access - the
             free library stays free, always.
           </p>
           <Link

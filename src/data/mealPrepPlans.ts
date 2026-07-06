@@ -5,7 +5,7 @@ export const mealPrepPlans: MealPrepPlan[] = [
     slug: "sunday-power-hour",
     name: "Sunday Power Hour",
     description:
-      "One hour on Sunday, and breakfast plus lunch are handled through Thursday. Oven does the chicken, you assemble the rest — no heroics required.",
+      "One hour on Sunday, and breakfast plus lunch are handled through Thursday. Oven does the chicken, you assemble the rest - no heroics required.",
     sundayTimeMin: 60,
     recipes: [
       "sheet-pan-chicken-and-veg",
@@ -55,12 +55,12 @@ export const mealPrepPlans: MealPrepPlan[] = [
       },
     ],
     cookOrder: [
-      "Oven to 220°C — sheet-pan chicken and potatoes in first, they take the longest.",
+      "Oven to 220°C - sheet-pan chicken and potatoes in first, they take the longest.",
       "While that roasts, get the rice cooking for the burrito bowls.",
       "Whisk eggs and load the muffin tin. When the sheet pan comes out, drop the oven to 180°C and bake the egg muffins.",
-      "Sear the taco-seasoned chicken strips on the hob — 8 minutes, done.",
+      "Sear the taco-seasoned chicken strips on the hob - 8 minutes, done.",
       "Assemble 4 burrito bowls: rice, beans, corn, chicken, salsa, cheese. Lids on.",
-      "Stir up 4 jars of overnight oats — this is the two-minute victory lap.",
+      "Stir up 4 jars of overnight oats - this is the two-minute victory lap.",
       "Pull the egg muffins, cool everything on the counter before lids go on.",
       "Wipe the counter, load the dishwasher, done inside the hour.",
     ],
@@ -135,12 +135,12 @@ export const mealPrepPlans: MealPrepPlan[] = [
       },
     ],
     cookOrder: [
-      "Slow cooker on first — chicken, stock and spices in. It works while you work.",
+      "Slow cooker on first - chicken, stock and spices in. It works while you work.",
       "Oven to 180°C. Whisk eggs, load the muffin tin, egg muffins in.",
       "Boil the pasta for the salad; rinse it cold when done.",
       "Roll and brown the turkey meatballs, then set them simmering in marinara.",
       "Pan-fry the chicken for the pasta salad, slice, and toss the whole salad together.",
-      "Blitz the ranch dip — 1 minute, one blender cup.",
+      "Blitz the ranch dip - 1 minute, one blender cup.",
       "Pull the egg muffins and let everything cool while you shred the slow-cooker chicken and stir in BBQ sauce.",
       "Portion everything into containers: meatballs and pulled chicken in family-size tubs, salad and dip in singles.",
     ],
@@ -159,7 +159,7 @@ export const mealPrepPlans: MealPrepPlan[] = [
     slug: "fiber-fix",
     name: "Fiber Fix",
     description:
-      "For the week your gut (and your doctor) asked for: two big pots, a rich lentil ragu and a crunchy snack — 30+ grams of fiber a day without eating a single sad salad.",
+      "For the week your gut (and your doctor) asked for: two big pots, a rich lentil ragu and a crunchy snack - 30+ grams of fiber a day without eating a single sad salad.",
     sundayTimeMin: 75,
     recipes: [
       "hearty-lentil-soup",
@@ -200,12 +200,12 @@ export const mealPrepPlans: MealPrepPlan[] = [
       },
     ],
     cookOrder: [
-      "Oven to 200°C — chickpeas dried, oiled and in first. Shake the tray when you remember.",
+      "Oven to 200°C - chickpeas dried, oiled and in first. Shake the tray when you remember.",
       "Biggest pot: brown the beef for the chili, build it up, set it simmering. That's 40 minutes of hands-off time.",
       "Second pot: soften the veg for the lentil soup, add lentils and stock, simmer.",
-      "Third pan (last one, promise): the bolognese base — onion, carrot, celery, then lentils and tomatoes.",
+      "Third pan (last one, promise): the bolognese base - onion, carrot, celery, then lentils and tomatoes.",
       "Pull the chickpeas when they're golden and toss with spices while hot.",
-      "Taste and season all three pots properly — lentils and beans need more salt than you think.",
+      "Taste and season all three pots properly - lentils and beans need more salt than you think.",
       "Cool, then portion: soup in singles for lunches, chili and bolognese in family tubs, half of each to the freezer.",
     ],
     weekMap: [
@@ -261,7 +261,7 @@ export const mealPrepPlans: MealPrepPlan[] = [
           "Large flour tortillas (8)",
           "Breadcrumbs, salsa, stock",
           "Chili powder, cumin, smoked paprika, garlic powder",
-          "Foil and freezer bags — non-negotiable",
+          "Foil and freezer bags - non-negotiable",
         ],
       },
       {
@@ -271,11 +271,11 @@ export const mealPrepPlans: MealPrepPlan[] = [
     ],
     cookOrder: [
       "Slow cooker on first: pulled chicken in, forget about it for 4 hours.",
-      "Chili next in the big pot — brown the beef hard, build it, leave it simmering 40 minutes.",
+      "Chili next in the big pot - brown the beef hard, build it, leave it simmering 40 minutes.",
       "While the chili bubbles, roll and brown the turkey meatballs, then simmer them in marinara.",
       "Start the curry in a third pan: onion, paste, chicken, coconut milk. 20 minutes.",
       "Scramble the eggs soft and build 8 breakfast burritos on the counter, assembly-line style. Wrap each in foil.",
-      "Cool everything completely — warm food in the freezer ices everything around it.",
+      "Cool everything completely - warm food in the freezer ices everything around it.",
       "Bag the chili, meatballs and curry flat in labelled freezer bags: name and date, or you'll be playing freezer roulette in March.",
       "Shred the pulled chicken, sauce it, portion it. Half to the fridge for this week, half frozen.",
       "Stack it all flat in the freezer. That's 15+ future dinners you never have to think about.",

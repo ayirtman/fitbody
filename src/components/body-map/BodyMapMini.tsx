@@ -18,7 +18,7 @@ interface BodyMapMiniProps {
 
 /**
  * Small, non-interactive body diagram highlighting worked muscles.
- * Server-renderable — no client JS.
+ * Server-renderable - no client JS.
  */
 export default function BodyMapMini({
   primary,

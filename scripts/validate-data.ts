@@ -3,6 +3,8 @@
  * Run via `npm run validate` (wired into `prebuild`). Exits non-zero and
  * prints every violation when the content breaks an invariant.
  */
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import { muscles } from "../src/data/muscles";
 import { exercises } from "../src/data/exercises";
 import { stretches } from "../src/data/stretches";
@@ -12,6 +14,7 @@ import { recipes } from "../src/data/recipes";
 import { mealPrepPlans } from "../src/data/mealPrepPlans";
 import { poseSets } from "../src/data/poses";
 import type { BaseMovement, ComplaintId, MuscleId } from "../src/lib/types";
+import { categorizeIngredient } from "../src/lib/ingredientCategories";
 import { JOINTS, POSE_CANVAS, isAttachedProp } from "../src/lib/pose-types";
 import type { JointName } from "../src/lib/pose-types";
 
@@ -148,6 +151,39 @@ assert(
   "every recipe must bring >=25g protein or >=8g fiber per serving",
 );
 
+// --- recipe images: field <-> file agreement under public/recipes ---
+const recipeImageDir = "public/recipes";
+for (const r of recipes) {
+  if (!r.image) continue;
+  assert(
+    new RegExp(`^/recipes/${r.slug}\\.(webp|jpg|jpeg|png)$`).test(r.image),
+    `recipe "${r.slug}": image "${r.image}" must be /recipes/${r.slug}.(webp|jpg|jpeg|png)`,
+  );
+  assert(
+    existsSync(join("public", r.image)),
+    `recipe "${r.slug}": image file public${r.image} does not exist`,
+  );
+}
+if (existsSync(recipeImageDir)) {
+  const referenced = new Set(recipes.map((r) => r.image).filter(Boolean));
+  for (const file of readdirSync(recipeImageDir)) {
+    assert(
+      referenced.has(`/recipes/${file}`),
+      `public/recipes/${file}: no recipe references this image - add image: "/recipes/${file}" to its entry in src/data/recipes.ts`,
+    );
+  }
+}
+
+// --- shopping list: every ingredient must categorize to a real aisle ---
+for (const r of recipes) {
+  for (const ing of r.ingredients) {
+    assert(
+      categorizeIngredient(ing.item) !== "Other",
+      `recipe "${r.slug}": ingredient "${ing.item}" has no aisle category - extend src/lib/ingredientCategories.ts`,
+    );
+  }
+}
+
 // --- meal prep plans: recipe refs resolve ---
 const recipeSlugs = new Set(recipes.map((r) => r.slug));
 for (const p of mealPrepPlans) {
@@ -240,6 +276,35 @@ for (const p of poseSets) {
     }
   }
 }
+// --- typography: no em-dashes in content, ever (site style: plain hyphens) ---
+const contentCollections: [string, unknown][] = [
+  ["muscles", muscles],
+  ["exercises", exercises],
+  ["stretches", stretches],
+  ["physio", physioExercises],
+  ["complaints", complaints],
+  ["routines", routines],
+  ["recipes", recipes],
+  ["mealPrepPlans", mealPrepPlans],
+  ["poses", poseSets],
+];
+for (const [label, data] of contentCollections) {
+  assert(
+    !JSON.stringify(data).includes("—"),
+    `${label}: em-dash found in content strings - use a plain hyphen`,
+  );
+}
+function scanForEmDash(dir: string) {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, entry.name);
+    if (entry.isDirectory()) scanForEmDash(p);
+    else if (entry.name.endsWith(".ts") && readFileSync(p, "utf8").includes("—")) {
+      errors.push(`${p}: em-dash found - use a plain hyphen`);
+    }
+  }
+}
+scanForEmDash("src/data");
+
 if (ENFORCE_POSE_COVERAGE) {
   const covered = new Set(poseSets.map((p) => p.slug));
   for (const slug of movementSlugs) {
@@ -253,5 +318,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(
-  `✓ Data validation passed — ${exercises.length} exercises, ${stretches.length} stretches, ${physioExercises.length} physio, ${routines.length} routines, ${recipes.length} recipes, ${mealPrepPlans.length} meal prep plans, ${poseSets.length}/${movementSlugs.size} poses`,
+  `✓ Data validation passed - ${exercises.length} exercises, ${stretches.length} stretches, ${physioExercises.length} physio, ${routines.length} routines, ${recipes.length} recipes, ${mealPrepPlans.length} meal prep plans, ${poseSets.length}/${movementSlugs.size} poses`,
 );

@@ -6,12 +6,12 @@ export const stretches: Stretch[] = [
     slug: "doorway-pec-stretch",
     name: "Doorway Pec Stretch",
     description:
-      "Hours at a desk shorten the chest and drag your shoulders forward into the classic dad slump. Thirty seconds in any doorway opens the chest back up — do it every time you walk to refill your coffee and the posture change is free.",
+      "Hours at a desk shorten the chest and drag your shoulders forward into the classic dad slump. Thirty seconds in any doorway opens the chest back up - do it every time you walk to refill your coffee and the posture change is free.",
     steps: [
       "Stand in a doorway and place your forearms on the frame, elbows at shoulder height bent to 90 degrees.",
       "Stagger one foot slightly through the doorway.",
       "Gently lean your chest forward through the frame until you feel a stretch across the front of your chest and shoulders.",
-      "Keep your ribs down and core lightly braced — don't arch the lower back.",
+      "Keep your ribs down and core lightly braced - don't arch the lower back.",
       "Breathe slowly and hold, then ease out.",
     ],
     primaryMuscles: ["chest"],
@@ -33,12 +33,12 @@ export const stretches: Stretch[] = [
     slug: "cross-body-shoulder-stretch",
     name: "Cross-Body Shoulder Stretch",
     description:
-      "The simplest way to loosen the back of the shoulder after pressing workouts or a day of mouse-arm. Tight rear shoulders quietly steal reach-behind-you mobility — the kind you need buckling kids into car seats.",
+      "The simplest way to loosen the back of the shoulder after pressing workouts or a day of mouse-arm. Tight rear shoulders quietly steal reach-behind-you mobility - the kind you need buckling kids into car seats.",
     steps: [
       "Stand or sit tall and bring your right arm straight across your chest.",
-      "Hook your left forearm or hand above the right elbow — not on the joint itself.",
+      "Hook your left forearm or hand above the right elbow - not on the joint itself.",
       "Gently pull the arm closer to your chest until you feel a stretch in the back of the right shoulder.",
-      "Keep the right shoulder down — don't let it shrug toward your ear.",
+      "Keep the right shoulder down - don't let it shrug toward your ear.",
       "Hold, breathe, then switch arms.",
     ],
     primaryMuscles: ["shoulders"],
@@ -60,12 +60,12 @@ export const stretches: Stretch[] = [
     slug: "overhead-triceps-stretch",
     name: "Overhead Triceps Stretch",
     description:
-      "Reach one hand down your spine and gently press the elbow — a quick release for arms that have been pressing, carrying, or typing all day. It also sneaks in some overhead shoulder mobility most desk workers have lost.",
+      "Reach one hand down your spine and gently press the elbow - a quick release for arms that have been pressing, carrying, or typing all day. It also sneaks in some overhead shoulder mobility most desk workers have lost.",
     steps: [
       "Stand tall and raise your right arm overhead.",
       "Bend the elbow so your right hand drops behind your neck, down your spine.",
       "Use your left hand to gently press the right elbow back and down.",
-      "Feel the stretch along the back of the right arm — keep your ribs down.",
+      "Feel the stretch along the back of the right arm - keep your ribs down.",
       "Hold, breathe, then switch sides.",
     ],
     primaryMuscles: ["triceps"],
@@ -88,12 +88,12 @@ export const stretches: Stretch[] = [
     slug: "wall-biceps-stretch",
     name: "Wall Biceps Stretch",
     description:
-      "Palm on the wall, turn away, and the whole front of your arm opens up — biceps, elbow, even into the forearm. Arms that spend the day curled at a keyboard need this more than they know.",
+      "Palm on the wall, turn away, and the whole front of your arm opens up - biceps, elbow, even into the forearm. Arms that spend the day curled at a keyboard need this more than they know.",
     steps: [
       "Stand next to a wall and place your right palm flat against it at shoulder height, arm straight, fingers pointing back.",
       "Keep the arm straight and your shoulder pulled down away from your ear.",
       "Slowly rotate your chest away from the wall until you feel a stretch down the front of your arm.",
-      "Ease into it — this stretch escalates quickly.",
+      "Ease into it - this stretch escalates quickly.",
       "Hold, breathe, then switch arms.",
     ],
     primaryMuscles: ["biceps"],
@@ -103,7 +103,7 @@ export const stretches: Stretch[] = [
     timeEstimateMin: 2,
     commonMistakes: [
       "Shrugging the shoulder up as you rotate away",
-      "Turning too far too fast — this one bites",
+      "Turning too far too fast - this one bites",
       "Bending the elbow, which unloads the biceps",
     ],
     holdSeconds: 30,
@@ -115,7 +115,7 @@ export const stretches: Stretch[] = [
     slug: "wrist-flexor-stretch",
     name: "Wrist Flexor Stretch",
     description:
-      "Fingers back, palm forward, gentle pull — relief for the underside of forearms that grip steering wheels, keyboards, and dumbbells all week. A must if your hands feel stiff by evening.",
+      "Fingers back, palm forward, gentle pull - relief for the underside of forearms that grip steering wheels, keyboards, and dumbbells all week. A must if your hands feel stiff by evening.",
     steps: [
       "Extend your right arm in front of you, palm up, elbow straight.",
       "With your left hand, gently pull the right fingers back and down toward the floor.",
@@ -131,7 +131,7 @@ export const stretches: Stretch[] = [
     commonMistakes: [
       "Yanking the fingers back aggressively",
       "Bending the elbow, which slackens the stretch",
-      "Holding it so briefly it does nothing — give it a full 20-30 seconds",
+      "Holding it so briefly it does nothing - give it a full 20-30 seconds",
     ],
     tips: ["Do it against a wall or desk edge for a deeper, hands-free version."],
     holdSeconds: 25,
@@ -171,11 +171,11 @@ export const stretches: Stretch[] = [
     slug: "cobra-stretch",
     name: "Cobra Stretch",
     description:
-      "Press your chest up off the floor and give the whole front of your body — abs and hip flexors — the extension it never gets in a chair. It's the single best counter-shape to a day of sitting, and it feels great first thing in the morning.",
+      "Press your chest up off the floor and give the whole front of your body - abs and hip flexors - the extension it never gets in a chair. It's the single best counter-shape to a day of sitting, and it feels great first thing in the morning.",
     steps: [
       "Lie face down with your hands under your shoulders, legs extended and relaxed.",
       "Press through your palms to lift your chest, letting your hips stay heavy on the floor.",
-      "Straighten your arms only as far as is comfortable — a gentle arch, not a max backbend.",
+      "Straighten your arms only as far as is comfortable - a gentle arch, not a max backbend.",
       "Keep your shoulders down away from your ears and gaze forward.",
       "Breathe into your belly and hold, then lower slowly.",
     ],
@@ -198,12 +198,12 @@ export const stretches: Stretch[] = [
     slug: "side-reach-stretch",
     name: "Standing Side Reach",
     description:
-      "Reach one arm overhead and bend sideways — a stretch for the obliques and the whole side of the torso that spends the day compressed in a chair. It takes fifteen seconds a side and you don't even need to leave your desk.",
+      "Reach one arm overhead and bend sideways - a stretch for the obliques and the whole side of the torso that spends the day compressed in a chair. It takes fifteen seconds a side and you don't even need to leave your desk.",
     steps: [
       "Stand tall with feet hip-width apart.",
       "Reach your right arm straight overhead, left hand on your hip.",
       "Bend your torso to the left, reaching the right arm up and over.",
-      "Keep both feet planted and hips level — bend sideways, not forward.",
+      "Keep both feet planted and hips level - bend sideways, not forward.",
       "Breathe into the right side of your ribs, hold, then switch sides.",
     ],
     primaryMuscles: ["obliques"],
@@ -214,7 +214,7 @@ export const stretches: Stretch[] = [
     commonMistakes: [
       "Leaning forward or backward instead of bending purely sideways",
       "Letting the hips shift instead of anchoring them",
-      "Rushing it — the side body opens with slow breaths",
+      "Rushing it - the side body opens with slow breaths",
     ],
     holdSeconds: 20,
     repsPerSide: 1,
@@ -225,11 +225,11 @@ export const stretches: Stretch[] = [
     slug: "upper-trap-stretch",
     name: "Upper Trap Stretch",
     description:
-      "Ear toward shoulder with a gentle assist from your hand — direct relief for the neck-and-shoulder shelf where desk stress lives. This is the stretch for that spot you catch yourself rubbing at 4 pm.",
+      "Ear toward shoulder with a gentle assist from your hand - direct relief for the neck-and-shoulder shelf where desk stress lives. This is the stretch for that spot you catch yourself rubbing at 4 pm.",
     steps: [
       "Sit or stand tall and let your right arm hang, or lightly hold the bottom of your chair.",
       "Tilt your left ear toward your left shoulder without rotating your head.",
-      "Rest your left hand gently on the right side of your head — the weight of the hand is enough.",
+      "Rest your left hand gently on the right side of your head - the weight of the hand is enough.",
       "Feel the stretch along the right side of your neck into the top of the shoulder.",
       "Hold, breathe slowly, then switch sides.",
     ],
@@ -253,7 +253,7 @@ export const stretches: Stretch[] = [
     slug: "levator-scap-stretch",
     name: "Levator Scap Stretch",
     description:
-      "Look down toward your armpit and gently guide the head — this targets the levator scapulae, the muscle that knots up along the top inside corner of the shoulder blade after long screen sessions. Ten breaths here beats another coffee-break shoulder shrug.",
+      "Look down toward your armpit and gently guide the head - this targets the levator scapulae, the muscle that knots up along the top inside corner of the shoulder blade after long screen sessions. Ten breaths here beats another coffee-break shoulder shrug.",
     steps: [
       "Sit tall and rotate your head about 45 degrees to the left, as if looking into your left armpit.",
       "Drop your chin down toward your chest from that rotated position.",
@@ -280,11 +280,11 @@ export const stretches: Stretch[] = [
     slug: "couch-stretch",
     name: "Couch Stretch",
     description:
-      "Rear knee against the couch, shin up the backrest — the deepest hip-flexor and quad stretch you can do at home, using the exact piece of furniture that made you tight. Sitting shortens the front of the hip; this is the antidote, and it's intense.",
+      "Rear knee against the couch, shin up the backrest - the deepest hip-flexor and quad stretch you can do at home, using the exact piece of furniture that made you tight. Sitting shortens the front of the hip; this is the antidote, and it's intense.",
     steps: [
       "Kneel in front of your couch and place your right knee at the base, shin and foot running up the seat or backrest.",
       "Step your left foot forward flat on the floor into a lunge position.",
-      "Squeeze your right glute and tuck your pelvis slightly — this is what makes the stretch work.",
+      "Squeeze your right glute and tuck your pelvis slightly - this is what makes the stretch work.",
       "Lift your torso as upright as you can tolerate; the more vertical, the deeper the stretch.",
       "Hold, breathing slowly, then switch legs.",
     ],
@@ -295,11 +295,11 @@ export const stretches: Stretch[] = [
     timeEstimateMin: 4,
     commonMistakes: [
       "Arching the lower back instead of tucking the pelvis and squeezing the glute",
-      "Forcing the torso vertical on day one — earn it over weeks",
+      "Forcing the torso vertical on day one - earn it over weeks",
       "Kneeling on a hard floor without a cushion under the knee",
     ],
     tips: [
-      "Put a pillow under the back knee — no medals for suffering.",
+      "Put a pillow under the back knee - no medals for suffering.",
       "Hands on the floor first, then a chair, then upright as you loosen over weeks.",
     ],
     holdSeconds: 45,
@@ -311,12 +311,12 @@ export const stretches: Stretch[] = [
     slug: "kneeling-hip-flexor-stretch",
     name: "Kneeling Hip Flexor Stretch",
     description:
-      "The half-kneeling lunge is the friendliest way to open hips that spend eight hours folded at ninety degrees. Tight hip flexors tug on the lower back all day — freeing them up is one of the highest-value stretches a desk dad can do.",
+      "The half-kneeling lunge is the friendliest way to open hips that spend eight hours folded at ninety degrees. Tight hip flexors tug on the lower back all day - freeing them up is one of the highest-value stretches a desk dad can do.",
     steps: [
       "Kneel on your right knee with your left foot planted in front, both knees at about 90 degrees.",
       "Stack your torso tall over your hips and squeeze your right glute.",
       "Tuck your pelvis slightly, then shift your whole body a couple of inches forward.",
-      "Feel the stretch across the front of the right hip — not in the lower back.",
+      "Feel the stretch across the front of the right hip - not in the lower back.",
       "Raise your right arm overhead for a deeper line of stretch if it feels good.",
       "Hold, breathe, then switch sides.",
     ],
@@ -340,12 +340,12 @@ export const stretches: Stretch[] = [
     slug: "standing-quad-stretch",
     name: "Standing Quad Stretch",
     description:
-      "Heel to hip, knees together — the classic quad stretch that takes twenty seconds and needs nothing but a wall for balance. Loose quads take pressure off the knees before and after runs, hikes, and backyard sprints with the kids.",
+      "Heel to hip, knees together - the classic quad stretch that takes twenty seconds and needs nothing but a wall for balance. Loose quads take pressure off the knees before and after runs, hikes, and backyard sprints with the kids.",
     steps: [
       "Stand tall next to a wall, left fingertips on it for balance.",
       "Bend your right knee and grab the top of your right foot behind you with your right hand.",
       "Pull the heel gently toward your glute, keeping both knees close together.",
-      "Stand tall and tuck your pelvis slightly — no arching back.",
+      "Stand tall and tuck your pelvis slightly - no arching back.",
       "Hold, breathe, then switch legs.",
     ],
     primaryMuscles: ["quads"],
@@ -368,7 +368,7 @@ export const stretches: Stretch[] = [
     slug: "wall-calf-stretch",
     name: "Wall Calf Stretch",
     description:
-      "Hands on the wall, one leg back, heel down — the standard calf stretch that keeps ankles mobile and the Achilles happy. Springy calves matter more than most dads realize until a weekend game reminds them.",
+      "Hands on the wall, one leg back, heel down - the standard calf stretch that keeps ankles mobile and the Achilles happy. Springy calves matter more than most dads realize until a weekend game reminds them.",
     steps: [
       "Face a wall and place both hands on it at chest height.",
       "Step your right foot back about three feet, heel flat and toes pointing at the wall.",
@@ -401,7 +401,7 @@ export const stretches: Stretch[] = [
       "Start on all fours, hands slightly ahead of your shoulders.",
       "Tuck your toes and lift your hips up and back, straightening your legs as much as comfortable.",
       "Press the floor away through your hands, keeping your head between your arms.",
-      "Aim your chest gently toward your thighs and your heels toward the floor — they don't need to touch.",
+      "Aim your chest gently toward your thighs and your heels toward the floor - they don't need to touch.",
       "Pedal your feet slowly, bending one knee then the other, for the first few breaths.",
       "Settle into stillness and hold, breathing deeply.",
     ],
@@ -415,7 +415,7 @@ export const stretches: Stretch[] = [
       "Letting the shoulders collapse toward the ears instead of pressing the floor away",
       "Locking the knees when tight hamstrings say bend them",
     ],
-    tips: ["Bend your knees generously — a long spine matters far more than straight legs."],
+    tips: ["Bend your knees generously - a long spine matters far more than straight legs."],
     holdSeconds: 45,
     bestFor: ["morning", "post-workout"],
   },
@@ -424,7 +424,7 @@ export const stretches: Stretch[] = [
     slug: "thread-the-needle",
     name: "Thread the Needle",
     description:
-      "From all fours, slide one arm under your body and rotate — a gentle unwinding for the upper back and the muscles between the shoulder blades. Desk shoulders live rounded forward; this restores the rotation they've been missing.",
+      "From all fours, slide one arm under your body and rotate - a gentle unwinding for the upper back and the muscles between the shoulder blades. Desk shoulders live rounded forward; this restores the rotation they've been missing.",
     steps: [
       "Start on all fours with hands under shoulders and knees under hips.",
       "Reach your right arm up toward the ceiling, opening your chest to the right.",
@@ -451,7 +451,7 @@ export const stretches: Stretch[] = [
     slug: "cat-cow",
     name: "Cat-Cow",
     description:
-      "Alternating between arching and rounding your spine on all fours is the gentlest way to wake up a stiff back — no strength required, just movement and breath. It's the ideal first movement of the morning and a smart warm-up before anything heavier.",
+      "Alternating between arching and rounding your spine on all fours is the gentlest way to wake up a stiff back - no strength required, just movement and breath. It's the ideal first movement of the morning and a smart warm-up before anything heavier.",
     steps: [
       "Start on all fours with hands under shoulders and knees under hips.",
       "Inhale into cow: drop your belly, lift your chest and tailbone, gaze slightly up.",
@@ -479,7 +479,7 @@ export const stretches: Stretch[] = [
     slug: "childs-pose",
     name: "Child's Pose",
     description:
-      "Sit back on your heels, arms stretched long — a full release for the lower back and lats, and a legitimate minute of quiet in a loud day. It's where every stiff back wants to end up after a workout or a long drive.",
+      "Sit back on your heels, arms stretched long - a full release for the lower back and lats, and a legitimate minute of quiet in a loud day. It's where every stiff back wants to end up after a workout or a long drive.",
     steps: [
       "Kneel on the floor with your big toes together and knees about mat-width apart.",
       "Sit your hips back toward your heels.",
@@ -506,7 +506,7 @@ export const stretches: Stretch[] = [
     slug: "figure-four-stretch",
     name: "Figure-Four Stretch",
     description:
-      "Ankle over the opposite knee, pull the legs in, and the deep glute muscles that stiffen from sitting finally let go. Tight glutes and deep rotators are a common hidden driver of lower-back grumbling — this is their release valve.",
+      "Ankle over the opposite knee, pull the legs in, and the deep glute muscles that stiffen from sitting finally let go. Tight glutes and deep rotators are a common hidden driver of lower-back grumbling - this is their release valve.",
     steps: [
       "Lie on your back with both knees bent, feet flat on the floor.",
       "Cross your right ankle over your left thigh, just above the knee, making a figure four.",
@@ -535,11 +535,11 @@ export const stretches: Stretch[] = [
     slug: "pigeon-stretch",
     name: "Pigeon Stretch",
     description:
-      "The deepest glute stretch in the catalog: one shin folded in front, the other leg extended behind. It reaches the stubborn outer-hip tissue that figure-four can't quite touch — the payoff after leg day or a long week in the car.",
+      "The deepest glute stretch in the catalog: one shin folded in front, the other leg extended behind. It reaches the stubborn outer-hip tissue that figure-four can't quite touch - the payoff after leg day or a long week in the car.",
     steps: [
       "From all fours, slide your right knee forward toward your right wrist.",
       "Angle your right shin across your body and extend your left leg straight back, hips square.",
-      "Lower your hips toward the floor — put a pillow under the right hip if it hovers.",
+      "Lower your hips toward the floor - put a pillow under the right hip if it hovers.",
       "Stay upright on your hands for a milder stretch, or fold your chest forward for a deeper one.",
       "Breathe into the right glute and hold, then switch sides.",
     ],
@@ -551,7 +551,7 @@ export const stretches: Stretch[] = [
     commonMistakes: [
       "Letting the hips tilt sideways instead of staying square",
       "Forcing the front shin parallel to the mat when the hips aren't ready",
-      "Pushing through sharp knee pain — back off and use figure-four instead",
+      "Pushing through sharp knee pain - back off and use figure-four instead",
     ],
     tips: ["A cushion under the front-side hip makes this dramatically more comfortable."],
     holdSeconds: 45,
@@ -563,11 +563,11 @@ export const stretches: Stretch[] = [
     slug: "standing-hamstring-stretch",
     name: "Standing Hamstring Stretch",
     description:
-      "Heel on a low step or chair, hinge forward with a flat back — a hamstring stretch you can do in work clothes without lying on the office floor. Loose hamstrings make every bend and lift easier on your lower back.",
+      "Heel on a low step or chair, hinge forward with a flat back - a hamstring stretch you can do in work clothes without lying on the office floor. Loose hamstrings make every bend and lift easier on your lower back.",
     steps: [
       "Stand tall and place your right heel on a low step, curb, or chair seat, leg straight and toes up.",
       "Keep your standing leg straight-ish and hips square to the front.",
-      "Hinge forward from your hips with a flat back — reach your chest toward the foot, not your head.",
+      "Hinge forward from your hips with a flat back - reach your chest toward the foot, not your head.",
       "Stop when you feel a solid stretch down the back of the right thigh.",
       "Hold, breathe, then switch legs.",
     ],
@@ -581,7 +581,7 @@ export const stretches: Stretch[] = [
       "Choosing a surface so high the pelvis tucks under before the stretch starts",
       "Bouncing at the end range instead of holding steadily",
     ],
-    tips: ["The stretch should live in the thigh, not behind the knee — lower the leg if it's all knee."],
+    tips: ["The stretch should live in the thigh, not behind the knee - lower the leg if it's all knee."],
     holdSeconds: 30,
     repsPerSide: 1,
     bestFor: ["pre-workout", "post-desk"],
@@ -591,10 +591,10 @@ export const stretches: Stretch[] = [
     slug: "seated-forward-fold",
     name: "Seated Forward Fold",
     description:
-      "Sit with legs long and reach for your feet — the classic hamstring stretch that also decompresses the lower back when done patiently. Where you reach matters far less than how long you breathe there.",
+      "Sit with legs long and reach for your feet - the classic hamstring stretch that also decompresses the lower back when done patiently. Where you reach matters far less than how long you breathe there.",
     steps: [
       "Sit on the floor with legs extended straight in front of you, feet flexed toward the ceiling.",
-      "Sit tall on your sit bones — perch on a folded towel if your pelvis tucks under.",
+      "Sit tall on your sit bones - perch on a folded towel if your pelvis tucks under.",
       "Hinge forward from the hips, leading with your chest, and slide your hands down your legs.",
       "Stop at a strong but comfortable stretch down the back of your thighs.",
       "Relax your neck, breathe slowly, and let each exhale take you a touch deeper.",
@@ -618,7 +618,7 @@ export const stretches: Stretch[] = [
     slug: "worlds-greatest-stretch",
     name: "World's Greatest Stretch",
     description:
-      "A deep lunge with a rotation that hits the hip flexors, hamstrings, and torso in one flowing move — the name is only slightly an exaggeration. If you have ninety seconds before a workout or after waking, this is the one stretch to do.",
+      "A deep lunge with a rotation that hits the hip flexors, hamstrings, and torso in one flowing move - the name is only slightly an exaggeration. If you have ninety seconds before a workout or after waking, this is the one stretch to do.",
     steps: [
       "From standing, step your right foot forward into a long lunge and place both hands on the floor inside the right foot.",
       "Let your left knee hover or rest down, feeling the left hip flexor lengthen.",
@@ -647,7 +647,7 @@ export const stretches: Stretch[] = [
     slug: "supine-twist",
     name: "Supine Twist",
     description:
-      "Lying on your back, drop your knees to one side and let gravity untwist your spine. It releases the lower back and obliques with zero effort required — which is exactly why it's the perfect last move before bed or first move on a stiff morning.",
+      "Lying on your back, drop your knees to one side and let gravity untwist your spine. It releases the lower back and obliques with zero effort required - which is exactly why it's the perfect last move before bed or first move on a stiff morning.",
     steps: [
       "Lie on your back with knees bent, feet flat, arms out in a T with palms down.",
       "Lift your feet and bring your knees up over your hips.",
@@ -664,7 +664,7 @@ export const stretches: Stretch[] = [
     commonMistakes: [
       "Letting the opposite shoulder peel off the floor",
       "Forcing the knees to the ground instead of letting gravity work",
-      "Twisting fast — this stretch rewards patience and breath",
+      "Twisting fast - this stretch rewards patience and breath",
     ],
     tips: ["Rest the knees on a pillow if they don't reach the floor comfortably."],
     holdSeconds: 40,

@@ -9,11 +9,13 @@ import {
 import MyTempleDashboard, {
   type Catalog,
 } from "@/components/progress/MyTempleDashboard";
+import GeneratedShoppingList from "@/components/progress/GeneratedShoppingList";
+import type { RecipeIngredients } from "@/lib/shoppingList";
 
 export const metadata: Metadata = {
   title: "My Temple",
   description:
-    "Your streak, your saved workouts and recipes, your week of food — all stored on your device, no account needed.",
+    "Your streak, your saved workouts and recipes, your week of food - all stored on your device, no account needed.",
 };
 
 export default function MyTemplePage() {
@@ -45,6 +47,11 @@ export default function MyTemplePage() {
     })),
   };
 
+  const recipeIngredients: RecipeIngredients[] = recipes.map((r) => ({
+    slug: r.slug,
+    ingredients: r.ingredients,
+  }));
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
@@ -54,11 +61,14 @@ export default function MyTemplePage() {
         Your progress lives here.
       </h1>
       <p className="mt-4 max-w-xl text-muted">
-        Streaks, saves and meal plans — stored on this device, no account, no
+        Streaks, saves and meal plans - stored on this device, no account, no
         tracking. Your temple, your data.
       </p>
       <div className="mt-10">
         <MyTempleDashboard catalog={catalog} />
+      </div>
+      <div className="mt-14">
+        <GeneratedShoppingList recipes={recipeIngredients} />
       </div>
     </div>
   );

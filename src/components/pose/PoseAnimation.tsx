@@ -223,7 +223,7 @@ function FigureBody({
   );
 }
 
-/** Imperative frame write — mirrors FigureBody's data-pose-* markers. */
+/** Imperative frame write - mirrors FigureBody's data-pose-* markers. */
 function applyJoints(svg: SVGSVGElement, j: JointMap) {
   const segs = segmentPoints(j);
   svg.querySelectorAll<SVGPolylineElement>("[data-pose-seg]").forEach((el) => {

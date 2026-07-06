@@ -59,7 +59,7 @@ export const SILHOUETTE_HALF = `
 
 export const frontRegions: MuscleRegion[] = [
   {
-    // sternocleidomastoid / front neck — single midline plate
+    // sternocleidomastoid / front neck - single midline plate
     muscleId: "neck",
     mirror: false,
     d: "M101,57 C 104,60 116,60 119,57 C 121,62 122,67 122,71 C 115,75 105,75 98,71 C 98,67 99,62 101,57 Z",
@@ -89,7 +89,7 @@ export const frontRegions: MuscleRegion[] = [
     d: "M49,150 C 45,162 41,180 39,196 C 41,204 49,206 53,200 C 57,184 61,166 63,152 C 59,146 52,146 49,150 Z",
   },
   {
-    // rectus abdominis — midline column
+    // rectus abdominis - midline column
     muscleId: "abs",
     mirror: false,
     d: "M96,121 C 101,117 119,117 124,121 C 127,142 127,170 123,192 C 118,198 102,198 97,192 C 93,170 93,142 96,121 Z",
@@ -170,7 +170,7 @@ export const backRegions: MuscleRegion[] = [
     d: "M78,90 C 80,104 84,122 92,138 C 97,148 103,154 108,157 L 108,112 C 102,101 92,93 78,90 Z",
   },
   {
-    // erector spinae / lower back — midline column
+    // erector spinae / lower back - midline column
     muscleId: "lower-back",
     mirror: false,
     d: "M99,152 C 104,149 116,149 121,152 C 123,166 123,182 120,196 C 114,200 106,200 100,196 C 97,182 97,166 99,152 Z",

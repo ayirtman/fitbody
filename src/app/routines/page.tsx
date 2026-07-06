@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo/meta";
+import LeadMagnetForm from "@/components/newsletter/LeadMagnetForm";
 import { routines } from "@/data";
 import RoutineCard from "@/components/routine/RoutineCard";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -63,6 +64,24 @@ export default function RoutinesPage() {
           </section>
         );
       })}
+
+      <section className="mt-14 rounded-2xl border border-edge bg-surface-1 p-8">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+          Free download
+        </p>
+        <h2 className="display lintel mt-1 text-3xl">The Desk Reset Card</h2>
+        <p className="mt-3 max-w-xl text-sm text-muted">
+          The 10-minute desk-warrior routine as a printable card for your
+          monitor or fridge. Drop your email and it&apos;s yours - you&apos;ll
+          also get the weekly TempleFit issue.
+        </p>
+        <div className="mt-5">
+          <LeadMagnetForm
+            file="/downloads/desk-reset-card.pdf"
+            cta="Send me the card"
+          />
+        </div>
+      </section>
     </div>
   );
 }

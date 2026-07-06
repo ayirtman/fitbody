@@ -27,6 +27,10 @@ const columns: { title: string; links: { href: string; label: string }[] }[] = [
       { href: "/my-temple", label: "My Temple" },
       { href: "/posture-ai", label: "Posture AI (Coming Soon)" },
       { href: "/about", label: "About & Disclaimer" },
+      { href: "/gear", label: "Gear" },
+      { href: "/support", label: "Keep It Free" },
+      { href: "/disclosure", label: "Disclosure" },
+      { href: "/sponsor", label: "Sponsor" },
     ],
   },
 ];

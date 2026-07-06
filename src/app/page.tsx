@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   muscles,
-  routines,
   recipes,
   exerciseCountByMuscle,
   routineBySlug,

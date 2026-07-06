@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TempleFit
 
-## Getting Started
+**Your body is a temple. Maintain it.**
 
-First, run the development server:
+A free fitness web app for working dads: workouts by muscle group, time-boxed
+routines, flexibility training, physio exercises for common desk-dad
+complaints, and high-protein/high-fiber recipes with meal-prep plans. All
+content is hand-curated — no AI at runtime, no account, no paywall.
+
+The centerpiece is an **interactive SVG muscle map** (front/back) — tap any of
+16 muscle groups to see the exercises that build it, the stretches that free
+it, and the physio moves that fix it. Every exercise page highlights the
+primary/secondary muscles worked on a mini body diagram.
+
+## Stack
+
+- **Next.js 16** (App Router) + TypeScript + Tailwind CSS v4
+- Fully static (SSG) — ~173 pre-rendered pages, one serverless route
+  (`/api/waitlist`, a logging stub for the Phase 2 waitlist)
+- Content lives in typed data modules under `src/data/`, enforced by a
+  build-time validator (`scripts/validate-data.ts`, runs in `prebuild`)
+- Progress (favorites, streaks, meal plans) persists in `localStorage` —
+  no backend, no tracking
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run check      # validate data + typecheck + lint + production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Content model
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Collection | File | Count |
+|---|---|---|
+| Muscle groups | `src/data/muscles.ts` | 16 |
+| Exercises | `src/data/exercises.ts` | 48 |
+| Stretches | `src/data/stretches.ts` | 24 |
+| Physio moves + complaints | `src/data/physio.ts` | 18 + 6 |
+| Routines | `src/data/routines.ts` | 9 |
+| Recipes | `src/data/recipes.ts` | 26 |
+| Meal prep plans | `src/data/mealPrepPlans.ts` | 4 |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The body-map geometry (hand-authored SVG paths, mirrored for symmetry) lives
+in `src/components/body-map/geometry.ts`.
 
-## Learn More
+## Phase 2 (planned)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Posture AI** — paid personalized programs generated from posture photos and
+a short questionnaire. Phase 1 ships the teaser page (`/posture-ai`) with an
+email waitlist; swap the log line in `src/app/api/waitlist/route.ts` for a
+real store when it lands.

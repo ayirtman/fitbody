@@ -1,38 +1,82 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import { readStorage, writeStorage } from "./storage";
 
 /**
- * Hydration-safe localStorage state: returns `fallback` on the server and on
- * first client render, then loads the stored value after mount. Syncs across
- * tabs via the `storage` event.
+ * localStorage as an external store: the server (and first client render)
+ * sees `fallback`, then React swaps in the stored value after hydration.
+ * Writes notify subscribers in this tab; the `storage` event covers other
+ * tabs. Snapshots are cached per key so getSnapshot stays referentially
+ * stable between writes.
  */
-export function useLocalStorage<T>(key: string, fallback: T) {
-  const [value, setValue] = useState<T>(fallback);
-  const [hydrated, setHydrated] = useState(false);
 
-  useEffect(() => {
-    setValue(readStorage(key, fallback));
-    setHydrated(true);
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === key) setValue(readStorage(key, fallback));
-    };
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-    // fallback is intentionally captured once — defaults are static constants
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key]);
+const listeners = new Map<string, Set<() => void>>();
+const cache = new Map<string, { raw: string | null; value: unknown }>();
+
+function emit(key: string) {
+  listeners.get(key)?.forEach((cb) => cb());
+}
+
+function subscribeTo(key: string, cb: () => void) {
+  let set = listeners.get(key);
+  if (!set) {
+    set = new Set();
+    listeners.set(key, set);
+  }
+  set.add(cb);
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === key) cb();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    set.delete(cb);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function snapshot<T>(key: string, fallback: T): T {
+  let raw: string | null = null;
+  try {
+    raw = window.localStorage.getItem(key);
+  } catch {
+    // blocked storage — treat as empty
+  }
+  const cached = cache.get(key);
+  if (cached && cached.raw === raw) return cached.value as T;
+  const value = readStorage(key, fallback);
+  cache.set(key, { raw, value });
+  return value;
+}
+
+export function useLocalStorage<T>(key: string, fallback: T) {
+  const subscribe = useCallback(
+    (cb: () => void) => subscribeTo(key, cb),
+    [key],
+  );
+
+  const value = useSyncExternalStore(
+    subscribe,
+    () => snapshot(key, fallback),
+    () => fallback,
+  );
+
+  const hydrated = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
 
   const set = useCallback(
     (next: T | ((prev: T) => T)) => {
-      setValue((prev) => {
-        const resolved =
-          typeof next === "function" ? (next as (p: T) => T)(prev) : next;
-        writeStorage(key, resolved);
-        return resolved;
-      });
+      const prev = snapshot(key, fallback);
+      const resolved =
+        typeof next === "function" ? (next as (p: T) => T)(prev) : next;
+      writeStorage(key, resolved);
+      emit(key);
     },
+    // fallback is a module-level constant at every call site
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [key],
   );
 

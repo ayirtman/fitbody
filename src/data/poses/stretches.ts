@@ -1,7 +1,980 @@
-import type { PoseSet } from "@/lib/pose-types";
+import type { JointMap, PoseSet } from "@/lib/pose-types";
+import { QUADRUPED, SEATED, STANDING, SUPINE, j } from "./reference";
 
 /**
  * Pose sets for all 24 stretches (doorway-pec-stretch … supine-twist).
  * Stretches loop pingPong with a generous holdMs (800–1500) at end range.
  */
-export const stretchPoses: PoseSet[] = [];
+
+/** Standing tall, FRONT view — symmetric stance, arms at the sides. */
+const FRONT_STAND: JointMap = {
+  head: [100, 56],
+  neck: [100, 71],
+  chest: [100, 91],
+  hip: [100, 117],
+  elbowF: [104, 94],
+  wristF: [106, 113],
+  elbowB: [96, 94],
+  wristB: [94, 113],
+  kneeF: [104, 143],
+  ankleF: [105, 166],
+  toeF: [108, 169],
+  kneeB: [96, 143],
+  ankleB: [95, 166],
+  toeB: [92, 169],
+};
+
+/** Lying prone facing right, hands under the shoulders — cobra start. */
+const PRONE: JointMap = {
+  head: [156, 162],
+  neck: [141, 165],
+  chest: [121, 165],
+  hip: [95, 166],
+  elbowF: [121, 157],
+  wristF: [137, 168],
+  elbowB: [118, 158],
+  wristB: [134, 168],
+  kneeF: [69, 166],
+  ankleF: [46, 167],
+  toeF: [34, 168],
+  kneeB: [66, 166],
+  ankleB: [43, 167],
+  toeB: [31, 168],
+};
+
+/** Kneeling upright facing right, shins back along the floor. */
+const KNEEL_TALL: JointMap = {
+  head: [95, 77],
+  neck: [95, 92],
+  chest: [95, 112],
+  hip: [95, 138],
+  elbowF: [97, 115],
+  wristF: [98, 135],
+  elbowB: [93, 115],
+  wristB: [94, 135],
+  kneeF: [95, 164],
+  ankleF: [72, 165],
+  toeF: [60, 166],
+  kneeB: [92, 164],
+  ankleB: [69, 165],
+  toeB: [57, 166],
+};
+
+export const stretchPoses: PoseSet[] = [
+  {
+    // FRONT view: forearms pinned on both door frames, body sinks through
+    slug: "doorway-pec-stretch",
+    loop: "pingPong",
+    highlight: ["armF", "armB"],
+    restFrame: 1,
+    props: [{ kind: "doorway", x1: 76, x2: 124 }],
+    frames: [
+      {
+        name: "set",
+        joints: j(FRONT_STAND, {
+          elbowF: [124, 74],
+          wristF: [124, 54],
+          elbowB: [121, 74],
+          wristB: [121, 54],
+        }),
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        // Chest eases forward through the frame — torso drops, arms stay pinned
+        name: "lean",
+        joints: j(FRONT_STAND, {
+          head: [100, 62],
+          neck: [100, 77],
+          chest: [100, 96],
+          hip: [100, 121],
+          elbowF: [124, 74],
+          wristF: [124, 54],
+          elbowB: [121, 74],
+          wristB: [121, 54],
+          kneeF: [105, 146],
+          ankleF: [105, 166],
+          kneeB: [95, 146],
+          ankleB: [95, 166],
+        }),
+        durationMs: 1400,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // FRONT view: right arm drawn straight across the chest, other forearm hooks it
+    slug: "cross-body-shoulder-stretch",
+    loop: "pingPong",
+    highlight: ["armF"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "stand",
+        joints: FRONT_STAND,
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        name: "pull",
+        joints: j(FRONT_STAND, {
+          elbowF: [78, 80],
+          wristF: [58, 84],
+          elbowB: [90, 92],
+          wristB: [76, 80],
+        }),
+        durationMs: 1400,
+        holdMs: 1100,
+      },
+    ],
+  },
+  {
+    // FRONT view: elbow points at the ceiling, hand drops behind the neck,
+    // other hand presses the raised elbow
+    slug: "overhead-triceps-stretch",
+    loop: "pingPong",
+    highlight: ["armF"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "stand",
+        joints: FRONT_STAND,
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        name: "press",
+        joints: j(FRONT_STAND, {
+          elbowF: [108, 49],
+          wristF: [97, 64],
+          elbowB: [88, 52],
+          wristB: [106, 47],
+        }),
+        durationMs: 1400,
+        holdMs: 1100,
+      },
+    ],
+  },
+  {
+    // Side view: palm pinned on the wall behind, chest rotates away from it
+    slug: "wall-biceps-stretch",
+    loop: "pingPong",
+    highlight: ["armF"],
+    restFrame: 1,
+    props: [{ kind: "wall", x: 178 }],
+    frames: [
+      {
+        name: "set",
+        joints: {
+          head: [134, 56],
+          neck: [134, 71],
+          chest: [134, 91],
+          hip: [134, 117],
+          elbowF: [158, 73],
+          wristF: [178, 74],
+          elbowB: [132, 95],
+          wristB: [131, 115],
+          kneeF: [134, 143],
+          ankleF: [134, 166],
+          toeF: [146, 168],
+          kneeB: [131, 143],
+          ankleB: [131, 166],
+          toeB: [143, 168],
+        },
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        // Torso turns and leans away; the straight arm stays pinned to the wall
+        name: "turn away",
+        joints: {
+          head: [128, 57],
+          neck: [129, 72],
+          chest: [131, 92],
+          hip: [133, 118],
+          elbowF: [155, 74],
+          wristF: [178, 74],
+          elbowB: [127, 96],
+          wristB: [126, 116],
+          kneeF: [133, 144],
+          ankleF: [134, 166],
+          toeF: [146, 168],
+          kneeB: [130, 144],
+          ankleB: [131, 166],
+          toeB: [143, 168],
+        },
+        durationMs: 1400,
+        holdMs: 1100,
+      },
+    ],
+  },
+  {
+    // Side view: arm long in front at shoulder height, other hand pulls the
+    // fingers back from underneath (palm up)
+    slug: "wrist-flexor-stretch",
+    loop: "pingPong",
+    highlight: ["armF"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "reach",
+        joints: j(STANDING, {
+          elbowF: [124, 73],
+          wristF: [144, 74],
+        }),
+        durationMs: 1300,
+        holdMs: 300,
+      },
+      {
+        name: "pull",
+        joints: j(STANDING, {
+          elbowF: [124, 73],
+          wristF: [143, 71],
+          elbowB: [118, 84],
+          wristB: [140, 79],
+        }),
+        durationMs: 1300,
+        holdMs: 1100,
+      },
+    ],
+  },
+  {
+    // Side view: arm long in front, other hand presses the back of the hand
+    // down from above (palm-down mirror of the flexor stretch)
+    slug: "wrist-extensor-stretch",
+    loop: "pingPong",
+    highlight: ["armF"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "reach",
+        joints: j(STANDING, {
+          elbowF: [124, 73],
+          wristF: [144, 74],
+        }),
+        durationMs: 1300,
+        holdMs: 300,
+      },
+      {
+        name: "press",
+        joints: j(STANDING, {
+          elbowF: [124, 73],
+          wristF: [143, 78],
+          elbowB: [121, 78],
+          wristB: [140, 73],
+        }),
+        durationMs: 1300,
+        holdMs: 1100,
+      },
+    ],
+  },
+  {
+    // Side view: prone, palms press the chest up into a gentle arch — hips heavy
+    slug: "cobra-stretch",
+    loop: "pingPong",
+    highlight: ["spine"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "floor",
+        joints: PRONE,
+        durationMs: 1500,
+        holdMs: 300,
+      },
+      {
+        name: "arch",
+        joints: j(PRONE, {
+          head: [141, 126],
+          neck: [128, 134],
+          chest: [116, 149],
+          elbowF: [140, 151],
+          elbowB: [139, 153],
+        }),
+        durationMs: 1500,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // FRONT view: right arm overhead, torso arcs sideways over the planted hips
+    slug: "side-reach-stretch",
+    loop: "pingPong",
+    highlight: ["spine", "armF"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "reach up",
+        joints: j(FRONT_STAND, {
+          elbowF: [104, 49],
+          wristF: [107, 29],
+          elbowB: [87, 90],
+          wristB: [97, 105],
+        }),
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        name: "bend",
+        joints: j(FRONT_STAND, {
+          head: [72, 68],
+          neck: [82, 78],
+          chest: [91, 94],
+          elbowF: [74, 56],
+          wristF: [60, 42],
+          elbowB: [76, 98],
+          wristB: [93, 108],
+        }),
+        durationMs: 1400,
+        holdMs: 1000,
+      },
+    ],
+  },
+  {
+    // FRONT view: ONLY the head tilts — ear to shoulder, hand draped over the top
+    slug: "upper-trap-stretch",
+    loop: "pingPong",
+    highlight: ["head"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "tall",
+        joints: FRONT_STAND,
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        name: "tilt",
+        joints: j(FRONT_STAND, {
+          head: [113, 62],
+          neck: [102, 71],
+          elbowF: [114, 50],
+          wristF: [95, 54],
+          elbowB: [95, 95],
+          wristB: [93, 116],
+        }),
+        durationMs: 1400,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // FRONT view: head rotates 45° then drops chin-to-armpit, hand rests on top
+    slug: "levator-scap-stretch",
+    loop: "pingPong",
+    highlight: ["head"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "tall",
+        joints: FRONT_STAND,
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        name: "chin down",
+        joints: j(FRONT_STAND, {
+          head: [111, 82],
+          neck: [101, 72],
+          elbowF: [113, 52],
+          wristF: [109, 71],
+          elbowB: [95, 95],
+          wristB: [93, 116],
+        }),
+        durationMs: 1400,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // Side view: rear shin up the couch (box), front foot planted,
+    // torso rises to vertical for the deep hip-flexor/quad stretch
+    slug: "couch-stretch",
+    loop: "pingPong",
+    highlight: ["legB"],
+    restFrame: 1,
+    props: [{ kind: "box", x: 18, y: 132, w: 28, h: 38 }],
+    frames: [
+      {
+        name: "hands on knee",
+        joints: {
+          head: [102, 94],
+          neck: [90, 103],
+          chest: [78, 118],
+          hip: [62, 139],
+          elbowF: [94, 126],
+          wristF: [88, 145],
+          elbowB: [91, 126],
+          wristB: [85, 145],
+          kneeF: [86, 148],
+          ankleF: [97, 167],
+          toeF: [109, 168],
+          kneeB: [56, 164],
+          ankleB: [47, 143],
+          toeB: [38, 135],
+        },
+        durationMs: 1500,
+        holdMs: 300,
+      },
+      {
+        name: "upright",
+        joints: {
+          head: [69, 79],
+          neck: [68, 94],
+          chest: [66, 114],
+          hip: [62, 139],
+          elbowF: [74, 117],
+          wristF: [79, 136],
+          elbowB: [71, 117],
+          wristB: [76, 136],
+          kneeF: [86, 148],
+          ankleF: [97, 167],
+          toeF: [109, 168],
+          kneeB: [56, 164],
+          ankleB: [47, 143],
+          toeB: [38, 135],
+        },
+        durationMs: 1500,
+        holdMs: 1300,
+      },
+    ],
+  },
+  {
+    // Side view: half-kneeling 90/90, then the whole body shifts forward
+    // while the rear knee stays planted; front arm sweeps overhead
+    slug: "kneeling-hip-flexor-stretch",
+    loop: "pingPong",
+    highlight: ["legB"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "kneel",
+        joints: {
+          head: [84, 78],
+          neck: [84, 93],
+          chest: [84, 113],
+          hip: [84, 139],
+          elbowF: [86, 116],
+          wristF: [87, 136],
+          elbowB: [82, 116],
+          wristB: [83, 136],
+          kneeF: [110, 143],
+          ankleF: [111, 166],
+          toeF: [123, 168],
+          kneeB: [80, 164],
+          ankleB: [57, 165],
+          toeB: [45, 166],
+        },
+        durationMs: 1500,
+        holdMs: 300,
+      },
+      {
+        name: "shift",
+        joints: {
+          head: [92, 80],
+          neck: [92, 95],
+          chest: [92, 115],
+          hip: [92, 141],
+          elbowF: [96, 73],
+          wristF: [99, 54],
+          elbowB: [90, 118],
+          wristB: [91, 138],
+          kneeF: [115, 146],
+          ankleF: [111, 166],
+          toeF: [123, 168],
+          kneeB: [80, 164],
+          ankleB: [57, 165],
+          toeB: [45, 166],
+        },
+        durationMs: 1500,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // Side view: fingertips on the wall behind for balance, heel pulled to glute
+    slug: "standing-quad-stretch",
+    loop: "pingPong",
+    highlight: ["legF"],
+    restFrame: 1,
+    props: [{ kind: "wall", x: 58 }],
+    frames: [
+      {
+        name: "stand",
+        joints: j(STANDING, {
+          elbowB: [80, 80],
+          wristB: [59, 77],
+        }),
+        durationMs: 1300,
+        holdMs: 300,
+      },
+      {
+        name: "heel to hip",
+        joints: j(STANDING, {
+          elbowB: [80, 80],
+          wristB: [59, 77],
+          elbowF: [94, 94],
+          wristF: [90, 112],
+          kneeF: [98, 144],
+          ankleF: [90, 120],
+          toeF: [82, 128],
+        }),
+        durationMs: 1300,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // Side view: hands on the wall, rear leg long with heel planted,
+    // hips press toward the wall to load the calf
+    slug: "wall-calf-stretch",
+    loop: "pingPong",
+    highlight: ["legB"],
+    restFrame: 1,
+    props: [{ kind: "wall", x: 178 }],
+    frames: [
+      {
+        name: "set",
+        joints: {
+          head: [147, 78],
+          neck: [133, 82],
+          chest: [122, 98],
+          hip: [108, 120],
+          elbowF: [155, 89],
+          wristF: [176, 92],
+          elbowB: [153, 90],
+          wristB: [174, 94],
+          kneeF: [118, 144],
+          ankleF: [124, 165],
+          toeF: [136, 167],
+          kneeB: [95, 142],
+          ankleB: [82, 163],
+          toeB: [94, 167],
+        },
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        name: "lean",
+        joints: {
+          head: [153, 82],
+          neck: [139, 86],
+          chest: [128, 102],
+          hip: [114, 124],
+          elbowF: [157, 91],
+          wristF: [176, 92],
+          elbowB: [155, 92],
+          wristB: [174, 94],
+          kneeF: [127, 147],
+          ankleF: [124, 165],
+          toeF: [136, 167],
+          kneeB: [98, 144],
+          ankleB: [82, 163],
+          toeB: [94, 167],
+        },
+        durationMs: 1400,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // Side view: from all fours the hips lift into the inverted V
+    slug: "downward-dog",
+    loop: "pingPong",
+    highlight: ["legF", "legB"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "all fours",
+        joints: QUADRUPED,
+        durationMs: 1500,
+        holdMs: 300,
+      },
+      {
+        name: "dog",
+        joints: {
+          head: [129, 150],
+          neck: [119, 140],
+          chest: [103, 128],
+          hip: [82, 112],
+          elbowF: [138, 155],
+          wristF: [153, 166],
+          elbowB: [135, 155],
+          wristB: [150, 166],
+          kneeF: [68, 134],
+          ankleF: [56, 155],
+          toeF: [50, 166],
+          kneeB: [65, 134],
+          ankleB: [53, 155],
+          toeB: [47, 166],
+        },
+        durationMs: 1500,
+        holdMs: 1400,
+      },
+    ],
+  },
+  {
+    // Side view: from all fours, arm opens to the ceiling then threads under
+    // the body until shoulder and ear rest toward the floor — hips stay high
+    slug: "thread-the-needle",
+    loop: "pingPong",
+    highlight: ["armF", "spine"],
+    restFrame: 2,
+    frames: [
+      {
+        name: "all fours",
+        joints: QUADRUPED,
+        durationMs: 1100,
+        holdMs: 200,
+      },
+      {
+        name: "open",
+        joints: j(QUADRUPED, {
+          elbowF: [135, 110],
+          wristF: [141, 92],
+        }),
+        durationMs: 1100,
+        holdMs: 400,
+      },
+      {
+        name: "thread",
+        joints: j(QUADRUPED, {
+          head: [141, 158],
+          neck: [127, 152],
+          chest: [107, 146],
+          elbowF: [105, 158],
+          wristF: [86, 162],
+          elbowB: [146, 146],
+          wristB: [158, 164],
+        }),
+        durationMs: 1100,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // Side view: continuous flow between cow (belly down, head up) and
+    // cat (spine rounded to the ceiling, head tucked)
+    slug: "cat-cow",
+    loop: "pingPong",
+    highlight: ["spine"],
+    frames: [
+      {
+        name: "cow",
+        joints: j(QUADRUPED, {
+          head: [142, 124],
+          neck: [128, 131],
+          chest: [109, 141],
+          hip: [83, 138],
+        }),
+        durationMs: 1600,
+        holdMs: 500,
+      },
+      {
+        name: "cat",
+        joints: j(QUADRUPED, {
+          head: [137, 146],
+          neck: [126, 135],
+          chest: [107, 126],
+          hip: [83, 136],
+        }),
+        durationMs: 1600,
+        holdMs: 500,
+      },
+    ],
+  },
+  {
+    // Side view: from tall kneeling the hips sink to the heels and the arms
+    // stretch long, forehead settling toward the floor
+    slug: "childs-pose",
+    loop: "pingPong",
+    highlight: ["spine"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "kneel tall",
+        joints: KNEEL_TALL,
+        durationMs: 1600,
+        holdMs: 300,
+      },
+      {
+        name: "fold",
+        joints: j(KNEEL_TALL, {
+          head: [134, 151],
+          neck: [121, 144],
+          chest: [103, 134],
+          hip: [80, 147],
+          elbowF: [143, 156],
+          wristF: [163, 165],
+          elbowB: [140, 157],
+          wristB: [160, 166],
+        }),
+        durationMs: 1600,
+        holdMs: 1500,
+      },
+    ],
+  },
+  {
+    // Side view, lying on the back: ankle crossed over the far thigh,
+    // hands pull that thigh toward the chest
+    slug: "figure-four-stretch",
+    loop: "pingPong",
+    highlight: ["legF"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "cross",
+        joints: j(SUPINE, {
+          kneeF: [127, 136],
+          ankleF: [133, 148],
+          toeF: [145, 146],
+        }),
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        name: "pull",
+        joints: j(SUPINE, {
+          kneeF: [119, 135],
+          ankleF: [125, 147],
+          toeF: [137, 145],
+          kneeB: [124, 136],
+          ankleB: [139, 152],
+          toeB: [151, 154],
+          elbowF: [97, 157],
+          wristF: [116, 150],
+          elbowB: [94, 158],
+          wristB: [113, 151],
+        }),
+        durationMs: 1400,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // Side view: front shin folded on the floor, rear leg long behind,
+    // torso folds forward over the front leg
+    slug: "pigeon-stretch",
+    loop: "pingPong",
+    highlight: ["legF"],
+    restFrame: 0,
+    frames: [
+      {
+        name: "upright",
+        joints: {
+          head: [92, 96],
+          neck: [91, 111],
+          chest: [89, 131],
+          hip: [88, 157],
+          elbowF: [97, 134],
+          wristF: [104, 152],
+          elbowB: [94, 134],
+          wristB: [101, 152],
+          kneeF: [114, 157],
+          ankleF: [93, 166],
+          toeF: [81, 167],
+          kneeB: [62, 161],
+          ankleB: [39, 164],
+          toeB: [27, 166],
+        },
+        durationMs: 1500,
+        holdMs: 400,
+      },
+      {
+        name: "fold",
+        joints: {
+          head: [144, 140],
+          neck: [130, 143],
+          chest: [111, 148],
+          hip: [88, 157],
+          elbowF: [147, 155],
+          wristF: [163, 166],
+          elbowB: [144, 156],
+          wristB: [160, 166],
+          kneeF: [114, 157],
+          ankleF: [93, 166],
+          toeF: [81, 167],
+          kneeB: [62, 161],
+          ankleB: [39, 164],
+          toeB: [27, 166],
+        },
+        durationMs: 1500,
+        holdMs: 1300,
+      },
+    ],
+  },
+  {
+    // Side view: heel up on a low step, flat-back hinge from the hips
+    slug: "standing-hamstring-stretch",
+    loop: "pingPong",
+    highlight: ["legF"],
+    restFrame: 1,
+    props: [{ kind: "box", x: 126, y: 150, w: 26, h: 20 }],
+    frames: [
+      {
+        name: "set",
+        joints: j(STANDING, {
+          kneeF: [120, 133],
+          ankleF: [136, 147],
+          toeF: [147, 142],
+        }),
+        durationMs: 1400,
+        holdMs: 300,
+      },
+      {
+        name: "hinge",
+        joints: j(STANDING, {
+          head: [143, 76],
+          neck: [131, 84],
+          chest: [117, 97],
+          elbowF: [139, 106],
+          wristF: [144, 125],
+          elbowB: [136, 107],
+          wristB: [141, 126],
+          kneeF: [120, 133],
+          ankleF: [136, 147],
+          toeF: [147, 142],
+        }),
+        durationMs: 1400,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // Side view: seated with legs long, hinging forward to slide hands to the feet
+    slug: "seated-forward-fold",
+    loop: "pingPong",
+    highlight: ["legF", "legB"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "sit tall",
+        joints: SEATED,
+        durationMs: 1600,
+        holdMs: 300,
+      },
+      {
+        name: "fold",
+        joints: j(SEATED, {
+          head: [140, 140],
+          neck: [126, 143],
+          chest: [107, 149],
+          elbowF: [129, 164],
+          wristF: [147, 158],
+          elbowB: [126, 164],
+          wristB: [144, 159],
+        }),
+        durationMs: 1600,
+        holdMs: 1400,
+      },
+    ],
+  },
+  {
+    // Side view, three positions: deep lunge with hands inside the front foot,
+    // near elbow dropping toward the instep, then the arm spirals to the ceiling
+    slug: "worlds-greatest-stretch",
+    loop: "pingPong",
+    highlight: ["legB", "armF"],
+    restFrame: 2,
+    frames: [
+      {
+        name: "lunge",
+        joints: {
+          head: [139, 120],
+          neck: [125, 125],
+          chest: [107, 136],
+          hip: [85, 150],
+          elbowF: [119, 148],
+          wristF: [115, 166],
+          elbowB: [116, 148],
+          wristB: [112, 166],
+          kneeF: [110, 145],
+          ankleF: [124, 164],
+          toeF: [136, 166],
+          kneeB: [59, 155],
+          ankleB: [36, 157],
+          toeB: [30, 168],
+        },
+        durationMs: 1200,
+        holdMs: 400,
+      },
+      {
+        name: "elbow drop",
+        joints: {
+          head: [138, 126],
+          neck: [124, 130],
+          chest: [106, 138],
+          hip: [85, 150],
+          elbowF: [127, 153],
+          wristF: [115, 166],
+          elbowB: [110, 150],
+          wristB: [112, 166],
+          kneeF: [110, 145],
+          ankleF: [124, 164],
+          toeF: [136, 166],
+          kneeB: [59, 155],
+          ankleB: [36, 157],
+          toeB: [30, 168],
+        },
+        durationMs: 1200,
+        holdMs: 600,
+      },
+      {
+        name: "rotate up",
+        joints: {
+          head: [135, 116],
+          neck: [122, 123],
+          chest: [105, 133],
+          hip: [85, 150],
+          elbowF: [128, 101],
+          wristF: [133, 84],
+          elbowB: [117, 146],
+          wristB: [112, 166],
+          kneeF: [110, 145],
+          ankleF: [124, 164],
+          toeF: [136, 166],
+          kneeB: [59, 155],
+          ankleB: [36, 157],
+          toeB: [30, 168],
+        },
+        durationMs: 1200,
+        holdMs: 1200,
+      },
+    ],
+  },
+  {
+    // Side view, lying on the back: knees stack over the hips, then drop
+    // together to the floor while the shoulders stay down
+    slug: "supine-twist",
+    loop: "pingPong",
+    highlight: ["spine"],
+    restFrame: 1,
+    frames: [
+      {
+        name: "knees up",
+        joints: j(SUPINE, {
+          kneeF: [118, 136],
+          ankleF: [140, 143],
+          toeF: [151, 147],
+          kneeB: [115, 136],
+          ankleB: [137, 143],
+          toeB: [148, 147],
+        }),
+        durationMs: 1500,
+        holdMs: 300,
+      },
+      {
+        name: "drop",
+        joints: j(SUPINE, {
+          kneeF: [146, 158],
+          ankleF: [128, 168],
+          toeF: [116, 168],
+          kneeB: [143, 158],
+          ankleB: [125, 168],
+          toeB: [113, 168],
+        }),
+        durationMs: 1500,
+        holdMs: 1400,
+      },
+    ],
+  },
+];

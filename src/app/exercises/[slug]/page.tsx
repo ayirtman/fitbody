@@ -4,6 +4,7 @@ import { exercises, exerciseBySlug, relatedExercises } from "@/data";
 import MovementDetail from "@/components/exercise/MovementDetail";
 import MovementCard from "@/components/exercise/MovementCard";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import GearKit from "@/components/gear/GearKit";
 import JsonLd from "@/components/seo/JsonLd";
 import { howToSchema } from "@/lib/seo/schema";
 import { pageMeta } from "@/lib/seo/meta";
@@ -88,6 +89,7 @@ export default async function ExercisePage({
             </p>
           )}
         </section>
+        <GearKit equipment={exercise.equipment} />
       </MovementDetail>
 
       {related.length > 0 && (

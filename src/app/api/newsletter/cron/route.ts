@@ -4,6 +4,7 @@ import { cronAuthorized } from "@/lib/server/newsletterAuth";
 import { weeklyDigest } from "@/lib/newsletter/digest";
 import { claudeConfigured, generateIssue } from "@/lib/newsletter/generate";
 import { insertIssue, issueExistsThisWeek } from "@/lib/newsletter/issues";
+import { getActiveSponsor, injectSponsor } from "@/lib/newsletter/sponsor";
 
 export const maxDuration = 300;
 
@@ -42,6 +43,9 @@ export async function GET(request: Request) {
   } else {
     ({ subject, html } = weeklyDigest(siteUrl));
   }
+
+  const sponsor = await getActiveSponsor();
+  if (sponsor) html = injectSponsor(html, sponsor);
 
   const issue = await insertIssue({ subject, html, source });
   if (!issue) {

@@ -9,6 +9,7 @@ import MarkDoneButton from "@/components/progress/MarkDoneButton";
 import FavoriteButton from "@/components/progress/FavoriteButton";
 import { DIFFICULTY_LABELS, EQUIPMENT_LABELS } from "@/lib/filters";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import GearKit from "@/components/gear/GearKit";
 import { pageMeta } from "@/lib/seo/meta";
 
 export function generateStaticParams() {
@@ -93,6 +94,9 @@ export default async function RoutinePage({
                 {muscleById.get(m)?.shortName ?? m}
               </Badge>
             ))}
+          </div>
+          <div className="mt-6">
+            <GearKit equipment={routine.equipment} />
           </div>
         </aside>
 

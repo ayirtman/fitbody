@@ -42,8 +42,20 @@ export default function AboutPage() {
             Posture AI
           </Link>{" "}
           - a paid, personalized program built from photos of your actual
-          posture. That&apos;s how the lights stay on. The free library stays
-          free. That&apos;s the deal, in writing.
+          posture. That&apos;s how the lights stay on. Until then the site is
+          reader-supported: labelled affiliate links on{" "}
+          <Link href="/gear" className="text-gold hover:text-gold-light">
+            gear we actually recommend
+          </Link>
+          , an occasional newsletter sponsor, and readers who{" "}
+          <Link href="/support" className="text-gold hover:text-gold-light">
+            chip in
+          </Link>
+          . The free library stays free. That&apos;s the deal, in writing -{" "}
+          <Link href="/disclosure" className="text-gold hover:text-gold-light">
+            full disclosure here
+          </Link>
+          .
         </p>
       </div>
 

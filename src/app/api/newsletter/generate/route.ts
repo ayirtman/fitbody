@@ -3,6 +3,7 @@ import { supabaseConfigured } from "@/lib/server/supabase";
 import { newsletterAdminAuthorized } from "@/lib/server/newsletterAuth";
 import { claudeConfigured, generateIssue } from "@/lib/newsletter/generate";
 import { insertIssue } from "@/lib/newsletter/issues";
+import { getActiveSponsor, injectSponsor } from "@/lib/newsletter/sponsor";
 
 // Claude can take a minute to write a full issue.
 export const maxDuration = 300;
@@ -37,8 +38,16 @@ export async function POST(request: Request) {
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://templefit.vercel.app";
   try {
-    const { subject, html } = await generateIssue(siteUrl, topic);
-    const issue = await insertIssue({ subject, html, source: "claude" });
+    const generated = await generateIssue(siteUrl, topic);
+    const sponsor = await getActiveSponsor();
+    const html = sponsor
+      ? injectSponsor(generated.html, sponsor)
+      : generated.html;
+    const issue = await insertIssue({
+      subject: generated.subject,
+      html,
+      source: "claude",
+    });
     if (!issue) {
       return NextResponse.json(
         { ok: false, error: "Generated, but could not save the draft" },

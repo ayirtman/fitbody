@@ -3,7 +3,7 @@ import { PLANK, STANDING, SUPINE, j } from "./reference";
 
 /**
  * Pose sets for all 18 physio moves (pelvic-tilt … wrist-eccentric-extension).
- * Physio tempo is deliberately SLOW — controlled, small-range motion.
+ * Physio tempo is deliberately SLOW - controlled, small-range motion.
  */
 
 /** Lying on back, hands tucked under the lumbar arch, one leg straight. */
@@ -294,7 +294,7 @@ export const physioPoses: PoseSet[] = [
         holdMs: 400,
       },
       {
-        // Chin glides straight BACK — same height, gentle double chin
+        // Chin glides straight BACK - same height, gentle double chin
         name: "tucked",
         joints: j(STANDING, { head: [95, 56], neck: [99, 71] }),
         durationMs: 1800,
@@ -342,7 +342,7 @@ export const physioPoses: PoseSet[] = [
         holdMs: 300,
       },
       {
-        // Arms float a few centimeters up — chest and head stay down
+        // Arms float a few centimeters up - chest and head stay down
         name: "lift",
         joints: j(PRONE_Y, {
           elbowF: [137, 151],
@@ -432,7 +432,7 @@ export const physioPoses: PoseSet[] = [
         durationMs: 1400,
       },
       {
-        // Top of the circle — knee at its highest, sweeping around
+        // Top of the circle - knee at its highest, sweeping around
         name: "top",
         joints: j(STANDING, {
           elbowF: [112, 90],
@@ -444,7 +444,7 @@ export const physioPoses: PoseSet[] = [
         durationMs: 2400,
       },
       {
-        // Hip rotates through — leg trails behind before returning under
+        // Hip rotates through - leg trails behind before returning under
         name: "sweep",
         joints: j(STANDING, {
           elbowF: [112, 90],
@@ -645,7 +645,7 @@ export const physioPoses: PoseSet[] = [
         holdMs: 300,
       },
       {
-        // Forearm rotates out against the band — elbow never leaves the side
+        // Forearm rotates out against the band - elbow never leaves the side
         name: "open",
         joints: j(STANDING, {
           elbowF: [104, 95],
@@ -726,14 +726,14 @@ export const physioPoses: PoseSet[] = [
         holdMs: 600,
       },
       {
-        // Hook fist — the hand starts to curl forward
+        // Hook fist - the hand starts to curl forward
         name: "hook",
         joints: j(STANDING, { elbowF: [104, 95], wristF: [117, 80] }),
         durationMs: 1500,
         holdMs: 600,
       },
       {
-        // Full fist — wrist curled the rest of the way through the glide
+        // Full fist - wrist curled the rest of the way through the glide
         name: "fist",
         joints: j(STANDING, { elbowF: [104, 95], wristF: [123, 89] }),
         durationMs: 1500,

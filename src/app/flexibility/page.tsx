@@ -8,7 +8,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 export const metadata: Metadata = {
   title: "Flexibility & Mobility",
   description:
-    "Stretches for every muscle — by single muscle, by area, or as ready-made mobility routines for mornings and post-desk evenings.",
+    "Stretches for every muscle - by single muscle, by area, or as ready-made mobility routines for mornings and post-desk evenings.",
 };
 
 export default function FlexibilityPage() {

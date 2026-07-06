@@ -6,7 +6,7 @@ import { poseBySlug } from "@/data/poses";
 import PoseAnimation from "@/components/pose/PoseAnimation";
 
 /**
- * Pose authoring gallery — dev-only workbench, 404s in production builds.
+ * Pose authoring gallery - dev-only workbench, 404s in production builds.
  *
  * ?kind=exercise|stretch|physio  filter to one collection
  * ?slug=<movement>               frame strip + loop for a single movement
@@ -107,7 +107,7 @@ function SingleMovement({ slug }: { slug: string }) {
             </p>
             <PoseAnimation
               pose={{ ...pose, restFrame: i }}
-              label={`${movement.name} — ${f.name}`}
+              label={`${movement.name} - ${f.name}`}
               freeze
               className="h-44"
             />

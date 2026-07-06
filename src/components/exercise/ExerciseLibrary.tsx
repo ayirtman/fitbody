@@ -41,7 +41,7 @@ export default function ExerciseLibrary({
       </div>
       {results.length === 0 && (
         <p className="mt-8 text-muted">
-          Nothing matches that combination — loosen a filter and try again.
+          Nothing matches that combination - loosen a filter and try again.
         </p>
       )}
     </div>

@@ -5,7 +5,7 @@ import TargetCalculator from "@/components/nutrition/TargetCalculator";
 export const metadata: Metadata = {
   title: "Protein & Fiber Targets",
   description:
-    "Work out your daily protein, fiber and calorie targets with a transparent formula — then see recipes that hit them.",
+    "Work out your daily protein, fiber and calorie targets with a transparent formula - then see recipes that hit them.",
 };
 
 export default function NutritionPage() {
@@ -18,7 +18,7 @@ export default function NutritionPage() {
         Know your numbers.
       </h1>
       <p className="mt-4 max-w-xl text-muted">
-        No AI, no black box — a transparent formula: calories from bodyweight
+        No AI, no black box - a transparent formula: calories from bodyweight
         and activity, protein at 0.8g per pound, fiber at 14g per 1,000
         calories. Honest numbers you can actually hit.
       </p>

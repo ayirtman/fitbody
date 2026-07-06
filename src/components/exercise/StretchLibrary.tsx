@@ -31,7 +31,7 @@ export default function StretchLibrary({ stretches }: { stretches: Stretch[] }) 
       </div>
       {results.length === 0 && (
         <p className="mt-8 text-muted">
-          Nothing matches that combination — loosen a filter and try again.
+          Nothing matches that combination - loosen a filter and try again.
         </p>
       )}
     </div>

@@ -3,7 +3,7 @@ import { HANGING, PLANK, QUADRUPED, STANDING, SUPINE, j } from "./reference";
 
 /**
  * Pose sets for exercises 25–48 (mountain-climber … single-leg-hip-hinge).
- * bodyweight-squat is a lead-authored exemplar — match its quality.
+ * bodyweight-squat is a lead-authored exemplar - match its quality.
  */
 export const exercisePosesB: PoseSet[] = [
   {
@@ -59,7 +59,7 @@ export const exercisePosesB: PoseSet[] = [
         durationMs: 400,
       },
       {
-        // Legs switch mid-air — far knee tucks, near leg kicks back out
+        // Legs switch mid-air - far knee tucks, near leg kicks back out
         name: "driveB",
         joints: j(PLANK, {
           kneeB: [110, 126],
@@ -91,7 +91,7 @@ export const exercisePosesB: PoseSet[] = [
         holdMs: 200,
       },
       {
-        // Legs swap — near knee returns over the hip, far leg marches out
+        // Legs swap - near knee returns over the hip, far leg marches out
         name: "extendB",
         joints: j(SUPINE, {
           kneeF: [118, 135],
@@ -117,7 +117,7 @@ export const exercisePosesB: PoseSet[] = [
         durationMs: 700,
       },
       {
-        // Knee lifted past hip height, torso stays vertical — long hold
+        // Knee lifted past hip height, torso stays vertical - long hold
         name: "hold",
         joints: j(STANDING, {
           kneeF: [113, 95],
@@ -212,7 +212,7 @@ export const exercisePosesB: PoseSet[] = [
         holdMs: 150,
       },
       {
-        // Whole body rises as the heels lift — toes stay planted
+        // Whole body rises as the heels lift - toes stay planted
         name: "top",
         joints: j(STANDING, {
           head: [100, 49],
@@ -239,7 +239,7 @@ export const exercisePosesB: PoseSet[] = [
     highlight: ["legF"],
     frames: [
       {
-        // Far foot hooked up behind — all the weight on the near leg
+        // Far foot hooked up behind - all the weight on the near leg
         name: "bottom",
         joints: j(STANDING, {
           kneeB: [96, 142],
@@ -312,7 +312,7 @@ export const exercisePosesB: PoseSet[] = [
     ],
   },
   {
-    // FRONT view — the pull reads left-right
+    // FRONT view - the pull reads left-right
     slug: "band-pull-apart",
     loop: "pingPong",
     highlight: ["armF", "armB"],
@@ -566,7 +566,7 @@ export const exercisePosesB: PoseSet[] = [
         holdMs: 150,
       },
       {
-        // Bar pulled to the lower ribs, elbows driving back — hinge held
+        // Bar pulled to the lower ribs, elbows driving back - hinge held
         name: "top",
         joints: {
           head: [143, 85],
@@ -601,7 +601,7 @@ export const exercisePosesB: PoseSet[] = [
         holdMs: 150,
       },
       {
-        // Opposite arm and leg extend level with the torso — spine still
+        // Opposite arm and leg extend level with the torso - spine still
         name: "extend",
         joints: j(QUADRUPED, {
           elbowF: [152, 130],
@@ -643,7 +643,7 @@ export const exercisePosesB: PoseSet[] = [
         holdMs: 300,
       },
       {
-        // Modest lift — arms, chest and legs hover, hips stay grounded
+        // Modest lift - arms, chest and legs hover, hips stay grounded
         name: "fly",
         joints: {
           head: [137, 151],
@@ -783,7 +783,7 @@ export const exercisePosesB: PoseSet[] = [
     ],
   },
   {
-    // FRONT view — quarter squat, stepping against the band
+    // FRONT view - quarter squat, stepping against the band
     slug: "banded-lateral-walk",
     loop: "cycle",
     highlight: ["legF", "legB"],
@@ -854,7 +854,7 @@ export const exercisePosesB: PoseSet[] = [
         holdMs: 150,
       },
       {
-        // Hips back, soft knees — bells slide down the legs to mid-shin
+        // Hips back, soft knees - bells slide down the legs to mid-shin
         name: "bottom",
         joints: j(STANDING, {
           head: [142, 99],
@@ -904,7 +904,7 @@ export const exercisePosesB: PoseSet[] = [
         easing: "linear",
       },
       {
-        // Halfway down — body one straight line, hamstrings braking hard
+        // Halfway down - body one straight line, hamstrings braking hard
         name: "mid",
         joints: {
           head: [144, 96],
@@ -926,7 +926,7 @@ export const exercisePosesB: PoseSet[] = [
         easing: "linear",
       },
       {
-        // Caught in the push-up landing — then a quick push back up
+        // Caught in the push-up landing - then a quick push back up
         name: "catch",
         joints: {
           head: [171, 131],

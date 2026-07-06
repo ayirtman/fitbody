@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 /**
- * Checkable shopping list. Ephemeral by design — it resets on reload, like a
+ * Checkable shopping list. Ephemeral by design - it resets on reload, like a
  * paper list you throw away after the shop.
  */
 export default function ShoppingList({

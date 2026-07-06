@@ -111,7 +111,7 @@ export default function RecipeLibrary({ recipes }: { recipes: Recipe[] }) {
       </div>
       {results.length === 0 && (
         <p className="mt-8 text-muted">
-          Nothing matches — loosen a filter and try again.
+          Nothing matches - loosen a filter and try again.
         </p>
       )}
     </div>

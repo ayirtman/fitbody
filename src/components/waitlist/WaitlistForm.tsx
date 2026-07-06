@@ -30,14 +30,14 @@ export default function WaitlistForm() {
       const data = (await res.json()) as { ok: boolean; error?: string };
       if (!data.ok) {
         setStatus("error");
-        setError(data.error ?? "Something went wrong — try again.");
+        setError(data.error ?? "Something went wrong - try again.");
         return;
       }
       setWaitlist({ submitted: true, at: new Date().toISOString() });
       setStatus("idle");
     } catch {
       setStatus("error");
-      setError("Network hiccup — try again in a moment.");
+      setError("Network hiccup - try again in a moment.");
     }
   }
 

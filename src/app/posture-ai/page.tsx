@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
 
 export const metadata: Metadata = {
-  title: "Posture AI — Coming Soon",
+  title: "Posture AI - Coming Soon",
   description:
     "AI posture analysis is coming: snap two photos, answer a few questions, get a training program built for your body. Join the waitlist.",
 };
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const features = [
   {
     title: "Photo posture scan",
-    body: "Two photos — front and side. The AI reads shoulder tilt, pelvic position, forward head and more, the way a good physio's eye would.",
+    body: "Two photos - front and side. The AI reads shoulder tilt, pelvic position, forward head and more, the way a good physio's eye would.",
     icon: (
       <path d="M4 7h3l2-2h6l2 2h3v12H4zM12 10a3.5 3.5 0 110 7 3.5 3.5 0 010-7z" />
     ),
@@ -22,7 +22,7 @@ const features = [
   },
   {
     title: "Your program, not a template",
-    body: "A week-by-week plan targeting your imbalances, built from the same exercise library you already know — and it adapts as you progress.",
+    body: "A week-by-week plan targeting your imbalances, built from the same exercise library you already know - and it adapts as you progress.",
     icon: (
       <path d="M5 4v16M5 8c3 0 4-2 7-2s4 2 7 2v8c-3 0-4-2-7-2s-4 2-7 2" />
     ),
@@ -107,7 +107,7 @@ export default function PostureAiPage() {
         <h2 className="display text-3xl">Be first through the door.</h2>
         <p className="mx-auto mt-3 max-w-md text-sm text-muted">
           Waitlist members get early access and founding pricing. Everything
-          else on TempleFit stays free — that&apos;s the deal.
+          else on TempleFit stays free - that&apos;s the deal.
         </p>
         <div className="relative mt-6">
           <WaitlistForm />

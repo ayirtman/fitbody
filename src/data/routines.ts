@@ -5,7 +5,7 @@ export const routines: Routine[] = [
     slug: "morning-energizer",
     name: "15-Min Morning Energizer",
     tagline:
-      "Wake up your whole body before the coffee finishes brewing — no equipment, no excuses.",
+      "Wake up your whole body before the coffee finishes brewing - no equipment, no excuses.",
     category: "quick",
     daysPerWeek: 1,
     equipment: ["none"],
@@ -168,7 +168,7 @@ export const routines: Routine[] = [
     slug: "desk-warrior-reset",
     name: "Desk Warrior Reset",
     tagline:
-      "Ten minutes to undo eight hours of hunching — your neck and hips will thank you.",
+      "Ten minutes to undo eight hours of hunching - your neck and hips will thank you.",
     category: "recovery",
     daysPerWeek: 1,
     equipment: ["none"],
@@ -219,7 +219,7 @@ export const routines: Routine[] = [
     slug: "dad-strength-split",
     name: "3-Day Dad Strength Split",
     tagline:
-      "Push, pull, and legs in three focused half-hours a week — real strength on a dad schedule.",
+      "Push, pull, and legs in three focused half-hours a week - real strength on a dad schedule.",
     category: "strength-program",
     daysPerWeek: 3,
     equipment: ["dumbbells", "pull-up-bar"],
@@ -239,7 +239,7 @@ export const routines: Routine[] = [
     ],
     days: [
       {
-        dayLabel: "Day 1 — Push",
+        dayLabel: "Day 1 - Push",
         focus: "Chest, shoulders, triceps",
         totalMin: 30,
         blocks: [
@@ -308,7 +308,7 @@ export const routines: Routine[] = [
         ],
       },
       {
-        dayLabel: "Day 2 — Pull",
+        dayLabel: "Day 2 - Pull",
         focus: "Back, biceps, grip",
         totalMin: 30,
         blocks: [
@@ -380,7 +380,7 @@ export const routines: Routine[] = [
         ],
       },
       {
-        dayLabel: "Day 3 — Legs + Core",
+        dayLabel: "Day 3 - Legs + Core",
         focus: "Quads, hamstrings, glutes, trunk",
         totalMin: 30,
         blocks: [
@@ -459,7 +459,7 @@ export const routines: Routine[] = [
     slug: "minimalist-dumbbell",
     name: "2-Day Minimalist Dumbbell Plan",
     tagline:
-      "One pair of dumbbells, two short sessions a week — the least you can do that still works.",
+      "One pair of dumbbells, two short sessions a week - the least you can do that still works.",
     category: "strength-program",
     daysPerWeek: 2,
     equipment: ["dumbbells"],
@@ -477,7 +477,7 @@ export const routines: Routine[] = [
     ],
     days: [
       {
-        dayLabel: "Day 1 — Full Body A",
+        dayLabel: "Day 1 - Full Body A",
         focus: "Squat, press, row",
         totalMin: 25,
         blocks: [
@@ -542,7 +542,7 @@ export const routines: Routine[] = [
         ],
       },
       {
-        dayLabel: "Day 2 — Full Body B",
+        dayLabel: "Day 2 - Full Body B",
         focus: "Hinge, lunge, arms",
         totalMin: 25,
         blocks: [
@@ -634,7 +634,7 @@ export const routines: Routine[] = [
     ],
     days: [
       {
-        dayLabel: "Day 1 — Foundations",
+        dayLabel: "Day 1 - Foundations",
         focus: "The big basics: squat, push, hinge",
         totalMin: 20,
         blocks: [
@@ -692,7 +692,7 @@ export const routines: Routine[] = [
         ],
       },
       {
-        dayLabel: "Day 2 — Control",
+        dayLabel: "Day 2 - Control",
         focus: "Single-leg balance and core control",
         totalMin: 20,
         blocks: [
@@ -751,7 +751,7 @@ export const routines: Routine[] = [
         ],
       },
       {
-        dayLabel: "Day 3 — Build",
+        dayLabel: "Day 3 - Build",
         focus: "A little more volume, front and back",
         totalMin: 20,
         blocks: [
@@ -882,7 +882,7 @@ export const routines: Routine[] = [
     slug: "post-desk-unwind",
     name: "Post-Desk Unwind",
     tagline:
-      "Close the laptop, open the hips — twelve minutes to reverse the workday.",
+      "Close the laptop, open the hips - twelve minutes to reverse the workday.",
     category: "mobility",
     daysPerWeek: 1,
     equipment: ["none"],

@@ -77,7 +77,7 @@ export function physioByComplaint(c: ComplaintId): PhysioExercise[] {
   return physioExercises.filter((p) => p.complaints.includes(c));
 }
 
-/** Exercise count per muscle (primary only) — powers body-map hover labels */
+/** Exercise count per muscle (primary only) - powers body-map hover labels */
 export const exerciseCountByMuscle: Record<MuscleId, number> = Object.fromEntries(
   muscles.map((m) => [
     m.id,

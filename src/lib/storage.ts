@@ -94,7 +94,7 @@ export function writeStorage<T>(key: string, value: T) {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
   } catch {
-    // storage full or blocked — favorites just won't persist
+    // storage full or blocked - favorites just won't persist
   }
 }
 

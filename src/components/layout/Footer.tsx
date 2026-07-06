@@ -37,7 +37,7 @@ export default function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm text-muted">
-            Your body is a temple. Maintain it — 15 honest minutes at a time.
+            Your body is a temple. Maintain it - 15 honest minutes at a time.
             Built for working dads. Free, forever.
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function Footer() {
       <div className="border-t border-edge">
         <p className="mx-auto max-w-7xl px-4 py-5 text-xs text-muted sm:px-6">
           TempleFit shares general fitness education, not medical advice. If
-          something hurts beyond honest effort — or pain persists — see a
+          something hurts beyond honest effort - or pain persists - see a
           qualified professional. © {new Date().getFullYear()} TempleFit.
         </p>
       </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { MuscleGroup, MuscleId } from "@/lib/types";
 
 /**
- * Chip-grid twin of the body map — the touch/screen-reader-friendly way to
+ * Chip-grid twin of the body map - the touch/screen-reader-friendly way to
  * browse muscles, and the fallback for tiny screens.
  */
 export default function MuscleChips({

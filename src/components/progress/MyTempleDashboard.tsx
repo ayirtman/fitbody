@@ -118,7 +118,7 @@ export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
           <div className="mt-6">
             <EmptyState
               title="No sessions yet"
-              body="Finish any routine and hit “Mark today done” — your streak starts there. One honest session is all it takes."
+              body="Finish any routine and hit “Mark today done” - your streak starts there. One honest session is all it takes."
               cta={{ href: "/routines", label: "Pick a routine" }}
             />
           </div>
@@ -210,7 +210,7 @@ export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
                             {lunch.name}
                           </Link>
                         ) : (
-                          <span className="text-muted">—</span>
+                          <span className="text-muted">-</span>
                         )}
                       </td>
                       <td className="py-2.5">
@@ -222,7 +222,7 @@ export default function MyTempleDashboard({ catalog }: { catalog: Catalog }) {
                             {dinner.name}
                           </Link>
                         ) : (
-                          <span className="text-muted">—</span>
+                          <span className="text-muted">-</span>
                         )}
                       </td>
                     </tr>

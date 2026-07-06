@@ -73,7 +73,7 @@ export default function TargetCalculator({ recipes }: { recipes: Recipe[] }) {
           </div>
           {!weightValid && (
             <p className="mt-2 text-xs text-ember">
-              Enter a weight between 40 and 500 — using a default meanwhile.
+              Enter a weight between 40 and 500 - using a default meanwhile.
             </p>
           )}
         </div>
@@ -155,7 +155,7 @@ export default function TargetCalculator({ recipes }: { recipes: Recipe[] }) {
         <section className="mt-12">
           <h2 className="display lintel text-3xl">A day that gets you there</h2>
           <p className="mt-3 text-sm text-muted">
-            Straight from the recipe library — this combination lands at{" "}
+            Straight from the recipe library - this combination lands at{" "}
             <strong className="text-gold">{plan.totals.proteinG}g protein</strong>,{" "}
             <strong className="text-sage">{plan.totals.fiberG}g fiber</strong> and{" "}
             <strong className="text-cream">{plan.totals.calories} kcal</strong>{" "}

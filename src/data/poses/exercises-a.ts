@@ -3,7 +3,7 @@ import { HANGING, PLANK, SEATED, STANDING, SUPINE, j } from "./reference";
 
 /**
  * Pose sets for exercises 1–24 (push-up … towel-resisted-extension).
- * push-up and dead-hang are lead-authored exemplars — match their quality.
+ * push-up and dead-hang are lead-authored exemplars - match their quality.
  */
 
 /** Reclined on a stepped bench (seat + backrest boxes), feet planted right. */
@@ -60,7 +60,7 @@ const BOX_SEAT: JointMap = {
   toeB: [131, 168],
 };
 
-/** FRONT view standing tall — F = right limb, B = left. */
+/** FRONT view standing tall - F = right limb, B = left. */
 const FRONT_STAND: JointMap = {
   head: [100, 56],
   neck: [100, 71],
@@ -228,7 +228,7 @@ export const exercisePosesA: PoseSet[] = [
         holdMs: 150,
       },
       {
-        // Long arc to the front — arms squeeze together ahead of the chest
+        // Long arc to the front - arms squeeze together ahead of the chest
         name: "squeeze",
         joints: j(FLY_STANCE, {
           elbowF: [123, 76],
@@ -334,7 +334,7 @@ export const exercisePosesA: PoseSet[] = [
     ],
   },
   {
-    // FRONT view — the sideways arc is the whole story
+    // FRONT view - the sideways arc is the whole story
     slug: "lateral-raise",
     loop: "pingPong",
     highlight: ["armF", "armB"],
@@ -408,7 +408,7 @@ export const exercisePosesA: PoseSet[] = [
         holdMs: 150,
       },
       {
-        // Forearm swings through horizontal — elbows stay pinned to the ribs
+        // Forearm swings through horizontal - elbows stay pinned to the ribs
         name: "mid",
         joints: j(STANDING, {
           wristF: [122, 93],
@@ -569,7 +569,7 @@ export const exercisePosesA: PoseSet[] = [
         holdMs: 200,
       },
       {
-        // Forearm hinges back — only the elbow joint moves
+        // Forearm hinges back - only the elbow joint moves
         name: "mid",
         joints: j(STANDING, {
           elbowF: [103, 48],
@@ -610,7 +610,7 @@ export const exercisePosesA: PoseSet[] = [
         holdMs: 100,
       },
       {
-        // Feet swap — far foot lifts
+        // Feet swap - far foot lifts
         name: "step-b",
         joints: j(STANDING, {
           kneeB: [104, 142],
@@ -640,7 +640,7 @@ export const exercisePosesA: PoseSet[] = [
         holdMs: 400,
       },
       {
-        // Grip reverses — wrists swap heights
+        // Grip reverses - wrists swap heights
         name: "wring-b",
         joints: j(STANDING, {
           elbowF: [110, 92],
@@ -666,7 +666,7 @@ export const exercisePosesA: PoseSet[] = [
         holdMs: 500,
       },
       {
-        // Breathing sway — hips float a touch, line stays rigid
+        // Breathing sway - hips float a touch, line stays rigid
         name: "breathe",
         joints: j(FOREARM_PLANK, {
           chest: [107, 145],
@@ -723,7 +723,7 @@ export const exercisePosesA: PoseSet[] = [
     ],
   },
   {
-    // Side view hang — the knees-forward tuck reads clearly in profile
+    // Side view hang - the knees-forward tuck reads clearly in profile
     slug: "hanging-knee-raise",
     loop: "pingPong",
     highlight: ["spine"],
@@ -779,7 +779,7 @@ export const exercisePosesA: PoseSet[] = [
         holdMs: 500,
       },
       {
-        // Hips press a touch higher — the whole line lifts
+        // Hips press a touch higher - the whole line lifts
         name: "lift",
         joints: j(SIDE_PLANK_HOLD, {
           chest: [87, 146],
@@ -793,7 +793,7 @@ export const exercisePosesA: PoseSet[] = [
     ],
   },
   {
-    // FRONT view — the one-sided load is the point
+    // FRONT view - the one-sided load is the point
     slug: "suitcase-carry",
     loop: "pingPong",
     highlight: ["spine"],
@@ -827,7 +827,7 @@ export const exercisePosesA: PoseSet[] = [
     ],
   },
   {
-    // Continuous pedal — three frames around the cycle
+    // Continuous pedal - three frames around the cycle
     slug: "bicycle-crunch",
     loop: "cycle",
     highlight: ["spine"],
@@ -875,7 +875,7 @@ export const exercisePosesA: PoseSet[] = [
     highlight: ["head"],
     frames: [
       {
-        // Palm braced on the forehead — neck pushes, nothing moves
+        // Palm braced on the forehead - neck pushes, nothing moves
         name: "front",
         joints: j(STANDING, {
           elbowF: [120, 71],
@@ -972,7 +972,7 @@ export const exercisePosesA: PoseSet[] = [
         holdMs: 500,
       },
       {
-        // Subtle breathing sway — hips and legs drift right, grip stays fixed
+        // Subtle breathing sway - hips and legs drift right, grip stays fixed
         name: "sway",
         joints: j(HANGING, {
           chest: [101, 87],

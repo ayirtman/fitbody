@@ -2,7 +2,7 @@ import { todayIso } from "./storage";
 
 /**
  * Pure streak math over ISO yyyy-mm-dd date strings.
- * A streak is alive if the last completion was today OR yesterday — a dad who
+ * A streak is alive if the last completion was today OR yesterday - a dad who
  * trained at 11pm shouldn't see a dead streak at breakfast.
  */
 

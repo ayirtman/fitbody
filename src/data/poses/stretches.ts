@@ -6,7 +6,7 @@ import { QUADRUPED, SEATED, STANDING, SUPINE, j } from "./reference";
  * Stretches loop pingPong with a generous holdMs (800–1500) at end range.
  */
 
-/** Standing tall, FRONT view — symmetric stance, arms at the sides. */
+/** Standing tall, FRONT view - symmetric stance, arms at the sides. */
 const FRONT_STAND: JointMap = {
   head: [100, 56],
   neck: [100, 71],
@@ -24,7 +24,7 @@ const FRONT_STAND: JointMap = {
   toeB: [92, 169],
 };
 
-/** Lying prone facing right, hands under the shoulders — cobra start. */
+/** Lying prone facing right, hands under the shoulders - cobra start. */
 const PRONE: JointMap = {
   head: [156, 162],
   neck: [141, 165],
@@ -81,7 +81,7 @@ export const stretchPoses: PoseSet[] = [
         holdMs: 300,
       },
       {
-        // Chest eases forward through the frame — torso drops, arms stay pinned
+        // Chest eases forward through the frame - torso drops, arms stay pinned
         name: "lean",
         joints: j(FRONT_STAND, {
           head: [100, 62],
@@ -269,7 +269,7 @@ export const stretchPoses: PoseSet[] = [
     ],
   },
   {
-    // Side view: prone, palms press the chest up into a gentle arch — hips heavy
+    // Side view: prone, palms press the chest up into a gentle arch - hips heavy
     slug: "cobra-stretch",
     loop: "pingPong",
     highlight: ["spine"],
@@ -330,7 +330,7 @@ export const stretchPoses: PoseSet[] = [
     ],
   },
   {
-    // FRONT view: ONLY the head tilts — ear to shoulder, hand draped over the top
+    // FRONT view: ONLY the head tilts - ear to shoulder, hand draped over the top
     slug: "upper-trap-stretch",
     loop: "pingPong",
     highlight: ["head"],
@@ -614,7 +614,7 @@ export const stretchPoses: PoseSet[] = [
   },
   {
     // Side view: from all fours, arm opens to the ceiling then threads under
-    // the body until shoulder and ear rest toward the floor — hips stay high
+    // the body until shoulder and ear rest toward the floor - hips stay high
     slug: "thread-the-needle",
     loop: "pingPong",
     highlight: ["armF", "spine"],

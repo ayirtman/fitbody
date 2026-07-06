@@ -13,7 +13,7 @@ import MyTempleDashboard, {
 export const metadata: Metadata = {
   title: "My Temple",
   description:
-    "Your streak, your saved workouts and recipes, your week of food — all stored on your device, no account needed.",
+    "Your streak, your saved workouts and recipes, your week of food - all stored on your device, no account needed.",
 };
 
 export default function MyTemplePage() {
@@ -54,7 +54,7 @@ export default function MyTemplePage() {
         Your progress lives here.
       </h1>
       <p className="mt-4 max-w-xl text-muted">
-        Streaks, saves and meal plans — stored on this device, no account, no
+        Streaks, saves and meal plans - stored on this device, no account, no
         tracking. Your temple, your data.
       </p>
       <div className="mt-10">

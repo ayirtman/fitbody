@@ -19,7 +19,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://templefit.vercel.app"),
   title: {
-    default: "TempleFit — Your body is a temple. Maintain it.",
+    default: "TempleFit - Your body is a temple. Maintain it.",
     template: "%s · TempleFit",
   },
   description:

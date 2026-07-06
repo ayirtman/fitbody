@@ -1,7 +1,7 @@
 /**
  * End-to-end smoke checks for the pose animations and the interactive
  * muscle-hub map. Requires a running server: BASE_URL=http://localhost:3100
- * (default) — `node scripts/e2e-smoke.mjs`.
+ * (default) - `node scripts/e2e-smoke.mjs`.
  */
 import { chromium } from "playwright-core";
 

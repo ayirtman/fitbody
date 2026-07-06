@@ -8,6 +8,8 @@ import RoutineDayView from "@/components/routine/RoutineDayView";
 import MarkDoneButton from "@/components/progress/MarkDoneButton";
 import FavoriteButton from "@/components/progress/FavoriteButton";
 import { DIFFICULTY_LABELS, EQUIPMENT_LABELS } from "@/lib/filters";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { pageMeta } from "@/lib/seo/meta";
 
 export function generateStaticParams() {
   return routines.map((r) => ({ slug: r.slug }));
@@ -21,7 +23,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const routine = routineBySlug.get(slug);
   if (!routine) return {};
-  return { title: routine.name, description: routine.tagline };
+  return pageMeta({
+    title: routine.name,
+    description: routine.tagline,
+    path: `/routines/${routine.slug}`,
+    type: "article",
+  });
 }
 
 export default async function RoutinePage({
@@ -35,6 +42,15 @@ export default async function RoutinePage({
 
   return (
     <article className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <div className="mb-6">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Routines", href: "/routines" },
+            { name: routine.name, href: `/routines/${routine.slug}` },
+          ]}
+        />
+      </div>
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import { Suspense } from "react";
 import { exercises } from "@/data";
 import ExerciseLibrary from "@/components/exercise/ExerciseLibrary";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Exercise Library",
   description:
     "48 exercises for every muscle group, filterable by equipment, difficulty and time. Most need nothing but floor space.",
-};
+  path: "/exercises",
+});
 
 export default function ExercisesPage() {
   return (

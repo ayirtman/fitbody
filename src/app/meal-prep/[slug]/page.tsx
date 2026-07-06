@@ -4,6 +4,8 @@ import { mealPrepPlans, mealPrepPlanBySlug, recipesForMealPlan } from "@/data";
 import Badge from "@/components/ui/Badge";
 import RecipeCard from "@/components/recipe/RecipeCard";
 import ShoppingList from "@/components/recipe/ShoppingList";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { pageMeta } from "@/lib/seo/meta";
 
 export function generateStaticParams() {
   return mealPrepPlans.map((p) => ({ slug: p.slug }));
@@ -17,7 +19,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const plan = mealPrepPlanBySlug.get(slug);
   if (!plan) return {};
-  return { title: plan.name, description: plan.description };
+  return pageMeta({
+    title: plan.name,
+    description: plan.description,
+    path: `/meal-prep/${plan.slug}`,
+    type: "article",
+  });
 }
 
 export default async function MealPrepPlanPage({
@@ -33,6 +40,15 @@ export default async function MealPrepPlanPage({
 
   return (
     <article className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <div className="mb-6">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Meal Prep", href: "/meal-prep" },
+            { name: plan.name, href: `/meal-prep/${plan.slug}` },
+          ]}
+        />
+      </div>
       <header className="max-w-2xl">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
           Meal Prep Plan

@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import { exercises, exerciseBySlug, relatedExercises } from "@/data";
 import MovementDetail from "@/components/exercise/MovementDetail";
 import MovementCard from "@/components/exercise/MovementCard";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
+import { howToSchema } from "@/lib/seo/schema";
+import { pageMeta } from "@/lib/seo/meta";
 
 export function generateStaticParams() {
   return exercises.map((e) => ({ slug: e.slug }));
@@ -16,7 +20,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const exercise = exerciseBySlug.get(slug);
   if (!exercise) return {};
-  return { title: exercise.name, description: exercise.description };
+  return pageMeta({
+    title: exercise.name,
+    description: exercise.description,
+    path: `/exercises/${exercise.slug}`,
+    type: "article",
+  });
 }
 
 export default async function ExercisePage({
@@ -33,6 +42,16 @@ export default async function ExercisePage({
 
   return (
     <>
+      <JsonLd data={howToSchema(exercise, `/exercises/${exercise.slug}`)} />
+      <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Exercises", href: "/exercises" },
+            { name: exercise.name, href: `/exercises/${exercise.slug}` },
+          ]}
+        />
+      </div>
       <MovementDetail
         movement={exercise}
         favoriteKind="exercises"

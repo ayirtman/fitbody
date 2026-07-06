@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import Link from "next/link";
 import { Suspense } from "react";
 import { recipes } from "@/data";
 import RecipeLibrary from "@/components/recipe/RecipeLibrary";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Recipes",
   description:
     "High-protein, high-fiber recipes a busy dad can actually cook. Filter and sort by protein, fiber, calories and time.",
-};
+  path: "/recipes",
+});
 
 export default function RecipesPage() {
   return (

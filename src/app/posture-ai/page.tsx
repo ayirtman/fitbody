@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Posture AI - Coming Soon",
   description:
     "AI posture analysis is coming: snap two photos, answer a few questions, get a training program built for your body. Join the waitlist.",
-};
+  path: "/posture-ai",
+});
 
 const features = [
   {

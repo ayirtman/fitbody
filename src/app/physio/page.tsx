@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import Link from "next/link";
 import { complaints, physioByComplaint } from "@/data";
 import Disclaimer from "@/components/ui/Disclaimer";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Physio & Pain Relief",
   description:
     "Gentle, proven physio exercises for the classic working-dad complaints: lower back pain, desk neck, tight hips, knee pain, shoulder impingement and wrist trouble.",
-};
+  path: "/physio",
+});
 
 const icons: Record<string, React.ReactNode> = {
   "lower-back-pain": (

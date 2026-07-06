@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import { Suspense } from "react";
 import { routines, stretches } from "@/data";
 import StretchLibrary from "@/components/exercise/StretchLibrary";
 import RoutineCard from "@/components/routine/RoutineCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Flexibility & Mobility",
   description:
     "Stretches for every muscle - by single muscle, by area, or as ready-made mobility routines for mornings and post-desk evenings.",
-};
+  path: "/flexibility",
+});
 
 export default function FlexibilityPage() {
   const mobilityRoutines = routines.filter(

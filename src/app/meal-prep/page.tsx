@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import Link from "next/link";
 import { mealPrepPlans, recipesForMealPlan } from "@/data";
 import Badge from "@/components/ui/Badge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Meal Prep Plans",
   description:
     "Batch-cooking plans that turn one focused cooking session into a week of high-protein lunches and dinners.",
-};
+  path: "/meal-prep",
+});
 
 export default function MealPrepPage() {
   return (

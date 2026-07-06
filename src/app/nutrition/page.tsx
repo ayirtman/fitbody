@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import { recipes } from "@/data";
 import TargetCalculator from "@/components/nutrition/TargetCalculator";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Protein & Fiber Targets",
   description:
     "Work out your daily protein, fiber and calorie targets with a transparent formula - then see recipes that hit them.",
-};
+  path: "/nutrition",
+});
 
 export default function NutritionPage() {
   return (

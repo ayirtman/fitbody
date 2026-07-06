@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ComplaintId } from "@/lib/types";
 import {
@@ -10,6 +9,10 @@ import {
 } from "@/data";
 import MovementDetail from "@/components/exercise/MovementDetail";
 import Disclaimer from "@/components/ui/Disclaimer";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
+import { howToSchema } from "@/lib/seo/schema";
+import { pageMeta } from "@/lib/seo/meta";
 
 export function generateStaticParams() {
   return complaints.flatMap((c) =>
@@ -22,10 +25,15 @@ export async function generateMetadata({
 }: {
   params: Promise<{ complaint: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { complaint, slug } = await params;
   const move = physioBySlug.get(slug);
   if (!move) return {};
-  return { title: move.name, description: move.description };
+  return pageMeta({
+    title: move.name,
+    description: move.description,
+    path: `/physio/${complaint}/${move.slug}`,
+    type: "article",
+  });
 }
 
 export default async function PhysioMovePage({
@@ -41,13 +49,16 @@ export default async function PhysioMovePage({
 
   return (
     <>
+      <JsonLd data={howToSchema(move, `/physio/${id}/${move.slug}`)} />
       <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6">
-        <Link
-          href={`/physio/${id}`}
-          className="text-sm font-medium text-gold hover:text-gold-light"
-        >
-          ← {c.name}
-        </Link>
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Physio", href: "/physio" },
+            { name: c.name, href: `/physio/${id}` },
+            { name: move.name, href: `/physio/${id}/${move.slug}` },
+          ]}
+        />
       </div>
       <MovementDetail
         movement={move}

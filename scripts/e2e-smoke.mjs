@@ -165,6 +165,57 @@ for (const path of DEMO_PAGES) {
   await page.close();
 }
 
+// --- SEO: JSON-LD parses and breadcrumbs render on detail pages ---
+{
+  const page = await browser.newPage();
+
+  await page.goto(BASE + "/recipes/chicken-burrito-bowls", {
+    waitUntil: "networkidle",
+  });
+  const blocks = await page
+    .locator('script[type="application/ld+json"]')
+    .allTextContents();
+  const parsed = blocks.map((b) => JSON.parse(b));
+  const recipeLd = parsed.find((p) => p["@type"] === "Recipe");
+  ok(
+    Boolean(
+      recipeLd &&
+        recipeLd.recipeIngredient?.length > 0 &&
+        recipeLd.recipeInstructions?.length > 0 &&
+        recipeLd.nutrition?.calories &&
+        recipeLd.image?.length > 0,
+    ),
+    "/recipes/[slug]: Recipe JSON-LD complete",
+  );
+  ok(
+    parsed.some((p) => p["@type"] === "BreadcrumbList"),
+    "/recipes/[slug]: BreadcrumbList JSON-LD present",
+  );
+  ok(
+    await page.locator('nav[aria-label="Breadcrumb"]').isVisible(),
+    "/recipes/[slug]: breadcrumb trail renders",
+  );
+
+  await page.goto(BASE + "/exercises/push-up", { waitUntil: "networkidle" });
+  const exBlocks = await page
+    .locator('script[type="application/ld+json"]')
+    .allTextContents();
+  const exParsed = exBlocks.map((b) => JSON.parse(b));
+  const howTo = exParsed.find((p) => p["@type"] === "HowTo");
+  ok(
+    Boolean(howTo && howTo.step?.length > 0 && howTo.totalTime),
+    "/exercises/[slug]: HowTo JSON-LD complete",
+  );
+  const canonical = await page
+    .locator('link[rel="canonical"]')
+    .getAttribute("href");
+  ok(
+    Boolean(canonical?.endsWith("/exercises/push-up")),
+    "/exercises/[slug]: canonical URL set",
+  );
+  await page.close();
+}
+
 // --- newsletter admin studio: gate renders, wrong secret rejected ---
 {
   const page = await browser.newPage();

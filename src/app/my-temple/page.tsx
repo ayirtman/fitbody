@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import {
   exercises,
   stretches,
@@ -12,11 +13,12 @@ import MyTempleDashboard, {
 import GeneratedShoppingList from "@/components/progress/GeneratedShoppingList";
 import type { RecipeIngredients } from "@/lib/shoppingList";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "My Temple",
   description:
     "Your streak, your saved workouts and recipes, your week of food - all stored on your device, no account needed.",
-};
+  path: "/my-temple",
+});
 
 export default function MyTemplePage() {
   const catalog: Catalog = {

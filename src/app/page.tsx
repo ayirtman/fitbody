@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   muscles,
@@ -10,6 +11,13 @@ import RoutineCard from "@/components/routine/RoutineCard";
 import RecipeCard from "@/components/recipe/RecipeCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import StreakNudge from "@/components/progress/StreakNudge";
+import { pageMeta } from "@/lib/seo/meta";
+import { SITE_DESCRIPTION } from "@/lib/seo/site";
+
+export const metadata: Metadata = pageMeta({
+  description: SITE_DESCRIPTION,
+  path: "/",
+});
 
 const quickPaths = [
   {

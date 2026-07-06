@@ -4,6 +4,8 @@ import type { ComplaintId } from "@/lib/types";
 import { complaints, complaintById, physioByComplaint } from "@/data";
 import Disclaimer from "@/components/ui/Disclaimer";
 import MovementCard from "@/components/exercise/MovementCard";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { pageMeta } from "@/lib/seo/meta";
 
 export function generateStaticParams() {
   return complaints.map((c) => ({ complaint: c.id }));
@@ -17,7 +19,11 @@ export async function generateMetadata({
   const { complaint } = await params;
   const c = complaintById.get(complaint as ComplaintId);
   if (!c) return {};
-  return { title: c.name, description: c.whoGetsThis };
+  return pageMeta({
+    title: c.name,
+    description: c.whoGetsThis,
+    path: `/physio/${c.id}`,
+  });
 }
 
 export default async function ComplaintPage({
@@ -34,6 +40,15 @@ export default async function ComplaintPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <div className="mb-6">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Physio", href: "/physio" },
+            { name: c.name, href: `/physio/${id}` },
+          ]}
+        />
+      </div>
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
         Physio · {c.name}
       </p>

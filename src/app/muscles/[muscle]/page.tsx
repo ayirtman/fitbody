@@ -46,6 +46,8 @@ export default async function MusclePage({
   const exList = exercisesByMuscle(id);
   const stList = stretchesByMuscle(id);
   const phList = physioByMuscle(id);
+  const primaryEx = exList.filter((e) => e.primaryMuscles.includes(id));
+  const secondaryEx = exList.filter((e) => !e.primaryMuscles.includes(id));
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
@@ -92,7 +94,7 @@ export default async function MusclePage({
       <section className="mt-14">
         <h2 className="display lintel text-3xl">Build it</h2>
         <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {exList.map((e) => (
+          {primaryEx.map((e) => (
             <MovementCard
               key={e.slug}
               movement={e}
@@ -101,6 +103,23 @@ export default async function MusclePage({
             />
           ))}
         </div>
+        {secondaryEx.length > 0 && (
+          <>
+            <h3 className="mt-10 text-xs font-semibold uppercase tracking-[0.15em] text-muted">
+              Also works the {group.shortName.toLowerCase()}
+            </h3>
+            <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {secondaryEx.map((e) => (
+                <MovementCard
+                  key={e.slug}
+                  movement={e}
+                  href={`/exercises/${e.slug}`}
+                  kindLabel="Exercise"
+                />
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       <section className="mt-14">

@@ -4,6 +4,7 @@ export const recipes: Recipe[] = [
   // ---------------------------------------------------------------- BREAKFAST
   {
     slug: "peanut-butter-overnight-oats",
+    image: "/recipes/peanut-butter-overnight-oats.webp",
     name: "Peanut Butter Overnight Oats",
     description:
       "Five minutes tonight buys you four mornings of grab-and-go breakfast. Tastes like dessert, eats like a proper meal.",
@@ -33,6 +34,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "veggie-egg-muffins",
+    image: "/recipes/veggie-egg-muffins.webp",
     name: "Veggie Egg Muffins",
     description:
       "A muffin tin full of eggs, cheese and whatever veg is in the drawer. Reheat two in 45 seconds while you find the kids' shoes.",
@@ -62,6 +64,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "greek-yogurt-power-bowl",
+    image: "/recipes/greek-yogurt-power-bowl.webp",
     name: "Greek Yogurt Power Bowl",
     description:
       "The fastest 38 grams of protein you'll eat all week. Assemble it in the time it takes the kettle to boil.",
@@ -88,6 +91,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "protein-pancakes",
+    image: "/recipes/protein-pancakes.webp",
     name: "Protein Pancakes",
     description:
       "Weekend pancakes the kids will fight over, with enough protein that you're not raiding the biscuit tin by 10am.",
@@ -117,6 +121,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "freezer-breakfast-burritos",
+    image: "/recipes/freezer-breakfast-burritos.webp",
     name: "Freezer Breakfast Burritos",
     description:
       "Make eight on Sunday, microwave one whenever the morning falls apart. Eggs, beans and cheese wrapped in foil, waiting for you.",
@@ -146,6 +151,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "cottage-cheese-scramble-on-toast",
+    image: "/recipes/cottage-cheese-scramble-on-toast.webp",
     name: "Cottage Cheese Scramble on Toast",
     description:
       "Cottage cheese melts into scrambled eggs and makes them creamy while quietly doubling the protein. Thirteen minutes, one pan.",
@@ -175,6 +181,7 @@ export const recipes: Recipe[] = [
   // -------------------------------------------------------------------- LUNCH
   {
     slug: "chicken-burrito-bowls",
+    image: "/recipes/chicken-burrito-bowls.webp",
     name: "Chicken Burrito Bowls",
     description:
       "The meal-prep classic for a reason: rice, beans, seasoned chicken and whatever toppings survive the week. Four lunches, one pan of chicken.",
@@ -205,6 +212,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "tuna-white-bean-wraps",
+    image: "/recipes/tuna-white-bean-wraps.webp",
     name: "Tuna & White Bean Wraps",
     description:
       "Pantry lunch, zero cooking, ten minutes. The beans stretch two cans of tuna into four wraps and sneak in the fiber.",
@@ -235,6 +243,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "hearty-lentil-soup",
+    image: "/recipes/hearty-lentil-soup.webp",
     name: "Hearty Lentil Soup",
     description:
       "A big pot of the cheapest, most filling lunch there is. Fourteen grams of fiber per bowl and it tastes better on day three.",
@@ -266,6 +275,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "slow-cooker-pulled-chicken",
+    image: "/recipes/slow-cooker-pulled-chicken.webp",
     name: "Slow-Cooker Pulled Chicken",
     description:
       "Ten minutes of effort in the morning, a mountain of pulled chicken by pickup time. Sandwiches, bowls, wraps - it does all of it.",
@@ -295,6 +305,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "greek-chicken-pasta-salad",
+    image: "/recipes/greek-chicken-pasta-salad.webp",
     name: "Greek Chicken Pasta Salad",
     description:
       "Cold pasta salad that actually keeps you full: chicken, feta, olives and crunchy veg. Built for the office fridge.",
@@ -326,6 +337,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "turkey-avocado-pita",
+    image: "/recipes/turkey-avocado-pita.webp",
     name: "Turkey Avocado Pita",
     description:
       "The lunch you make when there are ten minutes between meetings. Deli turkey, avocado and crunch, stuffed in a pita.",
@@ -353,6 +365,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "high-protein-egg-fried-rice",
+    image: "/recipes/high-protein-egg-fried-rice.webp",
     name: "High-Protein Egg Fried Rice",
     description:
       "Yesterday's rice, four eggs and frozen peas become lunch in fifteen minutes flat. The best fate any leftover rice can hope for.",
@@ -383,6 +396,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "black-bean-quesadillas",
+    image: "/recipes/black-bean-quesadillas.webp",
     name: "Black Bean Quesadillas",
     description:
       "Crispy, cheesy, and secretly full of beans. The kids ask for these; you get 10 grams of fiber without an argument.",
@@ -414,6 +428,7 @@ export const recipes: Recipe[] = [
   // ------------------------------------------------------------------- DINNER
   {
     slug: "sheet-pan-chicken-and-veg",
+    image: "/recipes/sheet-pan-chicken-and-veg.webp",
     name: "Sheet-Pan Chicken & Veg",
     description:
       "Everything on one tray, into the oven, and you're free for 25 minutes. The weeknight dinner that runs itself.",
@@ -443,6 +458,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "salmon-traybake",
+    image: "/recipes/salmon-traybake.webp",
     name: "Salmon Traybake",
     description:
       "Salmon, green beans and tomatoes roasted on one tray. Looks like effort, is actually the laziest good dinner you know.",
@@ -473,6 +489,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "turkey-meatballs-marinara",
+    image: "/recipes/turkey-meatballs-marinara.webp",
     name: "Turkey Meatballs in Marinara",
     description:
       "A double batch of tender turkey meatballs - half for tonight's spaghetti, half for the freezer. Future-you says thanks.",
@@ -503,6 +520,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "beef-and-bean-chili",
+    image: "/recipes/beef-and-bean-chili.webp",
     name: "Beef & Bean Chili",
     description:
       "The big-pot classic: beef for protein, two kinds of beans for fiber, and it only improves as the week goes on.",
@@ -534,6 +552,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "chicken-fajita-skillet",
+    image: "/recipes/chicken-fajita-skillet.webp",
     name: "Chicken Fajita Skillet",
     description:
       "Sizzling chicken and peppers in one pan, tortillas on the table, everyone builds their own. Dinner and entertainment in 25 minutes.",
@@ -564,6 +583,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "shrimp-stir-fry",
+    image: "/recipes/shrimp-stir-fry.webp",
     name: "Shrimp Stir-Fry",
     description:
       "Frozen shrimp and a bag of stir-fry veg - twenty minutes from freezer to plate on the nights the schedule collapses.",
@@ -594,6 +614,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "creamy-tuscan-chicken-skillet",
+    image: "/recipes/creamy-tuscan-chicken-skillet.webp",
     name: "Creamy Tuscan Chicken Skillet",
     description:
       "Chicken in a creamy sun-dried tomato and spinach sauce that tastes like a restaurant made it. Nobody needs to know it was one pan and 30 minutes.",
@@ -624,6 +645,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "lentil-bolognese",
+    image: "/recipes/lentil-bolognese.webp",
     name: "Lentil Bolognese",
     description:
       "A rich, meatless bolognese the family won't interrogate. Lentils carry the fiber; the long simmer carries the flavor.",
@@ -655,6 +677,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "weeknight-chicken-curry",
+    image: "/recipes/weeknight-chicken-curry.webp",
     name: "Weeknight Chicken Curry",
     description:
       "A mild, creamy curry built on curry paste and coconut milk - fast enough for a Tuesday, gentle enough for the kids.",
@@ -687,6 +710,7 @@ export const recipes: Recipe[] = [
   // -------------------------------------------------------------------- SNACK
   {
     slug: "no-bake-protein-balls",
+    image: "/recipes/no-bake-protein-balls.webp",
     name: "No-Bake Protein Balls",
     description:
       "Oats, peanut butter and seeds rolled into balls that live in the fridge. The 3pm snack that isn't the kids' biscuits.",
@@ -716,6 +740,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "cottage-cheese-ranch-dip",
+    image: "/recipes/cottage-cheese-ranch-dip.webp",
     name: "Cottage Cheese Ranch Dip",
     description:
       "Blitz cottage cheese with ranch seasoning and it turns into a creamy dip with a ridiculous amount of protein. Veg sticks suddenly worth it.",
@@ -742,6 +767,7 @@ export const recipes: Recipe[] = [
   },
   {
     slug: "crunchy-roasted-chickpeas",
+    image: "/recipes/crunchy-roasted-chickpeas.webp",
     name: "Crunchy Roasted Chickpeas",
     description:
       "A can of chickpeas becomes a crunchy, salty snack that beats crisps on fiber by a mile. Make a double batch; they vanish.",

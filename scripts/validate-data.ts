@@ -10,7 +10,10 @@ import { complaints, physioExercises } from "../src/data/physio";
 import { routines } from "../src/data/routines";
 import { recipes } from "../src/data/recipes";
 import { mealPrepPlans } from "../src/data/mealPrepPlans";
+import { poseSets } from "../src/data/poses";
 import type { BaseMovement, ComplaintId, MuscleId } from "../src/lib/types";
+import { JOINTS, POSE_CANVAS, isAttachedProp } from "../src/lib/pose-types";
+import type { JointName } from "../src/lib/pose-types";
 
 const errors: string[] = [];
 
@@ -157,11 +160,99 @@ for (const p of mealPrepPlans) {
   assert(p.weekMap.length === 7, `plan "${p.slug}": weekMap must cover 7 days`);
 }
 
+// --- pose sets: structure, bounds, rigid bones ---
+// Coverage (every movement has a pose) flips on when authoring completes.
+const ENFORCE_POSE_COVERAGE = false;
+
+const BONES: [JointName, JointName][] = [
+  ["neck", "head"],
+  ["neck", "chest"],
+  ["chest", "hip"],
+  ["neck", "elbowF"],
+  ["elbowF", "wristF"],
+  ["neck", "elbowB"],
+  ["elbowB", "wristB"],
+  ["hip", "kneeF"],
+  ["kneeF", "ankleF"],
+  ["ankleF", "toeF"],
+  ["hip", "kneeB"],
+  ["kneeB", "ankleB"],
+  ["ankleB", "toeB"],
+];
+const MAX_BONE_DRIFT = 1.35; // longest/shortest per bone across a set's frames
+const FLOOR_LIMIT = 174;
+
+const movementSlugs = new Set(
+  [...exercises, ...stretches, ...physioExercises].map((m) => m.slug),
+);
+assertUniqueSlugs(poseSets, "poses");
+for (const p of poseSets) {
+  assert(movementSlugs.has(p.slug), `pose "${p.slug}": no matching movement`);
+  assert(p.frames.length >= 2, `pose "${p.slug}": needs >=2 frames`);
+  assertUniqueSlugs(
+    p.frames.map((f) => ({ slug: f.name })),
+    `pose "${p.slug}" frame names`,
+  );
+  const rest = p.restFrame ?? 0;
+  assert(rest >= 0 && rest < p.frames.length, `pose "${p.slug}": restFrame out of range`);
+
+  for (const f of p.frames) {
+    assert(
+      f.durationMs >= 200 && f.durationMs <= 5000,
+      `pose "${p.slug}" frame "${f.name}": durationMs ${f.durationMs} outside 200-5000`,
+    );
+    assert((f.holdMs ?? 0) <= 4000, `pose "${p.slug}" frame "${f.name}": holdMs > 4000`);
+    for (const joint of JOINTS) {
+      const [x, y] = f.joints[joint];
+      assert(
+        x >= 6 && x <= POSE_CANVAS - 6 && y >= 6,
+        `pose "${p.slug}" frame "${f.name}": ${joint} (${x},${y}) outside canvas`,
+      );
+      assert(
+        y <= FLOOR_LIMIT,
+        `pose "${p.slug}" frame "${f.name}": ${joint} through the floor (y=${y})`,
+      );
+    }
+  }
+
+  for (const [a, b] of BONES) {
+    let min = Infinity;
+    let max = 0;
+    for (const f of p.frames) {
+      const [ax, ay] = f.joints[a];
+      const [bx, by] = f.joints[b];
+      const len = Math.hypot(bx - ax, by - ay);
+      min = Math.min(min, len);
+      max = Math.max(max, len);
+    }
+    assert(
+      min > 0 && max / min <= MAX_BONE_DRIFT,
+      `pose "${p.slug}": bone ${a}→${b} stretches ${(max / min).toFixed(2)}× across frames (max ${MAX_BONE_DRIFT})`,
+    );
+  }
+
+  for (const prop of p.props ?? []) {
+    if (isAttachedProp(prop) && prop.kind === "band") {
+      const [x, y] = prop.anchor;
+      assert(
+        x >= 0 && x <= POSE_CANVAS && y >= 0 && y <= POSE_CANVAS,
+        `pose "${p.slug}": band anchor outside canvas`,
+      );
+    }
+  }
+}
+if (ENFORCE_POSE_COVERAGE) {
+  const covered = new Set(poseSets.map((p) => p.slug));
+  for (const slug of movementSlugs) {
+    assert(covered.has(slug), `movement "${slug}" has no pose set`);
+  }
+}
+
 if (errors.length) {
   console.error(`✗ Data validation failed with ${errors.length} error(s):`);
   for (const e of errors) console.error(`  - ${e}`);
   process.exit(1);
 }
 console.log(
-  `✓ Data validation passed — ${exercises.length} exercises, ${stretches.length} stretches, ${physioExercises.length} physio, ${routines.length} routines, ${recipes.length} recipes, ${mealPrepPlans.length} meal prep plans`,
+  `✓ Data validation passed — ${exercises.length} exercises, ${stretches.length} stretches, ${physioExercises.length} physio, ${routines.length} routines, ${recipes.length} recipes, ${mealPrepPlans.length} meal prep plans, ${poseSets.length}/${movementSlugs.size} poses`,
 );

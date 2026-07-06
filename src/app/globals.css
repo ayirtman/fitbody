@@ -124,6 +124,55 @@ a.card:hover,
   animation: fade-slide-in 250ms ease both;
 }
 
+/* Pose animation figure */
+.pose-floor {
+  stroke: var(--color-edge);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.pose-limb {
+  fill: none;
+  stroke: var(--color-cream);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pose-limb-far {
+  stroke: var(--color-muted);
+  opacity: 0.45;
+}
+.pose-limb-gold {
+  stroke: var(--color-gold);
+}
+.pose-head {
+  fill: var(--color-cream);
+}
+.pose-head-gold {
+  fill: var(--color-gold);
+}
+.pose-prop {
+  stroke: var(--color-muted);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+}
+.pose-prop-fill {
+  fill: var(--color-surface-3);
+  stroke: var(--color-edge);
+  stroke-width: 1.5;
+}
+.pose-band {
+  stroke: var(--color-gold);
+  stroke-width: 2.5;
+  stroke-dasharray: 5 4;
+  stroke-linecap: round;
+  fill: none;
+}
+.pose-dumbbell {
+  fill: var(--color-muted);
+  stroke: none;
+}
+
 /* Hide scrollbars on horizontal chip rows without killing scroll */
 .no-scrollbar {
   scrollbar-width: none;

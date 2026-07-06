@@ -59,11 +59,19 @@ function byMuscle<T extends Movement>(
   muscle: MuscleId,
   includeSecondary = true,
 ): T[] {
-  return items.filter(
-    (i) =>
-      i.primaryMuscles.includes(muscle) ||
-      (includeSecondary && i.secondaryMuscles.includes(muscle)),
-  );
+  // Primary-target movements always rank above ones that only use the muscle
+  // as a stabilizer; sort is stable, so curated order holds within each group.
+  return items
+    .filter(
+      (i) =>
+        i.primaryMuscles.includes(muscle) ||
+        (includeSecondary && i.secondaryMuscles.includes(muscle)),
+    )
+    .sort(
+      (a, b) =>
+        Number(b.primaryMuscles.includes(muscle)) -
+        Number(a.primaryMuscles.includes(muscle)),
+    );
 }
 
 export const exercisesByMuscle = (m: MuscleId, includeSecondary = true) =>
@@ -77,12 +85,13 @@ export function physioByComplaint(c: ComplaintId): PhysioExercise[] {
   return physioExercises.filter((p) => p.complaints.includes(c));
 }
 
-/** Exercise count per muscle (primary only) - powers body-map hover labels */
+/**
+ * Exercise count per muscle (primary + secondary) - powers body-map hover
+ * labels, and must agree with the count shown on /muscles/[muscle], which is
+ * exercisesByMuscle(id).length.
+ */
 export const exerciseCountByMuscle: Record<MuscleId, number> = Object.fromEntries(
-  muscles.map((m) => [
-    m.id,
-    exercises.filter((e) => e.primaryMuscles.includes(m.id)).length,
-  ]),
+  muscles.map((m) => [m.id, exercisesByMuscle(m.id).length]),
 ) as Record<MuscleId, number>;
 
 export function relatedExercises(ex: Exercise, limit = 3): Exercise[] {

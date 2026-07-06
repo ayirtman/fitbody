@@ -15,11 +15,23 @@ export interface MovementFilters {
   maxTime?: number;
 }
 
+/** Stable sort: movements that primarily target `muscle` rank first. */
+function primaryFirst<T extends { primaryMuscles: MuscleId[] }>(
+  items: T[],
+  muscle: MuscleId,
+): T[] {
+  return [...items].sort(
+    (a, b) =>
+      Number(b.primaryMuscles.includes(muscle)) -
+      Number(a.primaryMuscles.includes(muscle)),
+  );
+}
+
 export function filterExercises(
   items: Exercise[],
   f: MovementFilters,
 ): Exercise[] {
-  return items.filter(
+  const out = items.filter(
     (e) =>
       (!f.muscle ||
         e.primaryMuscles.includes(f.muscle) ||
@@ -28,13 +40,14 @@ export function filterExercises(
       (!f.difficulty || e.difficulty === f.difficulty) &&
       (!f.maxTime || e.timeEstimateMin <= f.maxTime),
   );
+  return f.muscle ? primaryFirst(out, f.muscle) : out;
 }
 
 export function filterStretches(
   items: Stretch[],
   f: MovementFilters & { moment?: StretchMoment },
 ): Stretch[] {
-  return items.filter(
+  const out = items.filter(
     (s) =>
       (!f.muscle ||
         s.primaryMuscles.includes(f.muscle) ||
@@ -42,6 +55,7 @@ export function filterStretches(
       (!f.difficulty || s.difficulty === f.difficulty) &&
       (!f.moment || s.bestFor.includes(f.moment)),
   );
+  return f.muscle ? primaryFirst(out, f.muscle) : out;
 }
 
 export type RecipeSort = "protein" | "fiber" | "calories" | "time";

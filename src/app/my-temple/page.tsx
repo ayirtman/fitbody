@@ -9,6 +9,8 @@ import {
 import MyTempleDashboard, {
   type Catalog,
 } from "@/components/progress/MyTempleDashboard";
+import GeneratedShoppingList from "@/components/progress/GeneratedShoppingList";
+import type { RecipeIngredients } from "@/lib/shoppingList";
 
 export const metadata: Metadata = {
   title: "My Temple",
@@ -45,6 +47,11 @@ export default function MyTemplePage() {
     })),
   };
 
+  const recipeIngredients: RecipeIngredients[] = recipes.map((r) => ({
+    slug: r.slug,
+    ingredients: r.ingredients,
+  }));
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
@@ -59,6 +66,9 @@ export default function MyTemplePage() {
       </p>
       <div className="mt-10">
         <MyTempleDashboard catalog={catalog} />
+      </div>
+      <div className="mt-14">
+        <GeneratedShoppingList recipes={recipeIngredients} />
       </div>
     </div>
   );

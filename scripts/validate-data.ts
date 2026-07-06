@@ -14,6 +14,7 @@ import { recipes } from "../src/data/recipes";
 import { mealPrepPlans } from "../src/data/mealPrepPlans";
 import { poseSets } from "../src/data/poses";
 import type { BaseMovement, ComplaintId, MuscleId } from "../src/lib/types";
+import { categorizeIngredient } from "../src/lib/ingredientCategories";
 import { JOINTS, POSE_CANVAS, isAttachedProp } from "../src/lib/pose-types";
 import type { JointName } from "../src/lib/pose-types";
 
@@ -149,6 +150,16 @@ assert(
   recipes.every((r) => r.macros.proteinG >= 25 || r.macros.fiberG >= 8),
   "every recipe must bring >=25g protein or >=8g fiber per serving",
 );
+
+// --- shopping list: every ingredient must categorize to a real aisle ---
+for (const r of recipes) {
+  for (const ing of r.ingredients) {
+    assert(
+      categorizeIngredient(ing.item) !== "Other",
+      `recipe "${r.slug}": ingredient "${ing.item}" has no aisle category - extend src/lib/ingredientCategories.ts`,
+    );
+  }
+}
 
 // --- meal prep plans: recipe refs resolve ---
 const recipeSlugs = new Set(recipes.map((r) => r.slug));

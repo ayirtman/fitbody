@@ -17,6 +17,8 @@ interface BodyMapProps {
   onSelect?: (id: MuscleId) => void;
   view?: BodyView;
   onViewChange?: (view: BodyView) => void;
+  /** Initial view when uncontrolled (default "front") */
+  defaultView?: BodyView;
   /** Optional exercise counts shown in the hover chip */
   counts?: Partial<Record<MuscleId, number>>;
   className?: string;
@@ -28,10 +30,11 @@ export default function BodyMap({
   onSelect,
   view: controlledView,
   onViewChange,
+  defaultView = "front",
   counts,
   className = "",
 }: BodyMapProps) {
-  const [internalView, setInternalView] = useState<BodyView>("front");
+  const [internalView, setInternalView] = useState<BodyView>(defaultView);
   const view = controlledView ?? internalView;
   const setView = (v: BodyView) => {
     setInternalView(v);

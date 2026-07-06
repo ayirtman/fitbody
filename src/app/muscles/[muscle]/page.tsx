@@ -8,9 +8,11 @@ import {
   exercisesByMuscle,
   stretchesByMuscle,
   physioByMuscle,
+  exerciseCountByMuscle,
 } from "@/data";
-import BodyMapMini from "@/components/body-map/BodyMapMini";
+import MuscleExplorer from "@/components/body-map/MuscleExplorer";
 import MuscleChips from "@/components/body-map/MuscleChips";
+import { bestViewFor } from "@/components/body-map/geometry";
 import MovementCard from "@/components/exercise/MovementCard";
 
 export function generateStaticParams() {
@@ -49,7 +51,17 @@ export default async function MusclePage({
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <div className="grid gap-10 lg:grid-cols-[260px_1fr]">
         <aside>
-          <BodyMapMini primary={[id]} className="mx-auto h-80" />
+          <MuscleExplorer
+            key={id}
+            muscles={muscles}
+            counts={exerciseCountByMuscle}
+            selected={id}
+            defaultView={bestViewFor([id])}
+            className="mx-auto h-96"
+          />
+          <p className="mt-2 text-center text-xs text-muted">
+            Tap any muscle to jump to it
+          </p>
         </aside>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">

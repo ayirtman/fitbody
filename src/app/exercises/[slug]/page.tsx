@@ -5,6 +5,8 @@ import MovementDetail from "@/components/exercise/MovementDetail";
 import MovementCard from "@/components/exercise/MovementCard";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import GearKit from "@/components/gear/GearKit";
+import FaqSection from "@/components/seo/FaqSection";
+import { movementFaqs } from "@/data/faqs";
 import JsonLd from "@/components/seo/JsonLd";
 import { howToSchema } from "@/lib/seo/schema";
 import { pageMeta } from "@/lib/seo/meta";
@@ -92,8 +94,14 @@ export default async function ExercisePage({
         <GearKit equipment={exercise.equipment} />
       </MovementDetail>
 
+      {movementFaqs[exercise.slug] && (
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <FaqSection faqs={movementFaqs[exercise.slug]} />
+        </div>
+      )}
+
       {related.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6">
+        <section className="mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6">
           <h2 className="display lintel text-2xl">Same muscles, new angle</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {related.map((e) => (

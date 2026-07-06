@@ -6,6 +6,8 @@ import JsonLd from "@/components/seo/JsonLd";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { recipeSchema } from "@/lib/seo/schema";
 import { pageMeta } from "@/lib/seo/meta";
+import FaqSection from "@/components/seo/FaqSection";
+import { recipeFaqs } from "@/data/faqs";
 import Badge from "@/components/ui/Badge";
 import MacroBar from "@/components/recipe/MacroBar";
 import RecipeCard from "@/components/recipe/RecipeCard";
@@ -144,6 +146,8 @@ export default async function RecipePage({
           </ol>
         </section>
       </div>
+
+      <FaqSection faqs={recipeFaqs[recipe.slug]} />
 
       {related.length > 0 && (
         <section className="mt-14">

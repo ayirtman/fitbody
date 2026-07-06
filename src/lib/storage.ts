@@ -30,9 +30,20 @@ export interface CompletionsState {
 
 export type PlanDay = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
 
+export type MealSlot = "breakfast" | "lunch" | "dinner" | "snack";
+
+/** Recipe slugs per slot. A slug appears at most once per slot but may repeat
+ * across different slots/days. */
+export type DayPlan = Partial<Record<MealSlot, string[]>>;
+
 export interface MealPlanState {
-  week: Partial<Record<PlanDay, { lunch?: string; dinner?: string }>>;
+  week: Partial<Record<PlanDay, DayPlan>>;
   savedAt: string | null;
+}
+
+export interface ShoppingState {
+  /** Aggregated-item keys the user has checked off */
+  checked: string[];
 }
 
 export interface WaitlistState {
@@ -50,10 +61,45 @@ export interface CalculatorState {
 export const STORAGE_KEYS = {
   favorites: "templefit.v1.favorites",
   completions: "templefit.v1.completions",
-  mealPlan: "templefit.v1.mealPlan",
+  mealPlan: "templefit.v2.mealPlan",
+  shopping: "templefit.v1.shoppingChecked",
   waitlist: "templefit.v1.waitlist",
   calculator: "templefit.v1.calculator",
 } as const;
+
+const LEGACY_MEAL_PLAN_KEY = "templefit.v1.mealPlan";
+
+/**
+ * v1 plans held a single recipe per lunch/dinner: { lunch?: string }.
+ * v2 holds arrays per slot. One-shot, client-only; removes the v1 key.
+ */
+export function migrateMealPlanV1() {
+  if (typeof window === "undefined") return;
+  try {
+    const raw = window.localStorage.getItem(LEGACY_MEAL_PLAN_KEY);
+    if (!raw) return;
+    if (!window.localStorage.getItem(STORAGE_KEYS.mealPlan)) {
+      const old = JSON.parse(raw) as {
+        week?: Partial<Record<PlanDay, { lunch?: string; dinner?: string }>>;
+        savedAt?: string | null;
+      };
+      const week: MealPlanState["week"] = {};
+      for (const [day, slots] of Object.entries(old.week ?? {})) {
+        const plan: DayPlan = {};
+        if (slots?.lunch) plan.lunch = [slots.lunch];
+        if (slots?.dinner) plan.dinner = [slots.dinner];
+        if (Object.keys(plan).length) week[day as PlanDay] = plan;
+      }
+      window.localStorage.setItem(
+        STORAGE_KEYS.mealPlan,
+        JSON.stringify({ week, savedAt: old.savedAt ?? null }),
+      );
+    }
+    window.localStorage.removeItem(LEGACY_MEAL_PLAN_KEY);
+  } catch {
+    // corrupt v1 data - abandon it rather than crash
+  }
+}
 
 export const DEFAULT_FAVORITES: FavoritesState = {
   exercises: [],
@@ -66,6 +112,8 @@ export const DEFAULT_FAVORITES: FavoritesState = {
 export const DEFAULT_COMPLETIONS: CompletionsState = { dates: [], byDate: {} };
 
 export const DEFAULT_MEAL_PLAN: MealPlanState = { week: {}, savedAt: null };
+
+export const DEFAULT_SHOPPING: ShoppingState = { checked: [] };
 
 export const DEFAULT_WAITLIST: WaitlistState = { submitted: false, at: null };
 

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import Link from "next/link";
 import Disclaimer from "@/components/ui/Disclaimer";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "About",
   description:
     "Why TempleFit exists: free, honest fitness for working dads - short sessions, real food, no upsells on the basics.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

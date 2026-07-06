@@ -21,7 +21,7 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
           <>
             <Image
               src={recipe.image}
-              alt=""
+              alt={`${recipe.name} - ${recipe.description.split(".")[0].toLowerCase()}`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover"

@@ -14,6 +14,8 @@ import MuscleExplorer from "@/components/body-map/MuscleExplorer";
 import MuscleChips from "@/components/body-map/MuscleChips";
 import { bestViewFor } from "@/components/body-map/geometry";
 import MovementCard from "@/components/exercise/MovementCard";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { pageMeta } from "@/lib/seo/meta";
 
 export function generateStaticParams() {
   return muscles.map((m) => ({ muscle: m.id }));
@@ -27,10 +29,11 @@ export async function generateMetadata({
   const { muscle } = await params;
   const group = muscleById.get(muscle as MuscleId);
   if (!group) return {};
-  return {
+  return pageMeta({
     title: group.name,
     description: `Exercises, stretches and physio moves for your ${group.shortName.toLowerCase()}. ${group.blurb}`,
-  };
+    path: `/muscles/${group.id}`,
+  });
 }
 
 export default async function MusclePage({
@@ -51,6 +54,15 @@ export default async function MusclePage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <div className="mb-6">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Muscles", href: "/muscles" },
+            { name: group.name, href: `/muscles/${id}` },
+          ]}
+        />
+      </div>
       <div className="grid gap-10 lg:grid-cols-[260px_1fr]">
         <aside>
           <MuscleExplorer

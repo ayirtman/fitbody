@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { recipes, recipeBySlug } from "@/data";
+import JsonLd from "@/components/seo/JsonLd";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { recipeSchema } from "@/lib/seo/schema";
+import { pageMeta } from "@/lib/seo/meta";
 import Badge from "@/components/ui/Badge";
 import MacroBar from "@/components/recipe/MacroBar";
 import RecipeCard from "@/components/recipe/RecipeCard";
@@ -20,7 +24,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const recipe = recipeBySlug.get(slug);
   if (!recipe) return {};
-  return { title: recipe.name, description: recipe.description };
+  return pageMeta({
+    title: recipe.name,
+    description: recipe.description,
+    path: `/recipes/${recipe.slug}`,
+    type: "article",
+  });
 }
 
 export default async function RecipePage({
@@ -43,6 +52,16 @@ export default async function RecipePage({
 
   return (
     <article className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <JsonLd data={recipeSchema(recipe)} />
+      <div className="mb-6">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Recipes", href: "/recipes" },
+            { name: recipe.name, href: `/recipes/${recipe.slug}` },
+          ]}
+        />
+      </div>
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
@@ -76,7 +95,7 @@ export default async function RecipePage({
         <div className="relative mt-8 h-64 overflow-hidden rounded-2xl border border-edge sm:h-80">
           <Image
             src={recipe.image}
-            alt={recipe.name}
+            alt={`${recipe.name} - ${recipe.description.split(".")[0].toLowerCase()}`}
             fill
             priority
             sizes="(max-width: 1280px) 100vw, 1232px"

@@ -9,8 +9,10 @@ import {
   recipes,
   mealPrepPlans,
 } from "@/data";
+import { SITE_URL } from "@/lib/seo/site";
 
-const BASE = "https://templefit.vercel.app";
+// One shared lastModified per deploy: content only changes when we ship.
+const LAST_MODIFIED = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
@@ -42,7 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   return [...staticPaths, ...dynamicPaths].map((path) => ({
-    url: `${BASE}${path}`,
+    url: `${SITE_URL}${path}`,
+    lastModified: LAST_MODIFIED,
     changeFrequency: "weekly",
   }));
 }

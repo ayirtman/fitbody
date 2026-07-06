@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import { routines } from "@/data";
 import RoutineCard from "@/components/routine/RoutineCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Routines",
   description:
     "Pre-built workout routines for working dads: 10-minute resets, lunch-break sessions and honest multi-day strength programs.",
-};
+  path: "/routines",
+});
 
 const sections = [
   {

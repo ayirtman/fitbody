@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo/meta";
 import { muscles } from "@/data/muscles";
 import MuscleExplorer from "@/components/body-map/MuscleExplorer";
 import MuscleChips from "@/components/body-map/MuscleChips";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Muscle Map",
   description:
     "Pick a muscle, get the plan: exercises, stretches and physio moves for every muscle group, mapped on an interactive body.",
-};
+  path: "/muscles",
+});
 
 export default function MusclesPage() {
   return (

@@ -4,6 +4,10 @@ import { stretches, stretchBySlug } from "@/data";
 import { MOMENT_LABELS } from "@/lib/filters";
 import MovementDetail from "@/components/exercise/MovementDetail";
 import Badge from "@/components/ui/Badge";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
+import { howToSchema } from "@/lib/seo/schema";
+import { pageMeta } from "@/lib/seo/meta";
 
 export function generateStaticParams() {
   return stretches.map((s) => ({ slug: s.slug }));
@@ -17,7 +21,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const stretch = stretchBySlug.get(slug);
   if (!stretch) return {};
-  return { title: stretch.name, description: stretch.description };
+  return pageMeta({
+    title: stretch.name,
+    description: stretch.description,
+    path: `/flexibility/${stretch.slug}`,
+    type: "article",
+  });
 }
 
 export default async function StretchPage({
@@ -30,6 +39,17 @@ export default async function StretchPage({
   if (!stretch) notFound();
 
   return (
+    <>
+      <JsonLd data={howToSchema(stretch, `/flexibility/${stretch.slug}`)} />
+      <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Flexibility", href: "/flexibility" },
+            { name: stretch.name, href: `/flexibility/${stretch.slug}` },
+          ]}
+        />
+      </div>
     <MovementDetail
       movement={stretch}
       favoriteKind="stretches"
@@ -68,5 +88,6 @@ export default async function StretchPage({
         </div>
       </section>
     </MovementDetail>
+    </>
   );
 }

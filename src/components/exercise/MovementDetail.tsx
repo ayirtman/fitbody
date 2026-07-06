@@ -5,6 +5,7 @@ import type { FavoriteKind } from "@/lib/storage";
 import Badge from "@/components/ui/Badge";
 import BodyMapMini from "@/components/body-map/BodyMapMini";
 import FavoriteButton from "@/components/progress/FavoriteButton";
+import MovementDemo from "@/components/exercise/MovementDemo";
 import { DIFFICULTY_LABELS, EQUIPMENT_LABELS } from "@/lib/filters";
 
 const difficultyVariant = {
@@ -79,6 +80,7 @@ export default function MovementDetail({
         </aside>
 
         <div className="space-y-8">
+          <MovementDemo slug={movement.slug} name={movement.name} />
           {children}
 
           <section>

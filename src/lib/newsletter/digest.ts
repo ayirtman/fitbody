@@ -7,7 +7,7 @@ import { recipes } from "@/data/recipes";
 import { exercises } from "@/data/exercises";
 import { stretches } from "@/data/stretches";
 
-function isoWeek(date: Date): number {
+export function isoWeek(date: Date): number {
   const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
   const day = d.getUTCDay() || 7;
   d.setUTCDate(d.getUTCDate() + 4 - day);

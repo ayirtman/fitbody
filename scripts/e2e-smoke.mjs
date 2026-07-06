@@ -165,6 +165,23 @@ for (const path of DEMO_PAGES) {
   await page.close();
 }
 
+// --- newsletter admin studio: gate renders, wrong secret rejected ---
+{
+  const page = await browser.newPage();
+  await page.goto(BASE + "/admin/newsletter", { waitUntil: "networkidle" });
+  const gate = page.locator('input[type="password"]');
+  ok(await gate.isVisible(), "/admin/newsletter: secret gate renders");
+  await gate.fill("definitely-not-the-secret");
+  await page.getByRole("button", { name: /unlock/i }).click();
+  await page.waitForTimeout(800);
+  const text = await page.locator("body").textContent();
+  ok(
+    /wrong secret|not configured/i.test(text),
+    "/admin/newsletter: wrong secret is rejected",
+  );
+  await page.close();
+}
+
 await browser.close();
 if (failures) {
   console.error(`✗ ${failures} smoke check(s) failed`);

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { recipes, recipeBySlug } from "@/data";
 import Badge from "@/components/ui/Badge";
@@ -70,6 +71,19 @@ export default async function RecipePage({
           <FavoriteButton kind="recipes" slug={recipe.slug} />
         </div>
       </header>
+
+      {recipe.image && (
+        <div className="relative mt-8 h-64 overflow-hidden rounded-2xl border border-edge sm:h-80">
+          <Image
+            src={recipe.image}
+            alt={recipe.name}
+            fill
+            priority
+            sizes="(max-width: 1280px) 100vw, 1232px"
+            className="object-cover"
+          />
+        </div>
+      )}
 
       <section className="card mt-10 p-6">
         <h2 className="sr-only">Macros per serving</h2>

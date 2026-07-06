@@ -164,6 +164,12 @@ export interface Recipe {
   keepsDays?: number;
   tags: string[];
   accent: RecipeAccent;
+  /**
+   * Public path to the dish photo, e.g. "/recipes/<slug>.webp". The validator
+   * checks the file exists; cards and the detail page fall back to the accent
+   * art when absent. Generate via scripts/generate-recipe-images.mjs.
+   */
+  image?: string;
 }
 
 export interface MealPrepPlan {

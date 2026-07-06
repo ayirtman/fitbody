@@ -3,7 +3,7 @@
  * Run via `npm run validate` (wired into `prebuild`). Exits non-zero and
  * prints every violation when the content breaks an invariant.
  */
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { muscles } from "../src/data/muscles";
 import { exercises } from "../src/data/exercises";
@@ -150,6 +150,29 @@ assert(
   recipes.every((r) => r.macros.proteinG >= 25 || r.macros.fiberG >= 8),
   "every recipe must bring >=25g protein or >=8g fiber per serving",
 );
+
+// --- recipe images: field <-> file agreement under public/recipes ---
+const recipeImageDir = "public/recipes";
+for (const r of recipes) {
+  if (!r.image) continue;
+  assert(
+    new RegExp(`^/recipes/${r.slug}\\.(webp|jpg|jpeg|png)$`).test(r.image),
+    `recipe "${r.slug}": image "${r.image}" must be /recipes/${r.slug}.(webp|jpg|jpeg|png)`,
+  );
+  assert(
+    existsSync(join("public", r.image)),
+    `recipe "${r.slug}": image file public${r.image} does not exist`,
+  );
+}
+if (existsSync(recipeImageDir)) {
+  const referenced = new Set(recipes.map((r) => r.image).filter(Boolean));
+  for (const file of readdirSync(recipeImageDir)) {
+    assert(
+      referenced.has(`/recipes/${file}`),
+      `public/recipes/${file}: no recipe references this image - add image: "/recipes/${file}" to its entry in src/data/recipes.ts`,
+    );
+  }
+}
 
 // --- shopping list: every ingredient must categorize to a real aisle ---
 for (const r of recipes) {

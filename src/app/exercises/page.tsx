@@ -19,9 +19,9 @@ export default function ExercisesPage() {
         Every muscle. Covered.
       </h1>
       <p className="mt-4 max-w-xl text-muted">
-        {exercises.length} exercises with honest time estimates. Filter by what
-        you have and how long you&apos;ve got — most need nothing but floor
-        space.
+        {`${exercises.length} exercises with honest time estimates. Filter by
+        what you have and how long you've got — most need nothing but floor
+        space.`}
       </p>
       <div className="mt-8">
         <Suspense>

@@ -160,9 +160,8 @@ for (const p of mealPrepPlans) {
   assert(p.weekMap.length === 7, `plan "${p.slug}": weekMap must cover 7 days`);
 }
 
-// --- pose sets: structure, bounds, rigid bones ---
-// Coverage (every movement has a pose) flips on when authoring completes.
-const ENFORCE_POSE_COVERAGE = false;
+// --- pose sets: structure, bounds, rigid bones, full coverage ---
+const ENFORCE_POSE_COVERAGE = true;
 
 const BONES: [JointName, JointName][] = [
   ["neck", "head"],

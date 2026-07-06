@@ -183,3 +183,38 @@ export interface MealPrepPlan {
   weekMap: { day: string; lunch: string; dinner: string }[];
   totals: { avgProteinPerDay: number; avgFiberPerDay: number };
 }
+
+export interface Faq {
+  q: string;
+  a: string;
+}
+
+export type GuideCategory = "training" | "nutrition" | "recovery";
+
+export interface GuideSection {
+  heading: string;
+  paragraphs: string[];
+  bullets?: string[];
+  /** Related content chips rendered under the section */
+  links?: { label: string; href: string }[];
+}
+
+export interface Guide {
+  slug: string;
+  title: string;
+  /** Meta description / index blurb, <=160 chars */
+  description: string;
+  category: GuideCategory;
+  /** Reading time in minutes */
+  minutes: number;
+  /** ISO date of last substantive update */
+  updated: string;
+  intro: string;
+  sections: GuideSection[];
+  faqs?: Faq[];
+  related: { label: string; href: string }[];
+  /** Which lead magnet CTA to show at the end, if any */
+  leadMagnet?: "meal-prep" | "desk-reset";
+  /** Show a gear kit for this equipment at the end, if any */
+  gearEquipment?: Equipment[];
+}

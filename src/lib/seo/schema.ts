@@ -89,18 +89,33 @@ export function faqPageSchema(faqs: Faq[]): Schema {
   };
 }
 
-export function articleSchema(guide: Guide): Schema {
+export function articleSchema(article: {
+  title: string;
+  description: string;
+  path: string;
+  published: string;
+  modified?: string;
+}): Schema {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: guide.title,
-    description: guide.description,
-    url: `${SITE_URL}/guides/${guide.slug}`,
-    dateModified: guide.updated,
-    datePublished: guide.updated,
+    headline: article.title,
+    description: article.description,
+    url: `${SITE_URL}${article.path}`,
+    dateModified: article.modified ?? article.published,
+    datePublished: article.published,
     author: organizationSchema(false),
     publisher: organizationSchema(false),
   };
+}
+
+export function guideArticleSchema(guide: Guide): Schema {
+  return articleSchema({
+    title: guide.title,
+    description: guide.description,
+    path: `/guides/${guide.slug}`,
+    published: guide.updated,
+  });
 }
 
 type Movement = Exercise | Stretch | PhysioExercise;

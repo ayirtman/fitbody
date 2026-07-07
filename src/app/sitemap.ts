@@ -11,11 +11,12 @@ import {
 } from "@/data";
 import { guides } from "@/data/guides";
 import { SITE_URL } from "@/lib/seo/site";
+import { publishedForSitemap } from "@/lib/blog";
 
 // One shared lastModified per deploy: content only changes when we ship.
 const LAST_MODIFIED = new Date();
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     "",
     "/muscles",
@@ -27,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/meal-prep",
     "/nutrition",
     "/guides",
+    "/blog",
     "/gear",
     "/support",
     "/sponsor",
@@ -50,9 +52,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...guides.map((g) => `/guides/${g.slug}`),
   ];
 
-  return [...staticPaths, ...dynamicPaths].map((path) => ({
+  const staticEntries: MetadataRoute.Sitemap = [
+    ...staticPaths,
+    ...dynamicPaths,
+  ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: LAST_MODIFIED,
     changeFrequency: "weekly",
   }));
+
+  // Blog posts live in Supabase; degrade to the static set when env is absent.
+  const blogEntries: MetadataRoute.Sitemap = (await publishedForSitemap()).map(
+    (post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: post.published_at ? new Date(post.published_at) : LAST_MODIFIED,
+      changeFrequency: "monthly",
+    }),
+  );
+
+  return [...staticEntries, ...blogEntries];
 }

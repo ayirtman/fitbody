@@ -301,6 +301,35 @@ for (const path of DEMO_PAGES) {
   await page.close();
 }
 
+// --- blog: index, unknown slug 404, feed, admin gate ---
+{
+  const page = await browser.newPage();
+
+  await page.goto(BASE + "/blog", { waitUntil: "networkidle" });
+  const blogBody = await page.locator("body").textContent();
+  ok(
+    /short reads for busy dads/i.test(blogBody),
+    "/blog: index renders (posts or empty state)",
+  );
+
+  const missing = await page.goto(BASE + "/blog/definitely-not-a-real-post");
+  ok(missing.status() === 404, "/blog/[slug]: unknown slug returns 404");
+
+  const feed = await page.request.get(BASE + "/feed.xml");
+  const feedText = await feed.text();
+  ok(
+    feed.ok() && feedText.startsWith("<?xml") && feedText.includes("<rss"),
+    "/feed.xml: well-formed RSS envelope",
+  );
+
+  await page.goto(BASE + "/admin/blog", { waitUntil: "networkidle" });
+  ok(
+    await page.locator('input[type="password"]').isVisible(),
+    "/admin/blog: secret gate renders",
+  );
+  await page.close();
+}
+
 // --- newsletter admin studio: gate renders, wrong secret rejected ---
 {
   const page = await browser.newPage();

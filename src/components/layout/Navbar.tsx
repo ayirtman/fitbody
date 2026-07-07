@@ -62,6 +62,12 @@ export default function Navbar() {
             Guides
           </Link>
           <Link
+            href="/blog"
+            className="text-sm font-medium text-muted transition-colors hover:text-cream"
+          >
+            Blog
+          </Link>
+          <Link
             href="/my-temple"
             className="text-sm font-medium text-muted transition-colors hover:text-cream"
           >

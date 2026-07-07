@@ -3,8 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { guides, guideBySlug } from "@/data/guides";
 import { pageMeta } from "@/lib/seo/meta";
-import { articleSchema } from "@/lib/seo/schema";
+import { guideArticleSchema } from "@/lib/seo/schema";
 import JsonLd from "@/components/seo/JsonLd";
+import ArticleBody from "@/components/article/ArticleBody";
 import FaqSection from "@/components/seo/FaqSection";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import GearKit from "@/components/gear/GearKit";
@@ -60,7 +61,7 @@ export default async function GuidePage({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-      <JsonLd data={articleSchema(guide)} />
+      <JsonLd data={guideArticleSchema(guide)} />
       <div className="mb-6">
         <Breadcrumbs
           items={[
@@ -74,38 +75,7 @@ export default async function GuidePage({
         Guide · {guide.minutes} min read
       </p>
       <h1 className="display lintel mt-1 text-4xl sm:text-5xl">{guide.title}</h1>
-      <p className="mt-5 text-lg leading-relaxed text-cream/85">{guide.intro}</p>
-
-      {guide.sections.map((section) => (
-        <section key={section.heading} className="mt-10">
-          <h2 className="display lintel text-3xl">{section.heading}</h2>
-          {section.paragraphs.map((p, i) => (
-            <p key={i} className="mt-4 text-sm leading-relaxed text-cream/85">
-              {p}
-            </p>
-          ))}
-          {section.bullets && (
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-cream/85">
-              {section.bullets.map((b) => (
-                <li key={b}>{b}</li>
-              ))}
-            </ul>
-          )}
-          {section.links && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {section.links.map((l) => (
-                <Link
-                  key={l.href + l.label}
-                  href={l.href}
-                  className="rounded-full border border-edge px-4 py-1.5 text-xs text-cream transition-colors hover:border-gold hover:text-gold"
-                >
-                  {l.label} →
-                </Link>
-              ))}
-            </div>
-          )}
-        </section>
-      ))}
+      <ArticleBody intro={guide.intro} sections={guide.sections} />
 
       <FaqSection faqs={guide.faqs} />
 

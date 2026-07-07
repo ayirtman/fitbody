@@ -218,3 +218,26 @@ export interface Guide {
   /** Show a gear kit for this equipment at the end, if any */
   gearEquipment?: Equipment[];
 }
+
+export type BlogCategory = "training" | "nutrition" | "recovery" | "dad-life";
+
+/** Article body stored in Supabase blog_posts.content (jsonb). */
+export interface BlogContent {
+  intro: string;
+  sections: GuideSection[];
+  faqs?: Faq[];
+  related: { label: string; href: string }[];
+}
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  category: BlogCategory;
+  tags: string[];
+  content: BlogContent;
+  status: "draft" | "published";
+  published_at: string | null;
+  created_at: string;
+}

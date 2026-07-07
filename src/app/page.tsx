@@ -10,6 +10,7 @@ import MuscleExplorer from "@/components/body-map/MuscleExplorer";
 import RoutineCard from "@/components/routine/RoutineCard";
 import RecipeCard from "@/components/recipe/RecipeCard";
 import SectionHeader from "@/components/ui/SectionHeader";
+import FromTheBlog from "@/components/blog/FromTheBlog";
 import StreakNudge from "@/components/progress/StreakNudge";
 import { pageMeta } from "@/lib/seo/meta";
 import { SITE_DESCRIPTION } from "@/lib/seo/site";
@@ -54,6 +55,8 @@ const valueProps = [
     body: "No account, no paywall, no ads. Every workout, stretch and recipe - yours.",
   },
 ];
+
+export const revalidate = 3600;
 
 export default function Home() {
   const featuredRoutines = [
@@ -202,6 +205,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <FromTheBlog />
     </div>
   );
 }

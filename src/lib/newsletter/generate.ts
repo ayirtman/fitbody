@@ -3,6 +3,7 @@ import { recipes } from "@/data/recipes";
 import { exercises } from "@/data/exercises";
 import { stretches } from "@/data/stretches";
 import { isoWeek } from "./digest";
+import { latestPublished } from "@/lib/blog";
 
 /**
  * Claude-written weekly issue. Feeds this week's featured recipe + movement
@@ -32,7 +33,12 @@ const OUTPUT_SCHEMA = {
   additionalProperties: false,
 } as const;
 
-function buildPrompt(siteUrl: string, topic: string | undefined, now: Date): string {
+function buildPrompt(
+  siteUrl: string,
+  topic: string | undefined,
+  now: Date,
+  blogLines: string,
+): string {
   const week = isoWeek(now);
   const recipe = recipes[week % recipes.length];
   const movements = [...exercises, ...stretches];
@@ -68,6 +74,7 @@ Movement: ${movement.name}
 MORE CONTENT YOU MAY REFERENCE (optional, pick at most 2)
 ${moreRecipes}
 ${moreExercises}
+${blogLines ? `\nFRESH BLOG POSTS (mention and link 1-2 of these in a short "worth a read" line if they fit the issue):\n${blogLines}\n` : ""}
 ${topic ? `\nEDITOR'S TOPIC FOR THIS ISSUE (weave it in as the opening theme):\n${topic}\n` : ""}
 FORMAT REQUIREMENTS
 - Email HTML only, inline styles only (email clients ignore stylesheets).
@@ -89,6 +96,10 @@ export async function generateIssue(
     throw new Error("ANTHROPIC_API_KEY is not set");
   }
   const client = new Anthropic();
+  const posts = await latestPublished(3).catch(() => []);
+  const blogLines = posts
+    .map((p) => `- ${p.title}: ${siteUrl}/blog/${p.slug}`)
+    .join("\n");
   const response = await client.messages.create({
     model: "claude-opus-4-8",
     max_tokens: 16000,
@@ -99,7 +110,7 @@ export async function generateIssue(
         schema: OUTPUT_SCHEMA,
       },
     },
-    messages: [{ role: "user", content: buildPrompt(siteUrl, topic, now) }],
+    messages: [{ role: "user", content: buildPrompt(siteUrl, topic, now, blogLines) }],
   });
 
   if (response.stop_reason !== "end_turn") {

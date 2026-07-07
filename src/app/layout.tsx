@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     template: "%s · TempleFit",
   },
   description: SITE_DESCRIPTION,
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
   ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? {
         verification: {

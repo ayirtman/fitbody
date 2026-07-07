@@ -11,6 +11,7 @@ const columns: { title: string; links: { href: string; label: string }[] }[] = [
       { href: "/routines", label: "Routines" },
       { href: "/flexibility", label: "Flexibility" },
       { href: "/physio", label: "Physio & Pain Relief" },
+      { href: "/guides", label: "Guides" },
     ],
   },
   {

@@ -13,6 +13,8 @@ import { routines } from "../src/data/routines";
 import { recipes } from "../src/data/recipes";
 import { mealPrepPlans } from "../src/data/mealPrepPlans";
 import { poseSets } from "../src/data/poses";
+import { guides } from "../src/data/guides";
+import { movementFaqs, recipeFaqs } from "../src/data/faqs";
 import type { BaseMovement, ComplaintId, MuscleId } from "../src/lib/types";
 import { categorizeIngredient } from "../src/lib/ingredientCategories";
 import { JOINTS, POSE_CANVAS, isAttachedProp } from "../src/lib/pose-types";
@@ -304,6 +306,59 @@ function scanForEmDash(dir: string) {
   }
 }
 scanForEmDash("src/data");
+
+// --- guides & faqs -------------------------------------------------------
+assertUniqueSlugs(guides, "guides");
+{
+  const validPaths = new Set<string>([
+    "/", "/exercises", "/routines", "/muscles", "/recipes", "/meal-prep",
+    "/nutrition", "/flexibility", "/physio", "/gear", "/guides", "/support",
+    "/sponsor", "/disclosure", "/about", "/my-temple",
+    ...exercises.map((e) => `/exercises/${e.slug}`),
+    ...stretches.map((st) => `/flexibility/${st.slug}`),
+    ...routines.map((r) => `/routines/${r.slug}`),
+    ...recipes.map((r) => `/recipes/${r.slug}`),
+    ...mealPrepPlans.map((m) => `/meal-prep/${m.slug}`),
+    ...muscles.map((m) => `/muscles/${m.id}`),
+    ...complaints.map((c) => `/physio/${c.id}`),
+    ...complaints.flatMap((c) =>
+      physioExercises
+        .filter((pe) => pe.complaints.includes(c.id))
+        .map((pe) => `/physio/${c.id}/${pe.slug}`),
+    ),
+    ...guides.map((g) => `/guides/${g.slug}`),
+  ]);
+  for (const g of guides) {
+    assert(g.description.length <= 160, `guide "${g.slug}": description over 160 chars`);
+    assert(g.sections.length >= 3, `guide "${g.slug}": fewer than 3 sections`);
+    const links = [
+      ...g.related,
+      ...g.sections.flatMap((sec) => sec.links ?? []),
+    ];
+    assert(links.length > 0, `guide "${g.slug}": no internal links`);
+    for (const l of links) {
+      assert(validPaths.has(l.href), `guide "${g.slug}": broken link "${l.href}"`);
+    }
+    for (const f of g.faqs ?? []) {
+      assert(f.q.length > 5 && f.a.length > 20, `guide "${g.slug}": thin FAQ "${f.q}"`);
+    }
+  }
+  const movementSlugSet = new Set(
+    [...exercises, ...stretches, ...physioExercises].map((m) => m.slug),
+  );
+  for (const key of Object.keys(movementFaqs)) {
+    assert(movementSlugSet.has(key), `movementFaqs: unknown slug "${key}"`);
+  }
+  const recipeSlugSet = new Set(recipes.map((r) => r.slug));
+  for (const key of Object.keys(recipeFaqs)) {
+    assert(recipeSlugSet.has(key), `recipeFaqs: unknown slug "${key}"`);
+  }
+  for (const faqs of [...Object.values(movementFaqs), ...Object.values(recipeFaqs)]) {
+    for (const f of faqs) {
+      assert(f.q.length > 5 && f.a.length > 20, `faqs: thin entry "${f.q}"`);
+    }
+  }
+}
 
 if (ENFORCE_POSE_COVERAGE) {
   const covered = new Set(poseSets.map((p) => p.slug));

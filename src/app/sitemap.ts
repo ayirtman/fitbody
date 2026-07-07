@@ -9,6 +9,7 @@ import {
   recipes,
   mealPrepPlans,
 } from "@/data";
+import { guides } from "@/data/guides";
 import { SITE_URL } from "@/lib/seo/site";
 
 // One shared lastModified per deploy: content only changes when we ship.
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/recipes",
     "/meal-prep",
     "/nutrition",
+    "/guides",
     "/gear",
     "/support",
     "/sponsor",
@@ -45,6 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...routines.map((r) => `/routines/${r.slug}`),
     ...recipes.map((r) => `/recipes/${r.slug}`),
     ...mealPrepPlans.map((p) => `/meal-prep/${p.slug}`),
+    ...guides.map((g) => `/guides/${g.slug}`),
   ];
 
   return [...staticPaths, ...dynamicPaths].map((path) => ({

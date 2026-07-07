@@ -19,6 +19,13 @@ interface Dashboard {
   claude: boolean;
 }
 
+interface Sponsor {
+  name: string;
+  url: string;
+  blurb: string;
+  active: boolean;
+}
+
 const SECRET_KEY = "templefit.newsletterSecret";
 
 function fmtDate(iso: string): string {
@@ -39,6 +46,7 @@ export default function NewsletterStudio() {
   const [topic, setTopic] = useState("");
   const [testEmail, setTestEmail] = useState("");
   const [previewId, setPreviewId] = useState<string | null>(null);
+  const [sponsor, setSponsor] = useState<Sponsor | null>(null);
 
   const api = useCallback(
     async (path: string, init: RequestInit = {}, key?: string) => {
@@ -71,12 +79,16 @@ export default function NewsletterStudio() {
 
   const load = useCallback(
     async (key?: string) => {
-      const body = await api("/api/newsletter/issues", {}, key);
+      const [body, sponsorBody] = await Promise.all([
+        api("/api/newsletter/issues", {}, key),
+        api("/api/newsletter/sponsor", {}, key).catch(() => null),
+      ]);
       setData({
         issues: body.issues as Issue[],
         subscribers: body.subscribers as number | null,
         claude: body.claude as boolean,
       });
+      if (sponsorBody?.sponsor) setSponsor(sponsorBody.sponsor as Sponsor);
     },
     [api],
   );
@@ -191,6 +203,20 @@ export default function NewsletterStudio() {
       await load();
     });
 
+  const saveSponsor = () =>
+    run("sponsor", async () => {
+      if (!sponsor) return;
+      await api("/api/newsletter/sponsor", {
+        method: "PUT",
+        body: JSON.stringify(sponsor),
+      });
+      setNotice(
+        sponsor.active
+          ? "Sponsor saved - new issues will carry the Presented-by block."
+          : "Sponsor saved (inactive - no block in new issues).",
+      );
+    });
+
   const editSubject = (issue: Issue) =>
     run(`edit:${issue.id}`, async () => {
       const subject = window.prompt("New subject line:", issue.subject);
@@ -279,6 +305,61 @@ export default function NewsletterStudio() {
           </p>
         )}
       </section>
+
+      {sponsor && (
+        <section className="mt-6 rounded-2xl border border-edge bg-surface-1 p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 className="display lintel text-2xl">Sponsor slot</h2>
+            <label className="flex items-center gap-2 text-sm text-muted">
+              <input
+                type="checkbox"
+                checked={sponsor.active}
+                onChange={(e) =>
+                  setSponsor({ ...sponsor, active: e.target.checked })
+                }
+                className="h-4 w-4 accent-[#c9a227]"
+              />
+              Active
+            </label>
+          </div>
+          <p className="mt-2 text-sm text-muted">
+            When active, new issues open with a &quot;Presented by&quot; block.
+            Existing drafts are untouched.
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <input
+              type="text"
+              placeholder="Sponsor name"
+              value={sponsor.name}
+              onChange={(e) => setSponsor({ ...sponsor, name: e.target.value })}
+              className="rounded-full border border-edge bg-ink px-5 py-2.5 text-sm text-cream placeholder:text-muted focus:border-gold focus:outline-none"
+            />
+            <input
+              type="url"
+              placeholder="https://sponsor-site.com"
+              value={sponsor.url}
+              onChange={(e) => setSponsor({ ...sponsor, url: e.target.value })}
+              className="rounded-full border border-edge bg-ink px-5 py-2.5 text-sm text-cream placeholder:text-muted focus:border-gold focus:outline-none"
+            />
+          </div>
+          <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+            <input
+              type="text"
+              placeholder="One honest sentence about the sponsor"
+              value={sponsor.blurb}
+              onChange={(e) => setSponsor({ ...sponsor, blurb: e.target.value })}
+              className="flex-1 rounded-full border border-edge bg-ink px-5 py-2.5 text-sm text-cream placeholder:text-muted focus:border-gold focus:outline-none"
+            />
+            <button
+              onClick={saveSponsor}
+              disabled={busy === "sponsor"}
+              className="rounded-full border border-gold px-6 py-2.5 text-sm font-bold text-gold transition-colors hover:bg-gold hover:text-ink disabled:opacity-60"
+            >
+              {busy === "sponsor" ? "Saving…" : "Save sponsor"}
+            </button>
+          </div>
+        </section>
+      )}
 
       {notice && (
         <p className="mt-4 text-sm text-sage" role="status">

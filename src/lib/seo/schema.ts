@@ -1,4 +1,4 @@
-import type { Exercise, PhysioExercise, Recipe, Stretch } from "@/lib/types";
+import type { Exercise, Faq, Guide, PhysioExercise, Recipe, Stretch } from "@/lib/types";
 import { SITE_NAME, SITE_URL } from "./site";
 
 /**
@@ -74,6 +74,32 @@ export function recipeSchema(recipe: Recipe): Schema {
       position: i + 1,
       text: step,
     })),
+  };
+}
+
+export function faqPageSchema(faqs: Faq[]): Schema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+export function articleSchema(guide: Guide): Schema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.description,
+    url: `${SITE_URL}/guides/${guide.slug}`,
+    dateModified: guide.updated,
+    datePublished: guide.updated,
+    author: organizationSchema(false),
+    publisher: organizationSchema(false),
   };
 }
 

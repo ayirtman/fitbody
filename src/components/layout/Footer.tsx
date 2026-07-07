@@ -11,6 +11,7 @@ const columns: { title: string; links: { href: string; label: string }[] }[] = [
       { href: "/routines", label: "Routines" },
       { href: "/flexibility", label: "Flexibility" },
       { href: "/physio", label: "Physio & Pain Relief" },
+      { href: "/guides", label: "Guides" },
     ],
   },
   {
@@ -27,6 +28,10 @@ const columns: { title: string; links: { href: string; label: string }[] }[] = [
       { href: "/my-temple", label: "My Temple" },
       { href: "/posture-ai", label: "Posture AI (Coming Soon)" },
       { href: "/about", label: "About & Disclaimer" },
+      { href: "/gear", label: "Gear" },
+      { href: "/support", label: "Keep It Free" },
+      { href: "/disclosure", label: "Disclosure" },
+      { href: "/sponsor", label: "Sponsor" },
     ],
   },
 ];

@@ -216,6 +216,91 @@ for (const path of DEMO_PAGES) {
   await page.close();
 }
 
+// --- content moat: FAQ schema on recipe, guide article + Article schema ---
+{
+  const page = await browser.newPage();
+
+  await page.goto(BASE + "/recipes/chicken-burrito-bowls", {
+    waitUntil: "networkidle",
+  });
+  const recipeLd = (
+    await page.locator('script[type="application/ld+json"]').allTextContents()
+  ).map((b) => JSON.parse(b));
+  const faqLd = recipeLd.find((p) => p["@type"] === "FAQPage");
+  ok(
+    Boolean(faqLd && faqLd.mainEntity?.length >= 3),
+    "/recipes/[slug]: FAQPage JSON-LD present",
+  );
+
+  await page.goto(BASE + "/guides", { waitUntil: "networkidle" });
+  ok(
+    (await page.locator('a[href^="/guides/"]').count()) >= 6,
+    "/guides: index lists all guides",
+  );
+
+  await page.goto(BASE + "/guides/meal-prep-for-the-week-in-2-hours", {
+    waitUntil: "networkidle",
+  });
+  const guideLd = (
+    await page.locator('script[type="application/ld+json"]').allTextContents()
+  ).map((b) => JSON.parse(b));
+  ok(
+    guideLd.some((p) => p["@type"] === "Article"),
+    "/guides/[slug]: Article JSON-LD present",
+  );
+  ok(
+    guideLd.some((p) => p["@type"] === "FAQPage"),
+    "/guides/[slug]: guide FAQ schema present",
+  );
+  ok(
+    await page.getByText("Sunday Meal-Prep Pack").first().isVisible(),
+    "/guides/[slug]: lead magnet renders on guide",
+  );
+  const guideLinks = await page.locator('article a[href^="/recipes/"], article a[href^="/meal-prep/"]').count();
+  ok(guideLinks >= 3, "/guides/[slug]: internal content links present");
+  await page.close();
+}
+
+// --- revenue rails: gear kit targeting, gear page, lead magnet, support ---
+{
+  const page = await browser.newPage();
+
+  await page.goto(BASE + "/exercises/incline-dumbbell-press", {
+    waitUntil: "networkidle",
+  });
+  ok(
+    (await page.getByText("The kit").count()) > 0,
+    "/exercises: gear kit shows on equipment movement",
+  );
+  const sponsored = await page.locator('a[rel~="sponsored"]').count();
+  ok(sponsored > 0, "/exercises: gear links carry rel=sponsored");
+
+  await page.goto(BASE + "/exercises/push-up", { waitUntil: "networkidle" });
+  ok(
+    (await page.getByText("The kit").count()) === 0,
+    "/exercises: no gear kit on bodyweight movement",
+  );
+
+  await page.goto(BASE + "/gear", { waitUntil: "networkidle" });
+  ok(
+    (await page.locator('a[rel~="sponsored"]').count()) >= 8,
+    "/gear: curated list renders with sponsored links",
+  );
+
+  await page.goto(BASE + "/meal-prep", { waitUntil: "networkidle" });
+  ok(
+    await page.getByText("Sunday Meal-Prep Pack").first().isVisible(),
+    "/meal-prep: lead magnet band renders",
+  );
+
+  await page.goto(BASE + "/support", { waitUntil: "networkidle" });
+  ok(
+    await page.getByText("Keep TempleFit free").first().isVisible(),
+    "/support: tip jar page renders",
+  );
+  await page.close();
+}
+
 // --- newsletter admin studio: gate renders, wrong secret rejected ---
 {
   const page = await browser.newPage();

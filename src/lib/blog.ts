@@ -161,6 +161,22 @@ export async function blogCounts(): Promise<{ published: number; drafts: number 
   return { published, drafts };
 }
 
+/**
+ * Days since the most recent post was published. Returns Infinity when nothing
+ * has been published yet (so the first drip fires immediately), or null if the
+ * query fails. Drives the drip interval gate in the cron.
+ */
+export async function daysSinceLastPublish(): Promise<number | null> {
+  const res = await sbFetch(
+    "blog_posts?status=eq.published&select=published_at&order=published_at.desc&limit=1",
+  );
+  if (!res.ok) return null;
+  const rows = (await res.json()) as { published_at: string | null }[];
+  const last = rows[0]?.published_at;
+  if (!last) return Infinity;
+  return (Date.now() - new Date(last).getTime()) / 86_400_000;
+}
+
 /** Publish the N oldest drafts (drip). Returns the published summaries. */
 export async function publishNextDrafts(n: number): Promise<BlogPostSummary[]> {
   const res = await sbFetch(
@@ -181,15 +197,23 @@ export async function publishNextDrafts(n: number): Promise<BlogPostSummary[]> {
 export interface BlogSettings {
   drip_enabled: boolean;
   drip_per_day: number;
+  /** Minimum days between drip runs. 1 = every day; 3 = every 3rd day. */
+  drip_interval_days: number;
 }
 
 export async function getBlogSettings(): Promise<BlogSettings | null> {
-  const res = await sbFetch(
-    "blog_settings?id=eq.1&select=drip_enabled,drip_per_day",
-  );
+  // select=* so the query keeps working whether or not the drip_interval_days
+  // column has been added yet; the field is then defaulted below.
+  const res = await sbFetch("blog_settings?id=eq.1&select=*");
   if (!res.ok) return null;
-  const rows = (await res.json()) as BlogSettings[];
-  return rows[0] ?? null;
+  const rows = (await res.json()) as Partial<BlogSettings>[];
+  const row = rows[0];
+  if (!row) return null;
+  return {
+    drip_enabled: row.drip_enabled ?? true,
+    drip_per_day: row.drip_per_day ?? 3,
+    drip_interval_days: row.drip_interval_days ?? 1,
+  };
 }
 
 export async function saveBlogSettings(

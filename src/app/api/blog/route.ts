@@ -40,20 +40,31 @@ export async function GET(request: Request) {
   return NextResponse.json({ ok: true, posts, counts, settings });
 }
 
-/** Update drip settings. Body: { drip_enabled?, drip_per_day? } */
+/** Update drip settings. Body: { drip_enabled?, drip_per_day?, drip_interval_days? } */
 export async function PUT(request: Request) {
   const denied = guard(request);
   if (denied) return denied;
-  let body: { drip_enabled?: unknown; drip_per_day?: unknown };
+  let body: {
+    drip_enabled?: unknown;
+    drip_per_day?: unknown;
+    drip_interval_days?: unknown;
+  };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ ok: false, error: "Invalid body" }, { status: 400 });
   }
-  const fields: { drip_enabled?: boolean; drip_per_day?: number } = {};
+  const fields: {
+    drip_enabled?: boolean;
+    drip_per_day?: number;
+    drip_interval_days?: number;
+  } = {};
   if (typeof body.drip_enabled === "boolean") fields.drip_enabled = body.drip_enabled;
   if (typeof body.drip_per_day === "number") {
     fields.drip_per_day = Math.min(20, Math.max(1, Math.round(body.drip_per_day)));
+  }
+  if (typeof body.drip_interval_days === "number") {
+    fields.drip_interval_days = Math.min(30, Math.max(1, Math.round(body.drip_interval_days)));
   }
   if (Object.keys(fields).length === 0) {
     return NextResponse.json({ ok: false, error: "Nothing to update" }, { status: 400 });

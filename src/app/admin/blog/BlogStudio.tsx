@@ -17,6 +17,7 @@ interface PostRow {
 interface Settings {
   drip_enabled: boolean;
   drip_per_day: number;
+  drip_interval_days: number;
 }
 
 const SECRET_KEY = "templefit.newsletterSecret";
@@ -141,7 +142,13 @@ export default function BlogStudio() {
       await api("/api/blog", { method: "PUT", body: JSON.stringify(settings) });
       setNotice(
         settings.drip_enabled
-          ? `Drip on: ${settings.drip_per_day}/day, oldest drafts first.`
+          ? `Drip on: ${settings.drip_per_day} ${
+              settings.drip_per_day === 1 ? "post" : "posts"
+            } every ${
+              settings.drip_interval_days === 1
+                ? "day"
+                : `${settings.drip_interval_days} days`
+            }, oldest drafts first.`
           : "Drip paused - nothing publishes until you turn it back on.",
       );
     });
@@ -227,7 +234,8 @@ export default function BlogStudio() {
   );
   const daysLeft =
     counts && settings && settings.drip_per_day > 0
-      ? Math.ceil(counts.drafts / settings.drip_per_day)
+      ? Math.ceil(counts.drafts / settings.drip_per_day) *
+        Math.max(1, settings.drip_interval_days)
       : null;
 
   return (
@@ -275,7 +283,23 @@ export default function BlogStudio() {
                 }
                 className="w-20 rounded-full border border-edge bg-ink px-4 py-1.5 text-sm text-cream focus:border-gold focus:outline-none"
               />
-              posts per day (06:00 UTC)
+              posts every
+            </label>
+            <label className="flex items-center gap-2 text-sm text-muted">
+              <input
+                type="number"
+                min={1}
+                max={30}
+                value={settings.drip_interval_days}
+                onChange={(e) =>
+                  setSettings({
+                    ...settings,
+                    drip_interval_days: Number(e.target.value) || 1,
+                  })
+                }
+                className="w-20 rounded-full border border-edge bg-ink px-4 py-1.5 text-sm text-cream focus:border-gold focus:outline-none"
+              />
+              {settings.drip_interval_days === 1 ? "day" : "days"} (checked 06:00 UTC)
             </label>
             <button
               onClick={saveSettings}

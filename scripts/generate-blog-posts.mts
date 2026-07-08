@@ -39,6 +39,17 @@ const TOPICS_FILE = "scripts/blog-topics.json";
 const PUBLISH_NOW = 50;
 const CONCURRENCY = 6;
 
+// Resume support: slugs already stored in the DB (from BLOG_SKIP_SLUGS, a JSON
+// array file). --write skips them so a re-run only generates the missing ones;
+// --sql omits them and marks everything it emits as draft (the published set
+// already exists in the DB).
+const SKIP_SLUGS = new Set<string>(
+  process.env.BLOG_SKIP_SLUGS && existsSync(process.env.BLOG_SKIP_SLUGS)
+    ? (JSON.parse(readFileSync(process.env.BLOG_SKIP_SLUGS, "utf8")) as string[])
+    : [],
+);
+const RESUME = SKIP_SLUGS.size > 0;
+
 const client = new Anthropic();
 
 // ---- link catalog ------------------------------------------------------------
@@ -315,7 +326,7 @@ ${feedback ? `\nYour previous attempt failed validation. Fix these problems and 
 async function generateArticles(limit?: number) {
   mkdirSync(OUT_DIR, { recursive: true });
   const topics = (JSON.parse(readFileSync(TOPICS_FILE, "utf8")) as Topic[]).filter(
-    (t) => !existsSync(path.join(OUT_DIR, `${t.slug}.json`)),
+    (t) => !SKIP_SLUGS.has(t.slug) && !existsSync(path.join(OUT_DIR, `${t.slug}.json`)),
   );
   const queue = limit ? topics.slice(0, limit) : topics;
   console.log(`writing ${queue.length} articles (concurrency ${CONCURRENCY})...`);
@@ -360,7 +371,7 @@ function emitSql() {
   const topics = JSON.parse(readFileSync(TOPICS_FILE, "utf8")) as Topic[];
   const order = new Map(topics.map((t, i) => [t.slug, i]));
   const files = readdirSync(OUT_DIR)
-    .filter((f) => f.endsWith(".json"))
+    .filter((f) => f.endsWith(".json") && !SKIP_SLUGS.has(f.replace(".json", "")))
     .sort((a, b) => (order.get(a.replace(".json", "")) ?? 999) - (order.get(b.replace(".json", "")) ?? 999));
 
   const sqlDir = path.join(OUT_DIR, "sql");
@@ -377,7 +388,7 @@ function emitSql() {
         faqs: a.faqs,
         related: a.related,
       });
-      const published = idx < PUBLISH_NOW;
+      const published = !RESUME && idx < PUBLISH_NOW;
       const esc = (s: string) => s.replaceAll("'", "''");
       const tags = `{${(a.tags as string[]).map((t) => `"${esc(t).replaceAll('"', "")}"`).join(",")}}`;
       return `('${esc(a.slug)}', '${esc(a.title)}', '${esc(a.description)}', '${esc(a.category)}', '${tags}', $bp$${content}$bp$::jsonb, '${published ? "published" : "draft"}', ${published ? "now()" : "null"}, now() + interval '${idx} seconds')`;

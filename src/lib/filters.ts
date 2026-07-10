@@ -92,6 +92,7 @@ export function filterRecipes(items: Recipe[], f: RecipeFilters): Recipe[] {
 export const EQUIPMENT_LABELS: Record<Equipment, string> = {
   none: "No equipment",
   dumbbells: "Dumbbells",
+  kettlebell: "Kettlebell",
   bands: "Bands",
   barbell: "Barbell",
   "pull-up-bar": "Pull-up bar",

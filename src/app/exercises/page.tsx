@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { pageMeta } from "@/lib/seo/meta";
 import { Suspense } from "react";
 import { exercises } from "@/data";
@@ -7,7 +8,7 @@ import ExerciseLibrary from "@/components/exercise/ExerciseLibrary";
 export const metadata: Metadata = pageMeta({
   title: "Exercise Library",
   description:
-    "48 exercises for every muscle group, filterable by equipment, difficulty and time. Most need nothing but floor space.",
+    "Exercises for every muscle group - bodyweight, dumbbell, kettlebell and band - filterable by equipment, difficulty and time.",
   path: "/exercises",
 });
 
@@ -24,6 +25,16 @@ export default function ExercisesPage() {
         {`${exercises.length} exercises with honest time estimates. Filter by
         what you have and how long you've got - most need nothing but floor
         space.`}
+      </p>
+      <p className="mt-3 text-sm text-muted">
+        Only got one bit of kit?{" "}
+        <Link
+          href="/equipment"
+          className="font-medium text-gold hover:text-gold-light"
+        >
+          Pick your equipment
+        </Link>{" "}
+        and see everything that works with it.
       </p>
       <div className="mt-8">
         <Suspense>

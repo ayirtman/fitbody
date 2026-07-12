@@ -59,11 +59,11 @@ assert(muscles.length === 16, `expected 16 muscle groups, got ${muscles.length}`
 assert(new Set(muscles.map((m) => m.id)).size === muscles.length, "duplicate muscle ids");
 
 // --- collections: sizes + unique slugs ---
-assert(exercises.length === 48, `expected 48 exercises, got ${exercises.length}`);
+assert(exercises.length === 68, `expected 48 exercises, got ${exercises.length}`);
 assert(stretches.length === 24, `expected 24 stretches, got ${stretches.length}`);
 assert(physioExercises.length === 18, `expected 18 physio exercises, got ${physioExercises.length}`);
 assert(complaints.length === 6, `expected 6 complaints, got ${complaints.length}`);
-assert(routines.length === 9, `expected 9 routines, got ${routines.length}`);
+assert(routines.length === 13, `expected 9 routines, got ${routines.length}`);
 assert(recipes.length === 26, `expected 26 recipes, got ${recipes.length}`);
 assert(mealPrepPlans.length === 4, `expected 4 meal prep plans, got ${mealPrepPlans.length}`);
 

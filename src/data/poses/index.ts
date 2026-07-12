@@ -1,12 +1,14 @@
 import type { PoseSet } from "@/lib/pose-types";
 import { exercisePosesA } from "./exercises-a";
 import { exercisePosesB } from "./exercises-b";
+import { equipmentPoses } from "./equipment";
 import { stretchPoses } from "./stretches";
 import { physioPoses } from "./physio";
 
 export const poseSets: PoseSet[] = [
   ...exercisePosesA,
   ...exercisePosesB,
+  ...equipmentPoses,
   ...stretchPoses,
   ...physioPoses,
 ];

@@ -21,6 +21,7 @@ export type BodyView = "front" | "back";
 export type Equipment =
   | "none"
   | "dumbbells"
+  | "kettlebell"
   | "bands"
   | "barbell"
   | "pull-up-bar";

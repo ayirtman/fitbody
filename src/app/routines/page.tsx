@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { pageMeta } from "@/lib/seo/meta";
 import LeadMagnetForm from "@/components/newsletter/LeadMagnetForm";
 import { routines } from "@/data";
@@ -45,6 +46,17 @@ export default function RoutinesPage() {
       <p className="mt-4 max-w-xl text-muted">
         Every routine is pre-programmed: what to do, in what order, for how
         long. Pick one that fits the time you actually have.
+      </p>
+
+      <p className="mt-3 text-sm text-muted">
+        One kettlebell, one dumbbell, a band or nothing at all -{" "}
+        <Link
+          href="/equipment"
+          className="font-medium text-gold hover:text-gold-light"
+        >
+          pick your equipment
+        </Link>{" "}
+        and get routines built around just that.
       </p>
 
       {sections.map((section) => {

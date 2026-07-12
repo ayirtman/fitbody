@@ -8,6 +8,7 @@ const columns: { title: string; links: { href: string; label: string }[] }[] = [
     links: [
       { href: "/muscles", label: "Muscle Map" },
       { href: "/exercises", label: "Exercise Library" },
+      { href: "/equipment", label: "Train by Equipment" },
       { href: "/routines", label: "Routines" },
       { href: "/flexibility", label: "Flexibility" },
       { href: "/physio", label: "Physio & Pain Relief" },

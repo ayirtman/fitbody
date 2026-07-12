@@ -10,6 +10,7 @@ import {
   mealPrepPlans,
 } from "@/data";
 import { guides } from "@/data/guides";
+import { ALL_EQUIPMENT } from "@/lib/equipment";
 import { SITE_URL } from "@/lib/seo/site";
 import { publishedForSitemap } from "@/lib/blog";
 
@@ -30,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/guides",
     "/blog",
     "/gear",
+    "/equipment",
     "/support",
     "/sponsor",
     "/disclosure",
@@ -50,6 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...recipes.map((r) => `/recipes/${r.slug}`),
     ...mealPrepPlans.map((p) => `/meal-prep/${p.slug}`),
     ...guides.map((g) => `/guides/${g.slug}`),
+    ...ALL_EQUIPMENT.map((e) => `/equipment/${e}`),
   ];
 
   const staticEntries: MetadataRoute.Sitemap = [

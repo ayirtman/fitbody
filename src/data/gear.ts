@@ -36,6 +36,14 @@ export const gear: GearItem[] = [
     search: "resistance loop bands set",
   },
   {
+    id: "kettlebell",
+    name: "Cast-iron kettlebell",
+    why: "One bell covers swings, squats, presses and carries. 16kg suits most dads starting out.",
+    category: "training",
+    equipment: "kettlebell",
+    search: "cast iron kettlebell 16kg",
+  },
+  {
     id: "pull-up-bar",
     name: "Doorway pull-up bar",
     why: "No drilling, holds your bodyweight, unlocks the whole pulling half of this library.",

@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useLocalStorage } from "@/lib/useLocalStorage";
 import {
   DEFAULT_COMPLETIONS,
@@ -27,6 +28,8 @@ export default function MarkDoneButton({
   const streak = hydrated ? currentStreak(completions.dates) : 0;
 
   function markDone() {
+    if (!hydrated || doneToday) return;
+    track("routine_completed", { routine: routineSlug });
     setCompletions((prev) => {
       const entries = prev.byDate[today] ?? [];
       if (entries.some((e) => e.routineSlug === routineSlug)) return prev;
@@ -41,7 +44,7 @@ export default function MarkDoneButton({
     <div className="flex items-center gap-4">
       <button
         onClick={markDone}
-        disabled={doneToday}
+        disabled={!hydrated || doneToday}
         className={`rounded-full px-6 py-2.5 text-sm font-bold transition-colors ${
           doneToday
             ? "cursor-default bg-sage/20 text-sage"

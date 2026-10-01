@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useState } from "react";
 import { useLocalStorage } from "@/lib/useLocalStorage";
 import {
@@ -33,6 +34,7 @@ export default function WaitlistForm() {
         setError(data.error ?? "Something went wrong - try again.");
         return;
       }
+      track("posture_ai_waitlist_signup");
       setWaitlist({ submitted: true, at: new Date().toISOString() });
       setStatus("idle");
     } catch {

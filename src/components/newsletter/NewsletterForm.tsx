@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useState } from "react";
 
 export default function NewsletterForm() {
@@ -26,6 +27,7 @@ export default function NewsletterForm() {
         setError(data.error ?? "Something went wrong - try again.");
         return;
       }
+      track("newsletter_signup");
       setStatus("done");
     } catch {
       setStatus("error");

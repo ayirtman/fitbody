@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useState } from "react";
 
 /**
@@ -37,6 +38,7 @@ export default function LeadMagnetForm({
         setError(data.error ?? "Something went wrong - try again.");
         return;
       }
+      track("lead_magnet_signup", { file });
       setStatus("done");
     } catch {
       setStatus("error");

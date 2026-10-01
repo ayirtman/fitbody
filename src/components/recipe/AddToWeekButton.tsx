@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useState } from "react";
 import {
   MEAL_SLOTS,
@@ -30,6 +31,7 @@ export default function AddToWeekButton({ slug }: { slug: string }) {
       setPlan((prev) => removeFromPlan(prev, day, slot, slug));
       setLastAction(`Removed from ${dayLabel} ${slotLabel}`);
     } else {
+      track("recipe_added_to_plan", { recipe: slug });
       setPlan((prev) => addToPlan(prev, day, slot, slug));
       setLastAction(`Added to ${dayLabel} ${slotLabel}`);
     }

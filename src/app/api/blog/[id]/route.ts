@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabaseConfigured } from "@/lib/server/supabase";
+import { dbConfigured } from "@/lib/server/db";
 import { newsletterAdminAuthorized } from "@/lib/server/newsletterAuth";
 import { deletePost, getPostAdmin, setPostStatus } from "@/lib/blog";
 import { checkBlogPost } from "@/lib/blogQuality";
@@ -11,7 +11,7 @@ function guard(request: Request, id: string): NextResponse | null {
   if (!newsletterAdminAuthorized(request)) {
     return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
   }
-  if (!supabaseConfigured()) {
+  if (!dbConfigured()) {
     return NextResponse.json(
       { ok: false, error: "Blog not configured" },
       { status: 503 },

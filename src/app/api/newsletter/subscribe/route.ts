@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { normalizeEmail } from "@/lib/server/email";
-import { sbFetch, supabaseConfigured } from "@/lib/server/supabase";
+import { dbConfigured, q } from "@/lib/server/db";
 
 /**
  * Newsletter signup. Duplicate emails return ok so the endpoint can't be used
@@ -52,23 +52,18 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!supabaseConfigured()) {
+  if (!dbConfigured()) {
     return NextResponse.json(
       { ok: false, error: "Newsletter isn't configured yet - try again later" },
       { status: 503 },
     );
   }
 
-  const res = await sbFetch(
-    "newsletter_subscribers?on_conflict=email",
-    {
-      method: "POST",
-      body: JSON.stringify({ email }),
-      prefer: "resolution=ignore-duplicates",
-    },
+  const rows = await q(
+    `insert into newsletter_subscribers (email) values ($1) on conflict (email) do nothing`,
+    [email],
   );
-  if (!res.ok) {
-    console.error(`[newsletter] subscribe failed: ${res.status} ${await res.text()}`);
+  if (rows === null) {
     return NextResponse.json(
       { ok: false, error: "Something went wrong - try again" },
       { status: 502 },

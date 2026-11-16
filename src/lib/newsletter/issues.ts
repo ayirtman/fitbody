@@ -1,9 +1,9 @@
-import { sbFetch } from "@/lib/server/supabase";
+import { q, setClause } from "@/lib/server/db";
 
 /**
  * Data access for the newsletter_issues table (drafts written by Claude or
- * the weekly-digest template, plus the sent archive). Same raw-PostgREST
- * approach as the subscribers table.
+ * the weekly-digest template, plus the sent archive). Plain parameterised
+ * SQL over Neon.
  */
 
 export interface NewsletterIssue {
@@ -26,25 +26,21 @@ export function isIssueId(id: unknown): id is string {
 }
 
 export async function listIssues(): Promise<NewsletterIssue[] | null> {
-  const res = await sbFetch(
-    `newsletter_issues?select=${COLUMNS}&order=created_at.desc&limit=50`,
+  const rows = await q<NewsletterIssue>(
+    `select ${COLUMNS} from newsletter_issues order by created_at desc limit 50`,
   );
-  if (!res.ok) {
-    console.error(`[newsletter] issue list failed: ${res.status}`);
-    return null;
-  }
-  return (await res.json()) as NewsletterIssue[];
+  if (!rows) console.error("[newsletter] issue list failed");
+  return rows;
 }
 
 export async function getIssue(id: string): Promise<NewsletterIssue | null> {
   if (!isIssueId(id)) return null;
-  const res = await sbFetch(`newsletter_issues?id=eq.${id}&select=${COLUMNS}`);
-  if (!res.ok) {
-    console.error(`[newsletter] issue fetch failed: ${res.status}`);
-    return null;
-  }
-  const rows = (await res.json()) as NewsletterIssue[];
-  return rows[0] ?? null;
+  const rows = await q<NewsletterIssue>(
+    `select ${COLUMNS} from newsletter_issues where id = $1`,
+    [id],
+  );
+  if (!rows) console.error("[newsletter] issue fetch failed");
+  return rows?.[0] ?? null;
 }
 
 export async function insertIssue(fields: {
@@ -52,19 +48,13 @@ export async function insertIssue(fields: {
   html: string;
   source: NewsletterIssue["source"];
 }): Promise<NewsletterIssue | null> {
-  const res = await sbFetch("newsletter_issues", {
-    method: "POST",
-    body: JSON.stringify(fields),
-    prefer: "return=representation",
-  });
-  if (!res.ok) {
-    console.error(
-      `[newsletter] issue insert failed: ${res.status} ${await res.text()}`,
-    );
-    return null;
-  }
-  const rows = (await res.json()) as NewsletterIssue[];
-  return rows[0] ?? null;
+  const rows = await q<NewsletterIssue>(
+    `insert into newsletter_issues (subject, html, source) values ($1, $2, $3)
+     returning ${COLUMNS}`,
+    [fields.subject, fields.html, fields.source],
+  );
+  if (!rows) console.error("[newsletter] issue insert failed");
+  return rows?.[0] ?? null;
 }
 
 export async function updateIssue(
@@ -74,38 +64,28 @@ export async function updateIssue(
   >,
 ): Promise<NewsletterIssue | null> {
   if (!isIssueId(id)) return null;
-  const res = await sbFetch(`newsletter_issues?id=eq.${id}`, {
-    method: "PATCH",
-    body: JSON.stringify(fields),
-    prefer: "return=representation",
-  });
-  if (!res.ok) {
-    console.error(`[newsletter] issue update failed: ${res.status}`);
-    return null;
-  }
-  const rows = (await res.json()) as NewsletterIssue[];
-  return rows[0] ?? null;
+  const set = setClause(fields, ["subject", "html", "status", "sent_at", "sent_count"], 2);
+  if (!set) return getIssue(id);
+  const rows = await q<NewsletterIssue>(
+    `update newsletter_issues set ${set.sql} where id = $1 returning ${COLUMNS}`,
+    [id, ...set.params],
+  );
+  if (!rows) console.error("[newsletter] issue update failed");
+  return rows?.[0] ?? null;
 }
 
 export async function deleteIssue(id: string): Promise<boolean> {
   if (!isIssueId(id)) return false;
-  const res = await sbFetch(`newsletter_issues?id=eq.${id}&status=eq.draft`, {
-    method: "DELETE",
-  });
-  return res.ok;
+  const rows = await q(`delete from newsletter_issues where id = $1 and status = 'draft'`, [id]);
+  return rows !== null;
 }
 
-/** Active subscriber count via a PostgREST HEAD request. */
+/** Active subscriber count. */
 export async function countActiveSubscribers(): Promise<number | null> {
-  const res = await sbFetch(
-    "newsletter_subscribers?status=eq.active&select=id",
-    { method: "HEAD", prefer: "count=exact" },
+  const rows = await q<{ n: number }>(
+    `select count(*)::int as n from newsletter_subscribers where status = 'active'`,
   );
-  if (!res.ok) return null;
-  const range = res.headers.get("content-range"); // e.g. "0-2/3" or "*/0"
-  const total = range?.split("/")[1];
-  const n = total ? Number(total) : NaN;
-  return Number.isFinite(n) ? n : null;
+  return rows?.[0]?.n ?? null;
 }
 
 /** True if an issue was already created in the current ISO week (UTC). */
@@ -114,10 +94,9 @@ export async function issueExistsThisWeek(now = new Date()): Promise<boolean> {
   const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   const day = d.getUTCDay() || 7;
   d.setUTCDate(d.getUTCDate() - (day - 1));
-  const res = await sbFetch(
-    `newsletter_issues?created_at=gte.${d.toISOString()}&select=id&limit=1`,
+  const rows = await q(
+    `select id from newsletter_issues where created_at >= $1::timestamptz limit 1`,
+    [d.toISOString()],
   );
-  if (!res.ok) return false;
-  const rows = (await res.json()) as { id: string }[];
-  return rows.length > 0;
+  return (rows?.length ?? 0) > 0;
 }

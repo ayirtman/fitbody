@@ -64,7 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "weekly",
   }));
 
-  // Blog posts live in Supabase; degrade to the static set when env is absent.
+  // Blog posts live in Neon; degrade to the static set when env is absent.
   const blogEntries: MetadataRoute.Sitemap = (await publishedForSitemap()).map(
     (post) => ({
       url: `${SITE_URL}/blog/${post.slug}`,

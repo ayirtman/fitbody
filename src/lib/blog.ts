@@ -1,10 +1,10 @@
-import { sbFetch, supabaseConfigured } from "@/lib/server/supabase";
+import { dbConfigured, q, setClause } from "@/lib/server/db";
 import type { BlogPost } from "@/lib/types";
 
 /**
- * Data access for blog_posts / blog_settings in Supabase. Posts live in the
- * database (not data files) so publishing is an admin click, not a deploy.
- * Every reader degrades to empty results when Supabase env is absent, so
+ * Data access for blog_posts / blog_settings in Neon Postgres. Posts live in
+ * the database (not data files) so publishing is an admin click, not a deploy.
+ * Every reader degrades to empty results when DATABASE_URL is absent, so
  * local dev and CI builds work without credentials.
  */
 
@@ -26,41 +26,47 @@ export async function listPublished(
   page = 1,
   category?: string,
 ): Promise<{ posts: BlogPostSummary[]; total: number }> {
-  if (!supabaseConfigured()) return { posts: [], total: 0 };
+  if (!dbConfigured()) return { posts: [], total: 0 };
   const from = (page - 1) * PAGE_SIZE;
-  const filter = category ? `&category=eq.${encodeURIComponent(category)}` : "";
-  const res = await sbFetch(
-    `blog_posts?status=eq.published${filter}&select=${LIST_COLUMNS}&order=published_at.desc`,
-    {
-      headers: { Range: `${from}-${from + PAGE_SIZE - 1}`, Prefer: "count=exact" },
-    },
-  );
-  if (!res.ok && res.status !== 206) {
-    console.error(`[blog] list failed: ${res.status}`);
+  const cat = category ?? null;
+  const [posts, count] = await Promise.all([
+    q<BlogPostSummary>(
+      `select ${LIST_COLUMNS} from blog_posts
+       where status = 'published' and ($1::text is null or category = $1)
+       order by published_at desc limit $2 offset $3`,
+      [cat, PAGE_SIZE, from],
+    ),
+    q<{ n: number }>(
+      `select count(*)::int as n from blog_posts
+       where status = 'published' and ($1::text is null or category = $1)`,
+      [cat],
+    ),
+  ]);
+  if (!posts) {
+    console.error("[blog] list failed");
     return { posts: [], total: 0 };
   }
-  const total = Number(res.headers.get("content-range")?.split("/")[1] ?? 0);
-  const posts = (await res.json()) as BlogPostSummary[];
-  return { posts, total: Number.isFinite(total) ? total : posts.length };
+  return { posts, total: count?.[0]?.n ?? posts.length };
 }
 
 export async function latestPublished(n: number): Promise<BlogPostSummary[]> {
-  if (!supabaseConfigured()) return [];
-  const res = await sbFetch(
-    `blog_posts?status=eq.published&select=${LIST_COLUMNS}&order=published_at.desc&limit=${n}`,
+  if (!dbConfigured()) return [];
+  return (
+    (await q<BlogPostSummary>(
+      `select ${LIST_COLUMNS} from blog_posts where status = 'published'
+       order by published_at desc limit $1`,
+      [n],
+    )) ?? []
   );
-  if (!res.ok) return [];
-  return (await res.json()) as BlogPostSummary[];
 }
 
 export async function getPublished(slug: string): Promise<BlogPost | null> {
-  if (!supabaseConfigured() || !isBlogSlug(slug)) return null;
-  const res = await sbFetch(
-    `blog_posts?slug=eq.${slug}&status=eq.published&select=${COLUMNS}`,
+  if (!dbConfigured() || !isBlogSlug(slug)) return null;
+  const rows = await q<BlogPost>(
+    `select ${COLUMNS} from blog_posts where slug = $1 and status = 'published'`,
+    [slug],
   );
-  if (!res.ok) return null;
-  const rows = (await res.json()) as BlogPost[];
-  return rows[0] ?? null;
+  return rows?.[0] ?? null;
 }
 
 export async function relatedPublished(
@@ -68,34 +74,28 @@ export async function relatedPublished(
   excludeSlug: string,
   n = 3,
 ): Promise<BlogPostSummary[]> {
-  if (!supabaseConfigured()) return [];
-  const res = await sbFetch(
-    `blog_posts?status=eq.published&category=eq.${encodeURIComponent(category)}&slug=neq.${excodeSafe(excludeSlug)}&select=${LIST_COLUMNS}&order=published_at.desc&limit=${n}`,
+  if (!dbConfigured()) return [];
+  return (
+    (await q<BlogPostSummary>(
+      `select ${LIST_COLUMNS} from blog_posts
+       where status = 'published' and category = $1 and slug <> $2
+       order by published_at desc limit $3`,
+      [category, isBlogSlug(excludeSlug) ? excludeSlug : "none", n],
+    )) ?? []
   );
-  if (!res.ok) return [];
-  return (await res.json()) as BlogPostSummary[];
-}
-
-function excodeSafe(slug: string): string {
-  return isBlogSlug(slug) ? slug : "none";
 }
 
 /** All published slugs + dates, for the sitemap. */
 export async function publishedForSitemap(): Promise<
   { slug: string; published_at: string | null }[]
 > {
-  if (!supabaseConfigured()) return [];
-  const all: { slug: string; published_at: string | null }[] = [];
-  for (let from = 0; ; from += 1000) {
-    const res = await sbFetch(
-      `blog_posts?status=eq.published&select=slug,published_at&order=published_at.desc`,
-      { headers: { Range: `${from}-${from + 999}` } },
-    );
-    if (!res.ok && res.status !== 206) return all;
-    const page = (await res.json()) as { slug: string; published_at: string | null }[];
-    all.push(...page);
-    if (page.length < 1000) return all;
-  }
+  if (!dbConfigured()) return [];
+  return (
+    (await q<{ slug: string; published_at: string | null }>(
+      `select slug, published_at from blog_posts
+       where status = 'published' order by published_at desc`,
+    )) ?? []
+  );
 }
 
 // ---- admin ----------------------------------------------------------------
@@ -104,61 +104,48 @@ export async function listAdmin(
   status?: "draft" | "published",
   search?: string,
 ): Promise<BlogPostSummary[]> {
-  const filters = [
-    status ? `status=eq.${status}` : "",
-    search ? `title=ilike.*${encodeURIComponent(search.replaceAll("*", ""))}*` : "",
-  ]
-    .filter(Boolean)
-    .join("&");
-  const res = await sbFetch(
-    `blog_posts?select=${LIST_COLUMNS}${filters ? `&${filters}` : ""}&order=created_at.asc&limit=400`,
+  const like = search ? `%${search.replace(/[\\%_]/g, "\\$&")}%` : null;
+  return (
+    (await q<BlogPostSummary>(
+      `select ${LIST_COLUMNS} from blog_posts
+       where ($1::text is null or status = $1) and ($2::text is null or title ilike $2)
+       order by created_at asc limit 400`,
+      [status ?? null, like],
+    )) ?? []
   );
-  if (!res.ok) return [];
-  return (await res.json()) as BlogPostSummary[];
 }
 
 export async function getPostAdmin(id: string): Promise<BlogPost | null> {
-  const res = await sbFetch(`blog_posts?id=eq.${id}&select=${COLUMNS}`);
-  if (!res.ok) return null;
-  const rows = (await res.json()) as BlogPost[];
-  return rows[0] ?? null;
+  const rows = await q<BlogPost>(`select ${COLUMNS} from blog_posts where id = $1`, [id]);
+  return rows?.[0] ?? null;
 }
 
 export async function setPostStatus(
   id: string,
   status: "draft" | "published",
 ): Promise<BlogPost | null> {
-  const res = await sbFetch(`blog_posts?id=eq.${id}`, {
-    method: "PATCH",
-    body: JSON.stringify({
-      status,
-      published_at: status === "published" ? new Date().toISOString() : null,
-    }),
-    prefer: "return=representation",
-  });
-  if (!res.ok) return null;
-  const rows = (await res.json()) as BlogPost[];
-  return rows[0] ?? null;
+  const rows = await q<BlogPost>(
+    `update blog_posts
+     set status = $2::text,
+         published_at = case when $2::text = 'published' then now() else null end
+     where id = $1
+     returning ${COLUMNS}`,
+    [id, status],
+  );
+  return rows?.[0] ?? null;
 }
 
 export async function deletePost(id: string): Promise<boolean> {
-  const res = await sbFetch(`blog_posts?id=eq.${id}&status=eq.draft`, {
-    method: "DELETE",
-  });
-  return res.ok;
+  const rows = await q(`delete from blog_posts where id = $1 and status = 'draft'`, [id]);
+  return rows !== null;
 }
 
 export async function blogCounts(): Promise<{ published: number; drafts: number }> {
-  const count = async (status: string) => {
-    const res = await sbFetch(`blog_posts?status=eq.${status}&select=id`, {
-      method: "HEAD",
-      prefer: "count=exact",
-    });
-    const n = Number(res.headers.get("content-range")?.split("/")[1] ?? 0);
-    return Number.isFinite(n) ? n : 0;
-  };
-  const [published, drafts] = await Promise.all([count("published"), count("draft")]);
-  return { published, drafts };
+  const rows = await q<{ status: string; n: number }>(
+    `select status, count(*)::int as n from blog_posts group by status`,
+  );
+  const get = (s: string) => rows?.find((r) => r.status === s)?.n ?? 0;
+  return { published: get("published"), drafts: get("draft") };
 }
 
 /**
@@ -167,11 +154,11 @@ export async function blogCounts(): Promise<{ published: number; drafts: number 
  * query fails. Drives the drip interval gate in the cron.
  */
 export async function daysSinceLastPublish(): Promise<number | null> {
-  const res = await sbFetch(
-    "blog_posts?status=eq.published&select=published_at&order=published_at.desc&limit=1",
+  const rows = await q<{ published_at: string | null }>(
+    `select published_at from blog_posts where status = 'published'
+     order by published_at desc limit 1`,
   );
-  if (!res.ok) return null;
-  const rows = (await res.json()) as { published_at: string | null }[];
+  if (!rows) return null;
   const last = rows[0]?.published_at;
   if (!last) return Infinity;
   return (Date.now() - new Date(last).getTime()) / 86_400_000;
@@ -179,17 +166,15 @@ export async function daysSinceLastPublish(): Promise<number | null> {
 
 /** Publish the N oldest drafts (drip). Returns the published summaries. */
 export async function publishNextDrafts(n: number): Promise<BlogPostSummary[]> {
-  const res = await sbFetch(
-    `blog_posts?status=eq.draft&select=id&order=created_at.asc&limit=${n}`,
+  const rows = await q<BlogPostSummary>(
+    `update blog_posts
+     set status = 'published', published_at = now()
+     where id in (select id from blog_posts where status = 'draft'
+                  order by created_at asc limit $1)
+     returning ${LIST_COLUMNS}`,
+    [n],
   );
-  if (!res.ok) return [];
-  const ids = ((await res.json()) as { id: string }[]).map((r) => r.id);
-  const out: BlogPostSummary[] = [];
-  for (const id of ids) {
-    const post = await setPostStatus(id, "published");
-    if (post) out.push(post);
-  }
-  return out;
+  return rows ?? [];
 }
 
 // ---- settings ---------------------------------------------------------------
@@ -202,12 +187,8 @@ export interface BlogSettings {
 }
 
 export async function getBlogSettings(): Promise<BlogSettings | null> {
-  // select=* so the query keeps working whether or not the drip_interval_days
-  // column has been added yet; the field is then defaulted below.
-  const res = await sbFetch("blog_settings?id=eq.1&select=*");
-  if (!res.ok) return null;
-  const rows = (await res.json()) as Partial<BlogSettings>[];
-  const row = rows[0];
+  const rows = await q<Partial<BlogSettings>>(`select * from blog_settings where id = 1`);
+  const row = rows?.[0];
   if (!row) return null;
   return {
     drip_enabled: row.drip_enabled ?? true,
@@ -219,9 +200,11 @@ export async function getBlogSettings(): Promise<BlogSettings | null> {
 export async function saveBlogSettings(
   fields: Partial<BlogSettings>,
 ): Promise<boolean> {
-  const res = await sbFetch("blog_settings?id=eq.1", {
-    method: "PATCH",
-    body: JSON.stringify({ ...fields, updated_at: new Date().toISOString() }),
-  });
-  return res.ok;
+  const set = setClause(fields, ["drip_enabled", "drip_per_day", "drip_interval_days"]);
+  if (!set) return true;
+  const rows = await q(
+    `update blog_settings set ${set.sql}, updated_at = now() where id = 1`,
+    set.params,
+  );
+  return rows !== null;
 }

@@ -1,4 +1,4 @@
-import { sbFetch, supabaseConfigured } from "@/lib/server/supabase";
+import { dbConfigured, q, setClause } from "@/lib/server/db";
 
 /**
  * Single-row sponsor config for the weekly email's "Presented by" slot.
@@ -15,13 +15,11 @@ export interface Sponsor {
 }
 
 export async function getSponsor(): Promise<Sponsor | null> {
-  if (!supabaseConfigured()) return null;
-  const res = await sbFetch(
-    "newsletter_sponsor?id=eq.1&select=name,url,blurb,active",
+  if (!dbConfigured()) return null;
+  const rows = await q<Sponsor>(
+    `select name, url, blurb, active from newsletter_sponsor where id = 1`,
   );
-  if (!res.ok) return null;
-  const rows = (await res.json()) as Sponsor[];
-  return rows[0] ?? null;
+  return rows?.[0] ?? null;
 }
 
 export async function getActiveSponsor(): Promise<Sponsor | null> {
@@ -30,11 +28,13 @@ export async function getActiveSponsor(): Promise<Sponsor | null> {
 }
 
 export async function saveSponsor(fields: Partial<Sponsor>): Promise<boolean> {
-  const res = await sbFetch("newsletter_sponsor?id=eq.1", {
-    method: "PATCH",
-    body: JSON.stringify({ ...fields, updated_at: new Date().toISOString() }),
-  });
-  return res.ok;
+  const set = setClause(fields, ["name", "url", "blurb", "active"]);
+  if (!set) return true;
+  const rows = await q(
+    `update newsletter_sponsor set ${set.sql}, updated_at = now() where id = 1`,
+    set.params,
+  );
+  return rows !== null;
 }
 
 /**

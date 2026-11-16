@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabaseConfigured } from "@/lib/server/supabase";
+import { dbConfigured } from "@/lib/server/db";
 import { cronAuthorized } from "@/lib/server/newsletterAuth";
 import { weeklyDigest } from "@/lib/newsletter/digest";
 import { claudeConfigured, generateIssue } from "@/lib/newsletter/generate";
@@ -18,7 +18,7 @@ export async function GET(request: Request) {
   if (!cronAuthorized(request)) {
     return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
   }
-  if (!supabaseConfigured()) {
+  if (!dbConfigured()) {
     return NextResponse.json(
       { ok: false, error: "Newsletter not configured" },
       { status: 503 },

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sbFetch, supabaseConfigured } from "@/lib/server/supabase";
+import { dbConfigured, q } from "@/lib/server/db";
 import { normalizeEmail } from "@/lib/server/email";
 import { newsletterAdminAuthorized } from "@/lib/server/newsletterAuth";
 import { weeklyDigest } from "@/lib/newsletter/digest";
@@ -17,7 +17,6 @@ import { getIssue, updateIssue } from "@/lib/newsletter/issues";
  * per subscriber so unsubscribe links stay personal.
  */
 
-const PAGE_SIZE = 1000;
 const BATCH_SIZE = 100;
 
 interface Subscriber {
@@ -26,20 +25,12 @@ interface Subscriber {
 }
 
 async function fetchActiveSubscribers(): Promise<Subscriber[] | null> {
-  const all: Subscriber[] = [];
-  for (let from = 0; ; from += PAGE_SIZE) {
-    const res = await sbFetch(
-      "newsletter_subscribers?status=eq.active&select=email,unsubscribe_token&order=created_at.asc",
-      { headers: { Range: `${from}-${from + PAGE_SIZE - 1}` } },
-    );
-    if (!res.ok) {
-      console.error(`[newsletter] subscriber fetch failed: ${res.status}`);
-      return null;
-    }
-    const page = (await res.json()) as Subscriber[];
-    all.push(...page);
-    if (page.length < PAGE_SIZE) return all;
-  }
+  const rows = await q<Subscriber>(
+    `select email, unsubscribe_token from newsletter_subscribers
+     where status = 'active' order by created_at asc`,
+  );
+  if (!rows) console.error("[newsletter] subscriber fetch failed");
+  return rows;
 }
 
 interface ResendEmail {
@@ -97,7 +88,7 @@ export async function POST(request: Request) {
   let subject: string;
   let html: string;
   if (issueId) {
-    if (!supabaseConfigured()) {
+    if (!dbConfigured()) {
       return NextResponse.json(
         { ok: false, error: "Newsletter not configured" },
         { status: 503 },
@@ -162,7 +153,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, test: true, sent: 1 });
   }
 
-  if (!supabaseConfigured()) {
+  if (!dbConfigured()) {
     return NextResponse.json(
       { ok: false, error: "Newsletter not configured" },
       { status: 503 },

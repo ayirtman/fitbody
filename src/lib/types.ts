@@ -222,7 +222,7 @@ export interface Guide {
 
 export type BlogCategory = "training" | "nutrition" | "recovery" | "dad-life";
 
-/** Article body stored in Supabase blog_posts.content (jsonb). */
+/** Article body stored in blog_posts.content (Neon) (jsonb). */
 export interface BlogContent {
   intro: string;
   sections: GuideSection[];

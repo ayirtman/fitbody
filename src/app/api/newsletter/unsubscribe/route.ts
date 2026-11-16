@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { sbFetch, supabaseConfigured } from "@/lib/server/supabase";
+import { dbConfigured, q } from "@/lib/server/db";
 
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -9,24 +9,15 @@ export async function GET(request: Request) {
   const token = new URL(request.url).searchParams.get("token") ?? "";
   let ok = false;
 
-  if (UUID_RE.test(token) && supabaseConfigured()) {
-    const res = await sbFetch(
-      `newsletter_subscribers?unsubscribe_token=eq.${token}&status=eq.active`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          status: "unsubscribed",
-          unsubscribed_at: new Date().toISOString(),
-        }),
-        prefer: "return=representation",
-      },
+  if (UUID_RE.test(token) && dbConfigured()) {
+    const rows = await q(
+      `update newsletter_subscribers
+       set status = 'unsubscribed', unsubscribed_at = now()
+       where unsubscribe_token = $1 and status = 'active'
+       returning id`,
+      [token],
     );
-    if (res.ok) {
-      const rows = (await res.json()) as unknown[];
-      ok = rows.length > 0;
-    } else {
-      console.error(`[newsletter] unsubscribe failed: ${res.status}`);
-    }
+    ok = (rows?.length ?? 0) > 0;
   }
 
   redirect(`/newsletter/unsubscribed?ok=${ok ? 1 : 0}`);
